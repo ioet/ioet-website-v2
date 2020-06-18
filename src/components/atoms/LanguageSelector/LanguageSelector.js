@@ -34,7 +34,6 @@ const LanguageSelector = ({ selectorId, name, options }) => {
           id: { selectorId },
         }}
       >
-        <option aria-label="None" value="" />
         {options.map(optionItem => {
           return <option value={optionItem.value}>{optionItem.text}</option>
         })}

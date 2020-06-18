@@ -9,20 +9,8 @@ const useStyles = makeStyles(theme => ({
     height: 200,
     [theme.breakpoints.down("xs")]: {
       width: "100% !important", // Overrides inline-style
-      height: 100,
-    },
-    "&:hover, &$focusVisible": {
-      zIndex: 1,
-      "& $imageBackdrop": {
-        opacity: 0.15,
-      },
-      "& $imageMarked": {
-        opacity: 0,
-      },
-      "& $imageTitle": {
-        border: "4px solid currentColor",
-      },
-    },
+      height: 100
+    }
   },
   focusVisible: {},
   imageButton: {
@@ -34,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    color: theme.palette.common.white,
+    color: theme.palette.common.white
   },
   imageSrc: {
     position: "absolute",
@@ -43,34 +31,31 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
-  },
-  link: {
-    textDecoration: "none",
-    color: "inherit",
-    display: "flex",
-    alignItems: "center",
-    flexGrow: 1,
-  },
+    backgroundPosition: "center 40%"
+  }
 }))
 
 const ImageLink = ({ slug, imageUrl }) => {
+  const classes = useStyles()
   return (
-    <ButtonBase
-      focusRipple
-      className={classes.image}
-      focusVisibleClassName={classes.focusVisible}
-    >
-      <span
-        className={classes.imageSrc}
+    <Link className={classes.link} to={`/${slug}`}>
+      <ButtonBase
+        focusRipple
+        className={classes.image}
         style={{
-          backgroundImage: `url(${imageUrl})`,
+          width: "40%"
         }}
-      />
-      <span className={classes.imageButton}>
-        <Link className={classes.link} to={`/${slug}`}></Link>
-      </span>
-    </ButtonBase>
+      >
+        <span
+          className={classes.imageSrc}
+          style={{
+            backgroundImage: `url(${imageUrl})`,
+          }}
+        />
+        <span className={classes.imageButton}>
+        </span>
+      </ButtonBase>
+    </Link>
   )
 }
 
