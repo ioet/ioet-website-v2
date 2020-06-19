@@ -1,6 +1,6 @@
 import React from "react"
 import { StyledHeader } from "./StyledHeader"
-import NavBar from "../molecules/NavBar/NavBar"
+import NavBar from "../../molecules/NavBar/NavBar"
 
 const Header = () => {
   return (
