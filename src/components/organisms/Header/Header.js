@@ -4,8 +4,10 @@ import NavBar from "../../molecules/NavBar/NavBar";
 
 
 const Header = () => {
+  const colorHeader = '#FF5E0A';
+
   return (
-    <AppBar position="static" >
+    <AppBar position="static" style={ { background: colorHeader } } >
       <NavBar />
     </AppBar>
   )
