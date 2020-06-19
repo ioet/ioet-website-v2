@@ -1,13 +1,14 @@
-import React from "react"
-import { StyledHeader } from "./StyledHeader"
-import NavBar from "../../molecules/NavBar/NavBar"
+import React from "react";
+import AppBar from '@material-ui/core/AppBar';
+import NavBar from "../../molecules/NavBar/NavBar";
+
 
 const Header = () => {
   return (
-    <StyledHeader>
+    <AppBar position="static" >
       <NavBar />
-    </StyledHeader>
+    </AppBar>
   )
 }
 
-export default Header
+export default Header;
