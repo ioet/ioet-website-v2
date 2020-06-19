@@ -66,7 +66,7 @@ export const StyledHeader = styled.header`
   }
   & > a > img {
     margin: 0;
-    background-color: ${colors.green};
+    background-color: ${colors.ioetOrange};
     height: 100%;
     padding: 0.5rem 0.8rem;
   }
