@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const ImageLink = ({ slug, imageUrl }) => {
   const classes = useStyles()
   return (
-    <Link className={classes.link} to={`/${slug}`}>
+    <Link className={classes.link} to={`${slug}`}>
       <img className={classes.image} src={`${imageUrl}`} alt={`${slug}`} />
     </Link>
   )

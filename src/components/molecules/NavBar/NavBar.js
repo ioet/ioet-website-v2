@@ -6,12 +6,6 @@ import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
 const NavBar = ({navigationLinks, languageOptions, actionImage}) => {
-  // const navigationData = [
-  //   { slug: "What we do", caption: "What we do" },
-  //   { slug: "Our Talent", caption: "Our Talent" },
-  //   { slug: "Contact Us", caption: "Contact Us" },
-  // ]
-
   return (
     <Toolbar>
       <ImageLink slug={actionImage.slug} imageUrl={`https://${actionImage.imageUrl}`} />
