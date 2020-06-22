@@ -2,6 +2,7 @@ import React from "react"
 import Toolbar from "@material-ui/core/Toolbar"
 import AppBar from "@material-ui/core/AppBar"
 import Hidden from "@material-ui/core/Hidden"
+import Grid from "@material-ui/core/Grid"
 import NavBar from "../../molecules/NavBar/NavBar"
 import Icons from "../../molecules/Icons/Icons"
 
@@ -10,10 +11,12 @@ const Footer = () => {
   return (
     <AppBar position="static" style={{ background: colorHeader }}>
       <Toolbar>
-        <Hidden only="xs">
-          <NavBar />
-        </Hidden>
-        <Icons />
+        <Grid container justify="center">
+          <Hidden only="xs">
+            <NavBar />
+          </Hidden>
+          <Icons />
+        </Grid>
       </Toolbar>
     </AppBar>
   )

@@ -24,7 +24,7 @@ const Icons = () => {
     },
   ]
   return (
-    <Grid container spacing={3} justify="center">
+    <Grid container justify="center">
       {IconsData.map(data => (
         <Icon slug={data.slug} imageUrl={data.imageUrl} linkTo={data.linkTo} />
       ))}
