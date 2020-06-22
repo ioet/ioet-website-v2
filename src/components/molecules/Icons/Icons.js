@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid } from "@material-ui/core"
+import Grid  from "@material-ui/core/Grid"
 import Icon from "../../atoms/Icon/SocialIcon"
 
 const Icons = () => {
@@ -24,15 +24,11 @@ const Icons = () => {
     },
   ]
   return (
-      <Grid item xs={2} justify="center">
-        {IconsData.map(data => (
-          <Icon
-            slug={data.slug}
-            imageUrl={data.imageUrl}
-            linkTo={data.linkTo}
-          />
-        ))}
-      </Grid>
+    <Grid container spacing={3} justify="center">
+      {IconsData.map(data => (
+        <Icon slug={data.slug} imageUrl={data.imageUrl} linkTo={data.linkTo} />
+      ))}
+    </Grid>
   )
 }
 export default Icons
