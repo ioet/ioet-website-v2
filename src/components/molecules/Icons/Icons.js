@@ -24,15 +24,15 @@ const Icons = () => {
     },
   ]
   return (
-    <Grid item xs={2} direction="row">
-      {IconsData.map(data => (
-        <Icon
-          slug={data.slug}
-          imageUrl={data.imageUrl}
-          linkTo={data.linkTo}
-        />
-      ))}
-    </Grid>
+      <Grid item xs={2} justify="center">
+        {IconsData.map(data => (
+          <Icon
+            slug={data.slug}
+            imageUrl={data.imageUrl}
+            linkTo={data.linkTo}
+          />
+        ))}
+      </Grid>
   )
 }
 export default Icons
