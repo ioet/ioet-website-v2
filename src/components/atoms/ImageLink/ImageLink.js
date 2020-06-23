@@ -5,28 +5,20 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   image: {
     position: "relative",
-    height: 200,
-    [theme.breakpoints.down("xs")]: {
-      width: "100% !important", // Overrides inline-style
-      height: 100,
-    },
+    maxHeight: 50,
   },
-  focusVisible: {},
+  link: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
 }))
 
 const ImageLink = ({ slug, imageUrl }) => {
   const classes = useStyles()
   return (
     <Link className={classes.link} to={`/${slug}`}>
-      {/* <ButtonBase
-        focusRipple
-        className={classes.image}
-        style={{
-          width: "5%",
-        }}
-      > */}
       <img className={classes.image} src={`${imageUrl}`} alt={`${slug}`} />
-      {/* </ButtonBase> */}
     </Link>
   )
 }

@@ -20,13 +20,12 @@ export const query = graphql`
 const PageTemplate = ({ data: { page } }) => {
   return (
     <>
-      <h1>{page.title}</h1>
       {page.childComponents.map((child, index) => {
         const CustomComponent = contentfulTypeToComponent(child.internal.type)
         return CustomComponent ? (
           <CustomComponent
             contentfulId={child.id}
-            key={index}
+            key={child.id}
           ></CustomComponent>
         ) : (
           <></>

@@ -1,34 +1,31 @@
 import React from "react"
+import { Grid } from "@material-ui/core"
+import Toolbar from "@material-ui/core/Toolbar"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
-const NavBar = () => {
+const NavBar = ({navigationLinks, languageOptions, actionImage}) => {
+  // const navigationData = [
+  //   { slug: "What we do", caption: "What we do" },
+  //   { slug: "Our Talent", caption: "Our Talent" },
+  //   { slug: "Contact Us", caption: "Contact Us" },
+  // ]
+
   return (
-    <React.Fragment>
-      <ImageLink slug="Image" imageUrl="https://images.ctfassets.net/bozygz3awzku/ylV3yo9Ruh411GawGTD2m/7ef1b7e910602d94fb74da0da6155178/ioet-logo9.png" />
-      <nav>
-        {/* <ul>
-          <ImageLink
-            slug="Image"
-            imageUrl="https://images.ctfassets.net/bozygz3awzku/ylV3yo9Ruh411GawGTD2m/7ef1b7e910602d94fb74da0da6155178/ioet-logo9.png"
-          />
-        </ul> */}
-        <ul>
-          <NavigationLink slug="What we do" caption="What we do" />
-          <NavigationLink slug="Our Talent" caption="Our Talent" />
-          <NavigationLink slug="Contact Us" caption="Contact Us" />
-          <LanguageSelector
-            selectorId="Selector-1"
-            options={[
-              { value: 1, text: "en-US" },
-              { value: 2, text: "es-ES" },
-            ]}
-            name="Language"
-          />
-        </ul>
-      </nav>
-    </React.Fragment>
+    <Toolbar>
+      <ImageLink slug={actionImage.slug} imageUrl={`https://${actionImage.imageUrl}`} />
+      <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+        { navigationLinks.map((link, index) =>
+          <NavigationLink key={`${index}-${link.slug}`}slug={link.slug} caption={link.caption} style={{ align: "right"}} />
+        )}
+        <LanguageSelector
+          selectorId="Selector-1"
+          options={languageOptions}
+          name="Language"
+        />
+      </Grid>
+    </Toolbar>
   )
 }
 
