@@ -1,41 +1,46 @@
 import React, { useState } from "react"
 import Select from "@material-ui/core/Select"
+import MenuItem from "@material-ui/core/MenuItem"
 import { makeStyles } from "@material-ui/core/styles"
-import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    margin: theme.spacing(1),
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(2),
     minWidth: 120,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
+  whiteColor: {
+    color: "white",
   },
 }))
 
 const LanguageSelector = ({ selectorId, name, options }) => {
   const classes = useStyles()
-  const [selectedValue, setSelectedValue] = useState("")
+  const [selectedValue, setSelectedValue] = useState(options[0].value)
 
   const handleChange = event => {
     setSelectedValue(event.target.value)
+    console.log(selectedValue)
   }
 
   return (
     <FormControl className={classes.formControl}>
-      <InputLabel htmlFor={selectorId}>{name}</InputLabel>
       <Select
-        native
+        disableUnderline
         value={selectedValue}
         onChange={handleChange}
         inputProps={{
-          name: { name },
-          id: { selectorId },
+          name: name,
+          id: selectorId,
+        }}
+        classes={{
+          root: classes.whiteColor,
+          icon: classes.whiteColor,
         }}
       >
-        {options.map(optionItem => {
-          return <option value={optionItem.value}>{optionItem.text}</option>
+        {options.map((optionItem, index) => {
+          return <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>{optionItem.text}</MenuItem>
         })}
       </Select>
     </FormControl>

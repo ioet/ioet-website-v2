@@ -7,7 +7,11 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     maxHeight: 50,
   },
-  focusVisible: {},
+  link: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
 }))
 
 const ImageLink = ({ slug, imageUrl }) => {

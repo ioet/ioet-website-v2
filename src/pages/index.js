@@ -1,6 +1,36 @@
 import React from "react"
-import Header from "../components/organisms/Header/Header"
+import { graphql, useStaticQuery } from "gatsby"
+import { contentfulTypeToComponent } from "../functions/componentParser"
 
 export default function Home() {
-  return <Header />
+  const page = useStaticQuery(graphql`
+    {
+      index: contentfulPage(slug: { eq: "home" }) {
+        childComponents {
+          ... on Node {
+            id
+            internal {
+              type
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  return (
+    <>
+      {page.index.childComponents.map((child, index) => {
+        const CustomComponent = contentfulTypeToComponent(child.internal.type)
+        return CustomComponent ? (
+          <CustomComponent
+            contentfulId={child.id}
+            key={index}
+          ></CustomComponent>
+        ) : (
+          <></>
+        )
+      })}
+    </>
+  )
 }
