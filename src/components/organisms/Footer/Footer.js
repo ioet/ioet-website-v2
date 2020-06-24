@@ -2,19 +2,18 @@ import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Hidden from "@material-ui/core/Hidden"
+import Box from "@material-ui/core/Box"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
 
-const Footer = (props) => {
+const Footer = props => {
   const data = useStaticQuery(graphql`
     {
-      header: allContentfulHeader {
+      footer: allContentfulFooter {
         edges {
           node {
-            languageSelector {
-              options
-            }
+            id
             navBar {
               mainIcon {
                 image {
@@ -33,36 +32,61 @@ const Footer = (props) => {
                 }
               }
             }
-            id
+            socialIcons {
+              icons {
+                title
+                image {
+                  file {
+                    url
+                  }
+                }
+                url
+              }
+            }
           }
         }
       }
     }
   `)
-  const colorHeader = "#FF5E0A"
-  const header = data.header.edges.find(item => item.node.id === props.contentfulId).node
-  const navigationLinks = header.navBar.navigationLinks.map(item => {
+  const colorFooter = "#FF5E0A"
+  const footer = data.footer.edges.find(
+    item => item.node.id === props.contentfulId
+  ).node
+  const navigationLinks = footer.navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: item.to.slug }
   })
-  const languageOptions = header.languageSelector.options.map(
-    item => {
-      return { text: item, value: item }
-    }
-  )
-  const actionImage = {imageUrl: header.navBar.mainIcon.image.file.url, slug: header.navBar.mainIcon.to.slug}
+  const SocialIcons = footer.socialIcons.icons.map(item => {
+    return { slug: item.title, imageUrl: item.image.file.url, linkTo: item.url }
+  })
+  const actionImage = {
+    imageUrl: footer.navBar.mainIcon.image.file.url,
+    slug: footer.navBar.mainIcon.to.slug,
+  }
 
   return (
-    <AppBar position="static" style={{ background: colorHeader }}>
+    <AppBar
+      position="relative"
+      justifyContent="center"
+      style={{
+        background: colorFooter,
+        position: "fixed",
+        bottom: 0,
+        padding: "30px",
+        left: 0,
+      }}
+    >
       <Toolbar>
         <Hidden only="xs">
           <NavBar
             navigationLinks={navigationLinks}
-            languageOptions={languageOptions}
             actionImage={actionImage}
           ></NavBar>
         </Hidden>
-        <Icons />
+        <Icons SocialIcons={SocialIcons}></Icons>
       </Toolbar>
+      <Box display="flex" alignSelf="flex-end" m={1} p={1}>
+        <h4>© 2020 ioet Inc. All Rights Reserved</h4>
+      </Box>
     </AppBar>
   )
 }
