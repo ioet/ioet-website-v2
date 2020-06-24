@@ -1,19 +1,12 @@
 import React from "react"
 import { Grid } from "@material-ui/core"
-import Toolbar from "@material-ui/core/Toolbar"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
 const NavBar = ({navigationLinks, languageOptions, actionImage}) => {
-  // const navigationData = [
-  //   { slug: "What we do", caption: "What we do" },
-  //   { slug: "Our Talent", caption: "Our Talent" },
-  //   { slug: "Contact Us", caption: "Contact Us" },
-  // ]
-
   return (
-    <Toolbar>
+    <React.Fragment>
       <ImageLink slug={actionImage.slug} imageUrl={`https://${actionImage.imageUrl}`} />
       <Grid container alignItems="flex-start" justify="flex-end" direction="row">
         { navigationLinks.map((link, index) =>
@@ -25,7 +18,7 @@ const NavBar = ({navigationLinks, languageOptions, actionImage}) => {
           name="Language"
         />
       </Grid>
-    </Toolbar>
+    </React.Fragment>
   )
 }
 
