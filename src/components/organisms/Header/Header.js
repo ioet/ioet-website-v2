@@ -1,5 +1,6 @@
 import React from "react"
 import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
 
@@ -50,11 +51,13 @@ const Header = (props) => {
 
   return (
     <AppBar position="static" style={{ background: colorHeader }}>
-      <NavBar
+      <Toolbar>
+        <NavBar
         navigationLinks={navigationLinks}
         languageOptions={languageOptions}
         actionImage={actionImage}
-      ></NavBar>
+        ></NavBar>
+      </Toolbar>
     </AppBar>
   )
 }
