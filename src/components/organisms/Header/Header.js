@@ -53,9 +53,9 @@ const Header = (props) => {
     <AppBar position="static" style={{ background: colorHeader }}>
       <Toolbar>
         <NavBar
-        navigationLinks={navigationLinks}
-        languageOptions={languageOptions}
-        actionImage={actionImage}
+          navigationLinks={navigationLinks}
+          languageOptions={languageOptions}
+          actionImage={actionImage}
         ></NavBar>
       </Toolbar>
     </AppBar>
