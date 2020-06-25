@@ -3,7 +3,6 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
-import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
 const Header = (props) => {
   const data = useStaticQuery(graphql`
@@ -51,17 +50,13 @@ const Header = (props) => {
   const actionImage = {imageUrl: header.navBar.mainIcon.image.file.url, slug: header.navBar.mainIcon.to.slug}
 
   return (
-    <AppBar position="static" style={{ background: colorHeader }}>
+    <AppBar position="sticky" style={{ background: colorHeader }}>
       <Toolbar>
         <NavBar
           navigationLinks={navigationLinks}
+          languageOptions={languageOptions}
           actionImage={actionImage}
         ></NavBar>
-        <LanguageSelector
-          selectorId="Selector-1"
-          options={languageOptions}
-          name="Language"
-        />
       </Toolbar>
     </AppBar>
   )
