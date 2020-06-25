@@ -3,9 +3,20 @@ import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
 import Hidden from "@material-ui/core/Hidden"
 import Box from "@material-ui/core/Box"
+import { makeStyles } from "@material-ui/core/styles"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
+
+
+const useStyles = makeStyles(theme => ({
+  footer: {
+    position: "fixed",
+    bottom: 0,
+    padding: 10,
+    left: 0,
+  }
+}))
 
 const Footer = props => {
   const data = useStaticQuery(graphql`
@@ -49,6 +60,7 @@ const Footer = props => {
     }
   `)
   const colorFooter = "#FF5E0A"
+  const classes = useStyles()
   const footer = data.footer.edges.find(
     item => item.node.id === props.contentfulId
   ).node
@@ -66,14 +78,8 @@ const Footer = props => {
   return (
     <AppBar
       position="relative"
-      justifyContent="center"
-      style={{
-        background: colorFooter,
-        position: "fixed",
-        bottom: 0,
-        padding: "30px",
-        left: 0,
-      }}
+      style={{ background: colorFooter }}
+      className={classes.footer}
     >
       <Toolbar>
         <Hidden only="xs">
