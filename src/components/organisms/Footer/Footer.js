@@ -11,6 +11,10 @@ import NavBar from "../../molecules/NavBar/NavBar"
 const useStyles = makeStyles(theme => ({
   footer: {
     bottom: 0,
+    height: "20%",
+    widht: "100%",
+    top: "auto",
+    position: "relative",
   },
 }))
 
@@ -72,11 +76,7 @@ const Footer = props => {
   }
 
   return (
-    <AppBar
-      position="sticky"
-      style={{ background: colorFooter }}
-      className={classes.footer}
-    >
+    <AppBar style={{ background: colorFooter }} className={classes.footer}>
       <Toolbar>
         <Hidden only="xs">
           <NavBar
