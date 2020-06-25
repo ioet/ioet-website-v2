@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     margin: "auto",
     display: "block",
     maxWidth: "100%",
-    maxHeight: "100%",
+    maxHeight: "376px",
   },
   text: {
     textAlign: "justify",

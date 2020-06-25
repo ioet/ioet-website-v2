@@ -8,14 +8,10 @@ import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
 
-
 const useStyles = makeStyles(theme => ({
   footer: {
-    position: "fixed",
     bottom: 0,
-    padding: 10,
-    left: 0,
-  }
+  },
 }))
 
 const Footer = props => {
@@ -77,7 +73,7 @@ const Footer = props => {
 
   return (
     <AppBar
-      position="relative"
+      position="sticky"
       style={{ background: colorFooter }}
       className={classes.footer}
     >
