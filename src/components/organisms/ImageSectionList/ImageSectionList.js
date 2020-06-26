@@ -1,6 +1,14 @@
 import React from "react"
-import ImageSection from "../../molecules/ImageSection/ImageSection"
 import { graphql, useStaticQuery } from "gatsby"
+import { makeStyles } from "@material-ui/core/styles"
+import ImageSection from "../../molecules/ImageSection/ImageSection"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(0.5),
+  },
+}))
 
 const ImageSectionList = ({ contentfulId }) => {
   const data = useStaticQuery(graphql`
@@ -40,8 +48,9 @@ const ImageSectionList = ({ contentfulId }) => {
           section.childContentfulImageSectionOptionalStyleJsonNode.reversed,
       }
     })
+  const classes = useStyles()
   return (
-    <>
+    <div className={classes.root}>
       {imageSectionItems.map(item => (
         <ImageSection
           imgUrl={item.imgUrl}
@@ -51,7 +60,7 @@ const ImageSectionList = ({ contentfulId }) => {
           reversed={item.reversed}
         />
       ))}
-    </>
+    </div>
   )
 }
 
