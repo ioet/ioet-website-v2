@@ -3,10 +3,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Paper, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
+    marginBottom: theme.spacing(0.5),
     padding: theme.spacing(2),
     margin: "auto",
   },

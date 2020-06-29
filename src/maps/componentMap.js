@@ -5,6 +5,7 @@ const contentfulComponentDict = new Map([
     "components/organisms/ImageSectionList/ImageSectionList.js",
   ],
   ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
+  ["ContentfulCardHolder", "components/organisms/CardHolder/CardHolder.js"],
 ])
 
 export default contentfulComponentDict
