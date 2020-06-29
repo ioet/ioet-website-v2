@@ -13,6 +13,7 @@ import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import './Header.scss';
 import { Grid } from "@material-ui/core"
+import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
 const drawerWidth = 700;
 const useStyles = makeStyles(theme => ({
@@ -109,6 +110,11 @@ const Header = (props) => {
             <NavigationLink key={`${index}-${item.slug}`} slug={item.slug} caption={item.caption}/>
           </div>
         ))}
+        <LanguageSelector
+          selectorId="Selector-1"
+          options={languageOptions}
+          name="Language"
+        ></LanguageSelector>
       </List>
     </div>
   );
