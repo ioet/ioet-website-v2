@@ -3,14 +3,18 @@ import { Grid } from "@material-ui/core"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
+import './NavBar.scss';
 
 const NavBar = ({ navigationLinks, actionImage, languageOptions }) => {
   return (
     <React.Fragment>
-      <ImageLink
-        slug={actionImage.slug}
-        imageUrl={`https://${actionImage.imageUrl}`}
-      />
+      <div className="imageStyle">
+        <ImageLink
+          className="componentNavbar"
+          slug={actionImage.slug}
+          imageUrl={`https://${actionImage.imageUrl}`}
+        />
+      </div>
       <Grid
         container
         alignItems="flex-start"
@@ -18,12 +22,14 @@ const NavBar = ({ navigationLinks, actionImage, languageOptions }) => {
         direction="row"
       >
         {navigationLinks.map((link, index) => (
-          <NavigationLink
-            key={`${index}-${link.slug}`}
-            slug={link.slug}
-            caption={link.caption}
-            style={{ align: "right" }}
-          />
+          <div className="linskStyle">
+            <NavigationLink
+              key={`${index}-${link.slug}`}
+              slug={link.slug}
+              caption={link.caption}
+              style={{ align: "right" }}
+            />
+          </div>
         ))}
         {languageOptions ? (
           <LanguageSelector
