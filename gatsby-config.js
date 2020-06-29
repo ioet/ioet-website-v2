@@ -15,6 +15,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_API_TOKEN
       }
     },
-    `gatsby-theme-material-ui`
+    `gatsby-theme-material-ui`,
+    `gatsby-plugin-sass`
   ],
 }

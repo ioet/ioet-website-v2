@@ -10,14 +10,14 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
-    color: "inherit",
+    color: "inherit"
   },
 }))
 
 const NavigationLink = ({ slug, caption }) => {
   const classes = useStyles()
   return (
-    <Typography variant="h6" className={classes.title}>
+    <Typography variant="subtitle1" className={classes.title}>
       <Link className={classes.link} to={`/${slug}`}>
         {caption}
       </Link>
