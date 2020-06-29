@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   title: {
     marginRight: theme.spacing(2),
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(1.2),
   },
   link: {
     textDecoration: "none",

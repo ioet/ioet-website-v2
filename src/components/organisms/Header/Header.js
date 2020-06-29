@@ -110,11 +110,15 @@ const Header = (props) => {
             <NavigationLink key={`${index}-${item.slug}`} slug={item.slug} caption={item.caption}/>
           </div>
         ))}
-        <LanguageSelector
+        {languageOptions ? (
+          <LanguageSelector
           selectorId="Selector-1"
           options={languageOptions}
-          name="Language"
-        ></LanguageSelector>
+          name="Language">
+          </LanguageSelector>
+          ) : null
+        }
+
       </List>
     </div>
   );
