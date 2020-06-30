@@ -59,7 +59,7 @@ const Footer = props => {
       }
     }
   `)
-  const colorFooter = "#FF5E0A"
+  const colorFooter = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
   const classes = useStyles()
   const footer = data.footer.edges.find(
     item => item.node.id === props.contentfulId

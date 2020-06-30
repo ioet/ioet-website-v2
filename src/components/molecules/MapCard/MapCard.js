@@ -1,5 +1,6 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
+
 import {
   Card,
   CardMedia,
@@ -12,29 +13,23 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 345,
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
 }))
 
-const BasicCard = props => {
+const MapCard = ({ lat, lng, title, body }) => {
   const classes = useStyles()
-
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
-          className={classes.media}
-          image={`https://${props.imgUrl}`}
-          title={props.imgTitle}
+          src={`https://www.google.com/maps/embed/v1/place?q=${lat},${lng}&key=${process.env.GATSBY_GOOGLE_MAPS_API_KEY}`}
+          component="iframe"
         />
         <CardContent>
           <Typography variant="h6" color="textPrimary">
-            {props.title}
+            {title}
           </Typography>
           <Typography variant="body2" component="p" align="justify">
-            {props.body}
+            {body}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -42,4 +37,4 @@ const BasicCard = props => {
   )
 }
 
-export default BasicCard
+export default MapCard
