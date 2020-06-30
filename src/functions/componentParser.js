@@ -1,7 +1,10 @@
 import contentfulComponentDict from "../maps/componentMap"
 
-const contentfulTypeToComponent = componentType => {
-  const componentPath = contentfulComponentDict.get(componentType)
+const contentfulTypeToComponent = (
+  componentType,
+  componentDict = contentfulComponentDict
+) => {
+  const componentPath = componentDict.get(componentType)
   return componentPath ? require(`../${componentPath}`).default : null
 }
 

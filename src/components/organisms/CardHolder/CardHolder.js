@@ -2,12 +2,14 @@ import React from "react"
 import { Grid, Paper } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
-import BasicCard from "../../molecules/BasicCard/BasicCard"
+import { cardComponentDict } from "../../../maps/componentMap"
+import { contentfulTypeToComponent } from "../../../functions/componentParser"
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(0.5),
     marginBottom: theme.spacing(0.5),
+    padding: theme.spacing(2),
   },
 }))
 
@@ -17,18 +19,33 @@ const CardHolder = ({ contentfulId }) => {
       cardHolder: allContentfulCardHolder {
         nodes {
           cards {
-            body {
-              body
-            }
-            cardImage {
-              title
-              file {
-                url
+            ... on Node {
+              internal {
+                type
               }
             }
-            publicationDate
-            views
-            title
+            ... on ContentfulBasicCard {
+              body {
+                body
+              }
+              cardImage {
+                title
+                file {
+                  url
+                }
+              }
+              title
+            }
+            ... on ContentfulSourceCard {
+              locationLatLong {
+                lat
+                lon
+              }
+              body {
+                body
+              }
+              title
+            }
           }
           id
         }
@@ -39,12 +56,13 @@ const CardHolder = ({ contentfulId }) => {
     .find(node => node.id === contentfulId)
     .cards.map(card => {
       return {
-        imgUrl: card.cardImage.file.url,
-        imgTitle: card.cardImage.title,
+        imgUrl: card.cardImage ? card.cardImage.file.url : null,
+        imgTitle: card.cardImage ? card.cardImage.title : null,
+        lat: card.locationLatLong ? card.locationLatLong.lat : null,
+        lng: card.locationLatLong ? card.locationLatLong.lon : null,
         title: card.title,
         body: card.body.body,
-        pubDate: card.publicationDate,
-        views: card.views,
+        type: card.internal.type,
       }
     })
   const classes = useStyles()
@@ -58,17 +76,13 @@ const CardHolder = ({ contentfulId }) => {
         spacing={2}
       >
         {cards.map(card => {
-          return (
+          const Card = contentfulTypeToComponent(card.type, cardComponentDict)
+          return card ? (
             <Grid item>
-              <BasicCard
-                imgUrl={card.imgUrl}
-                imgTitle={card.imgTitle}
-                title={card.title}
-                body={card.body}
-                pubDate={card.pubDate}
-                views={card.views}
-              ></BasicCard>
+              <Card {...card}></Card>
             </Grid>
+          ) : (
+            <></>
           )
         })}
       </Grid>
