@@ -1,6 +1,7 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Paper, Typography } from "@material-ui/core"
+import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -19,7 +20,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
+const ImageSelection = ({
+  imgUrl,
+  imgAlt,
+  title,
+  bodyText,
+  bodyRichText,
+  reversed,
+}) => {
   const classes = useStyles()
 
   const imageGridItem = (
@@ -34,11 +42,19 @@ const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
         <Grid item>
           <Typography variant="h4">{title}</Typography>
         </Grid>
-        <Grid item>
-          <Typography variant="body1" className={classes.text}>
-            {bodyText}
-          </Typography>
-        </Grid>
+
+        {bodyText ? (
+          <Grid item>
+            <Typography variant="body1" className={classes.text}>
+              {bodyText}
+            </Typography>
+          </Grid>
+        ) : null}
+        {bodyRichText ? (
+          <Grid item>
+            <RichTextWrapper richTextJson={bodyRichText}></RichTextWrapper>
+          </Grid>
+        ) : null}
       </Grid>
     </Grid>
   )
