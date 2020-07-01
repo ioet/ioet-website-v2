@@ -25,6 +25,9 @@ const ImageSectionList = ({ contentfulId }) => {
             bodySimpleText {
               bodySimpleText
             }
+            bodyText {
+              json
+            }
             title
             childContentfulImageSectionOptionalStyleJsonNode {
               reversed
@@ -43,7 +46,10 @@ const ImageSectionList = ({ contentfulId }) => {
         imgUrl: section.image.file.url,
         imgAlt: section.image.title,
         title: section.title,
-        bodyText: section.bodySimpleText.bodySimpleText,
+        bodyText: section.bodySimpleText
+          ? section.bodySimpleText.bodySimpleText
+          : null,
+        bodyRichText: section.bodyText ? section.bodyText.json : null,
         reversed:
           section.childContentfulImageSectionOptionalStyleJsonNode.reversed,
       }
@@ -52,13 +58,7 @@ const ImageSectionList = ({ contentfulId }) => {
   return (
     <div className={classes.root}>
       {imageSectionItems.map(item => (
-        <ImageSection
-          imgUrl={item.imgUrl}
-          imgAlt={item.imgAlt}
-          title={item.title}
-          bodyText={item.bodyText}
-          reversed={item.reversed}
-        />
+        <ImageSection {...item} />
       ))}
     </div>
   )
