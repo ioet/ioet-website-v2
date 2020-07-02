@@ -25,6 +25,11 @@ const Footer = props => {
         edges {
           node {
             id
+            stylesCss {
+              internal {
+                content
+              }
+            }
             navBar {
               mainIcon {
                 image {
@@ -59,7 +64,6 @@ const Footer = props => {
       }
     }
   `)
-  const colorFooter = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
   const classes = useStyles()
   const footer = data.footer.edges.find(
     item => item.node.id === props.contentfulId
@@ -74,7 +78,7 @@ const Footer = props => {
     imageUrl: footer.navBar.mainIcon.image.file.url,
     slug: footer.navBar.mainIcon.to.slug,
   }
-
+  const colorFooter = JSON.parse(footer.stylesCss.internal.content).background
   return (
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
       <Toolbar>

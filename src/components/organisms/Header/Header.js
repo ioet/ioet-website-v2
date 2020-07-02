@@ -133,7 +133,6 @@ const Header = props => {
       </List>
     </div>
   )
-  console.log(typeof(background2))
   return (
     <div className="componentHeader">
       <AppBar position="sticky" style={{ background: colorHeader }}>
