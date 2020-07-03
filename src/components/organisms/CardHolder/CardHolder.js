@@ -14,44 +14,45 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const CardHolder = ({ contentfulId }) => {
-  const data = useStaticQuery(graphql`
-    {
-      cardHolder: allContentfulCardHolder {
-        nodes {
-          cards {
-            ... on Node {
-              internal {
-                type
-              }
-            }
-            ... on ContentfulBasicCard {
-              body {
-                body
-              }
-              cardImage {
-                title
-                file {
-                  url
-                }
-              }
-              title
-            }
-            ... on ContentfulSourceCard {
-              locationLatLong {
-                lat
-                lon
-              }
-              body {
-                body
-              }
-              title
-            }
-          }
-          id
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   {
+  //     cardHolder: allContentfulCardHolder {
+  //       nodes {
+  //         cards {
+  //           ... on Node {
+  //             internal {
+  //               type
+  //             }
+  //           }
+  //           ... on ContentfulBasicCard {
+  //             body {
+  //               body
+  //             }
+  //             cardImage {
+  //               title
+  //               file {
+  //                 url
+  //               }
+  //             }
+  //             title
+  //           }
+  //           ... on ContentfulSourceCard {
+  //             locationLatLong {
+  //               lat
+  //               lon
+  //             }
+  //             body {
+  //               body
+  //             }
+  //             title
+  //           }
+  //         }
+  //         id
+  //       }
+  //     }
+  //   }
+  // `)
+  const data = { cardHolder: { nodes: [] } }
   const cards = data.cardHolder.nodes
     .find(node => node.id === contentfulId)
     .cards.map(card => {

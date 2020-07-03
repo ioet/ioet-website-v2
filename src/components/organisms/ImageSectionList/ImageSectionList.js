@@ -11,34 +11,35 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ImageSectionList = ({ contentfulId }) => {
-  const data = useStaticQuery(graphql`
-    {
-      sections: allContentfulImageSectionList {
-        nodes {
-          childSections {
-            image {
-              title
-              file {
-                url
-              }
-            }
-            bodySimpleText {
-              bodySimpleText
-            }
-            bodyText {
-              json
-            }
-            title
-            childContentfulImageSectionOptionalStyleJsonNode {
-              reversed
-            }
-          }
-          id
-          sectionName
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   {
+  //     sections: allContentfulImageSectionList {
+  //       nodes {
+  //         childSections {
+  //           image {
+  //             title
+  //             file {
+  //               url
+  //             }
+  //           }
+  //           bodySimpleText {
+  //             bodySimpleText
+  //           }
+  //           bodyText {
+  //             json
+  //           }
+  //           title
+  //           childContentfulImageSectionOptionalStyleJsonNode {
+  //             reversed
+  //           }
+  //         }
+  //         id
+  //         sectionName
+  //       }
+  //     }
+  //   }
+  // `)
+  const data = { sections: { nodes: [] } }
   const imageSectionItems = data.sections.nodes
     .find(node => node.id === contentfulId)
     .childSections.map(section => {

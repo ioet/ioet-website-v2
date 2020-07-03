@@ -1,3 +1,4 @@
+import { navigate } from "gatsby"
 import React, { useState } from "react"
 import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
@@ -7,20 +8,21 @@ import FormControl from "@material-ui/core/FormControl"
 const useStyles = makeStyles(theme => ({
   formControl: {
     marginTop: theme.spacing(0.5),
-    minWidth: 120
+    minWidth: 120,
   },
   whiteColor: {
     color: "white",
   },
 }))
 
-const LanguageSelector = ({ selectorId, name, options }) => {
+const LanguageSelector = ({ selectorId, name, options, parentLocaleMap, defaultLocale }) => {
   const classes = useStyles()
-  const [selectedValue, setSelectedValue] = useState(options[0].value)
+  const [selectedValue, setSelectedValue] = useState(defaultLocale)
 
   const handleChange = event => {
     setSelectedValue(event.target.value)
     console.log(selectedValue)
+    navigate(`/${parentLocaleMap.get(event.target.value)}/`)
   }
 
   return (
@@ -39,7 +41,11 @@ const LanguageSelector = ({ selectorId, name, options }) => {
         }}
       >
         {options.map((optionItem, index) => {
-          return <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>{optionItem.text}</MenuItem>
+          return (
+            <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>
+              {optionItem.text}
+            </MenuItem>
+          )
         })}
       </Select>
     </FormControl>
