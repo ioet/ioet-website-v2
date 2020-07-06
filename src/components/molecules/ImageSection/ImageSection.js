@@ -20,14 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ImageSelection = ({
-  imgUrl,
-  imgAlt,
-  title,
-  bodyText,
-  bodyRichText,
-  reversed,
-}) => {
+const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
   const classes = useStyles()
 
   const imageGridItem = (
@@ -42,25 +35,15 @@ const ImageSelection = ({
         <Grid item>
           <Typography variant="h4">{title}</Typography>
         </Grid>
-
         {bodyText ? (
           <Grid item>
-            <Typography variant="body1" className={classes.text}>
-              {bodyText}
-            </Typography>
-          </Grid>
-        ) : null}
-        {bodyRichText ? (
-          <Grid item>
-            <RichTextWrapper richTextJson={bodyRichText}></RichTextWrapper>
+            <RichTextWrapper richTextJson={bodyText}></RichTextWrapper>
           </Grid>
         ) : null}
       </Grid>
     </Grid>
   )
-  const gridItemList = reversed
-    ? [textGriditem, imageGridItem]
-    : [imageGridItem, textGriditem]
+  const gridItemList = reversed ? [textGriditem, imageGridItem] : [imageGridItem, textGriditem]
 
   return (
     <Paper className={classes.paper}>
