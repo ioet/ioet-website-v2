@@ -3,43 +3,40 @@ import { Grid } from "@material-ui/core"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
-import './NavBar.scss';
+import "./NavBar.scss"
 
-const NavBar = ({ navigationLinks, actionImage, languageOptions }) => {
+const NavBar = props => {
   return (
-    <React.Fragment>
+    <>
       <div className="imageStyle">
         <ImageLink
           className="componentNavbar"
-          slug={actionImage.slug}
-          imageUrl={`https://${actionImage.imageUrl}`}
+          slug={props.actionImage.slug}
+          imageUrl={`https://${props.actionImage.imageUrl}`}
         />
       </div>
-      <Grid
-        container
-        alignItems="flex-start"
-        justify="flex-end"
-        direction="row"
-      >
-        {navigationLinks.map((link, index) => (
-          <div className="linskStyle">
+      <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+        {props.navigationLinks.map((link, index) => (
+          <div className="linskStyle" key={`navbar-div-${props.parentName}-${index}-${link.slug}`}>
             <NavigationLink
-              key={`${index}-${link.slug}`}
+              key={`navbar-${props.parentName}-${index}-${link.slug}`}
               slug={link.slug}
               caption={link.caption}
               style={{ align: "right" }}
             />
           </div>
         ))}
-        {languageOptions ? (
+        {props.languageOptions ? (
           <LanguageSelector
             selectorId="Selector-1"
-            options={languageOptions}
+            options={props.languageOptions}
             name="Language"
+            parentLocaleMap={props.parentLocaleMap}
+            defaultLocale={props.defaultLocale}
           />
         ) : null}
       </Grid>
-    </React.Fragment>
+    </>
   )
 }
 

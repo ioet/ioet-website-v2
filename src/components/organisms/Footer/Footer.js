@@ -1,12 +1,9 @@
 import React from "react"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Hidden from "@material-ui/core/Hidden"
-import Box from "@material-ui/core/Box"
-import { makeStyles } from "@material-ui/core/styles"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
 import NavBar from "../../molecules/NavBar/NavBar"
+import { makeStyles } from "@material-ui/core/styles"
+import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -22,38 +19,35 @@ const Footer = props => {
   const data = useStaticQuery(graphql`
     {
       footer: allContentfulFooter {
-        edges {
-          node {
-            id
-            navBar {
+        nodes {
+          id
+          copyright
+          title
+          navBar {
+            mainIcon {
               mainIcon {
-                image {
-                  file {
-                    url
-                  }
-                }
-                to {
-                  slug
+                file {
+                  url
                 }
               }
-              navigationLinks {
-                caption
-                to {
-                  slug
-                }
+              to {
+                slug
               }
             }
-            socialIcons {
-              icons {
-                title
-                image {
-                  file {
-                    url
-                  }
-                }
+            navigationLinks {
+              caption
+              to {
+                slug
+              }
+            }
+          }
+          socialIcons {
+            image {
+              file {
                 url
               }
             }
+            url
           }
         }
       }
@@ -61,17 +55,15 @@ const Footer = props => {
   `)
   const colorFooter = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
   const classes = useStyles()
-  const footer = data.footer.edges.find(
-    item => item.node.id === props.contentfulId
-  ).node
+  const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
   const navigationLinks = footer.navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: item.to.slug }
   })
-  const SocialIcons = footer.socialIcons.icons.map(item => {
+  const SocialIcons = footer.socialIcons.map(item => {
     return { slug: item.title, imageUrl: item.image.file.url, linkTo: item.url }
   })
   const actionImage = {
-    imageUrl: footer.navBar.mainIcon.image.file.url,
+    imageUrl: footer.navBar.mainIcon.mainIcon.file.url,
     slug: footer.navBar.mainIcon.to.slug,
   }
 
@@ -79,15 +71,12 @@ const Footer = props => {
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
       <Toolbar>
         <Hidden only="xs">
-          <NavBar
-            navigationLinks={navigationLinks}
-            actionImage={actionImage}
-          ></NavBar>
+          <NavBar navigationLinks={navigationLinks} actionImage={actionImage} parentName={footer.title}></NavBar>
         </Hidden>
         <Icons SocialIcons={SocialIcons}></Icons>
       </Toolbar>
       <Box display="flex" alignSelf="flex-end" m={1} p={1}>
-        <h4>© 2020 ioet Inc. All Rights Reserved</h4>
+        <Typography variant="h6">{footer.copyright}</Typography>
       </Box>
     </AppBar>
   )

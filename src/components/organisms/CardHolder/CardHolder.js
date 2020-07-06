@@ -24,27 +24,29 @@ const CardHolder = ({ contentfulId }) => {
                 type
               }
             }
-            ... on ContentfulBasicCard {
-              body {
-                body
+            ... on ContentfulImageCard {
+              id
+              bodyText {
+                bodyText
               }
-              cardImage {
-                title
+              image {
                 file {
                   url
                 }
+                title
               }
               title
             }
-            ... on ContentfulSourceCard {
-              locationLatLong {
+            ... on ContentfulMapCard {
+              id
+              bodyText {
+                bodyText
+              }
+              title
+              coordinates {
                 lat
                 lon
               }
-              body {
-                body
-              }
-              title
             }
           }
           id
@@ -56,25 +58,19 @@ const CardHolder = ({ contentfulId }) => {
     .find(node => node.id === contentfulId)
     .cards.map(card => {
       return {
-        imgUrl: card.cardImage ? card.cardImage.file.url : null,
-        imgTitle: card.cardImage ? card.cardImage.title : null,
-        lat: card.locationLatLong ? card.locationLatLong.lat : null,
-        lng: card.locationLatLong ? card.locationLatLong.lon : null,
+        imgUrl: card.image ? card.image.file.url : null,
+        imgTitle: card.image ? card.image.title : null,
+        lat: card.coordinates ? card.coordinates.lat : null,
+        lng: card.coordinates ? card.coordinates.lon : null,
         title: card.title,
-        body: card.body.body,
+        body: card.bodyText.bodyText,
         type: card.internal.type,
       }
     })
   const classes = useStyles()
   return (
     <Paper className={classes.root}>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={2}
-      >
+      <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
         {cards.map(card => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (

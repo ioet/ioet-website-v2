@@ -15,26 +15,25 @@ const ImageSectionList = ({ contentfulId }) => {
     {
       sections: allContentfulImageSectionList {
         nodes {
+          title
+          id
           childSections {
-            image {
-              title
-              file {
-                url
-              }
-            }
-            bodySimpleText {
-              bodySimpleText
-            }
             bodyText {
               json
             }
+            image {
+              file {
+                url
+              }
+              title
+            }
             title
-            childContentfulImageSectionOptionalStyleJsonNode {
-              reversed
+            optionalStyles {
+              internal {
+                content
+              }
             }
           }
-          id
-          sectionName
         }
       }
     }
@@ -42,16 +41,15 @@ const ImageSectionList = ({ contentfulId }) => {
   const imageSectionItems = data.sections.nodes
     .find(node => node.id === contentfulId)
     .childSections.map(section => {
+      const optionalStyles = section.optionalStyles
+        ? JSON.parse(section.optionalStyles.internal.content)
+        : {}
       return {
         imgUrl: section.image.file.url,
         imgAlt: section.image.title,
         title: section.title,
-        bodyText: section.bodySimpleText
-          ? section.bodySimpleText.bodySimpleText
-          : null,
-        bodyRichText: section.bodyText ? section.bodyText.json : null,
-        reversed:
-          section.childContentfulImageSectionOptionalStyleJsonNode.reversed,
+        bodyText: section.bodyText ? section.bodyText.json : null,
+        reversed: optionalStyles.reversed,
       }
     })
   const classes = useStyles()
