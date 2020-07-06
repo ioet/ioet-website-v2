@@ -1,9 +1,16 @@
 import React from "react"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
-import NavBar from "../../molecules/NavBar/NavBar"
+// import NavBar from "../../molecules/NavBar/NavBar"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
+import theme from "../../theme";
+import { ThemeProvider } from "@material-ui/styles";
+import Grid from '@material-ui/core/Grid';
+import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
+import ImageLink from "../../atoms/ImageLink/ImageLink"
+import './Footer.scss';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -12,7 +19,39 @@ const useStyles = makeStyles(theme => ({
     widht: "100%",
     top: "auto",
     position: "relative",
+    paddingTop: theme.spacing(5)
   },
+  transformText: {
+    textTransform: "uppercase",
+  },
+  containerSocialIcons: {
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(1)
+    },
+  },
+  copyrightContainer: {
+    justifyContent: "center",
+    [theme.breakpoints.only('xs')]: {
+      paddingTop: theme.spacing(3),
+    },
+    [theme.breakpoints.only('sm')]: {
+      justifyContent: "flex-end",
+      paddingTop: theme.spacing(2)
+    },
+    [theme.breakpoints.up('md')]: {
+      justifyContent: "flex-end",
+      paddingTop: theme.spacing(3),
+    },
+  },
+  copyrightText: {
+    paddingRight: theme.spacing(5),
+    paddingBottom: theme.spacing(2.5),
+    fontWeight: "bold",
+    [theme.breakpoints.only('xs')]: {
+      paddingRight: theme.spacing(0),
+    },
+  }
 }))
 
 const Footer = props => {
@@ -69,15 +108,42 @@ const Footer = props => {
 
   return (
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
-      <Toolbar>
-        <Hidden only="xs">
-          <NavBar navigationLinks={navigationLinks} actionImage={actionImage} parentName={footer.title}></NavBar>
-        </Hidden>
-        <Icons SocialIcons={SocialIcons}></Icons>
-      </Toolbar>
-      <Box display="flex" alignSelf="flex-end" m={1} p={1}>
-        <Typography variant="h6">{footer.copyright}</Typography>
-      </Box>
+      <Container>
+        <Toolbar>
+          <Grid container alignItems="center">
+            <Hidden only="xs">
+              <Grid item sm={3} md={3} className="containerImageLink" >
+                <ImageLink slug={actionImage} imageUrl={`https://${actionImage.imageUrl}`} />
+              </Grid>
+
+              <Grid item xs={12} sm={9} md={6} className={classes.transformText}>
+                <Box display="flex" className={classes.containerLinks} justifyContent="space-between">
+                  {navigationLinks.map((item, index) => (
+                    <div className="linskStyle">
+                      <NavigationLink
+                        key={`drawer-${item.title}-${index}-${item.slug}`}
+                        slug={item.slug}
+                        caption={item.caption}
+                      />
+                    </div>
+                  ))}
+                </Box>
+              </Grid>
+            </Hidden>
+
+            <Grid item xs={12} sm={12} md={3} className={classes.containerSocialIcons}>
+              <div className="containerSocialIcons">
+                <Icons SocialIcons={SocialIcons}></Icons>
+              </div>
+            </Grid>
+          </Grid>
+        </Toolbar>
+        <Box className={classes.copyrightContainer} display="flex">
+          <ThemeProvider theme={theme}>
+            <Typography className={classes.copyrightText} variant="subtitle1">{footer.copyright}</Typography>
+          </ThemeProvider>
+        </Box>
+      </Container>
     </AppBar>
   )
 }
