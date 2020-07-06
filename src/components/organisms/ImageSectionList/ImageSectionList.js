@@ -30,7 +30,9 @@ const ImageSectionList = ({ contentfulId }) => {
             }
             title
             childContentfulImageSectionOptionalStyleJsonNode {
-              reversed
+              internal {
+                content
+              }
             }
           }
           id
@@ -51,7 +53,7 @@ const ImageSectionList = ({ contentfulId }) => {
           : null,
         bodyRichText: section.bodyText ? section.bodyText.json : null,
         reversed:
-          section.childContentfulImageSectionOptionalStyleJsonNode.reversed,
+          JSON.parse(section.childContentfulImageSectionOptionalStyleJsonNode.internal.content).reversed,
       }
     })
   const classes = useStyles()

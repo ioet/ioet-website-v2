@@ -78,7 +78,12 @@ const Footer = props => {
     imageUrl: footer.navBar.mainIcon.image.file.url,
     slug: footer.navBar.mainIcon.to.slug,
   }
-  const colorFooter = JSON.parse(footer.stylesCss.internal.content).background
+  const stylesObj = JSON.parse(header.stylesCss.internal.content)
+  const colorFooter = !stylesObj.hasOwnProperty("background")
+    ? "white"
+    : stylesObj.background !== ""
+    ? stylesObj.background
+    : "white"
   return (
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
       <Toolbar>

@@ -100,7 +100,12 @@ const Header = props => {
     imageUrl: header.navBar.mainIcon.image.file.url,
     slug: header.navBar.mainIcon.to.slug,
   }
-  const colorHeader = JSON.parse(header.stylesCss.internal.content).background
+  const stylesObj = JSON.parse(header.stylesCss.internal.content)
+  const colorHeader = !stylesObj.hasOwnProperty("background")
+    ? "white"
+    : stylesObj.background !== ""
+    ? stylesObj.background
+    : "white"
   const { window } = props
   const theme = useTheme()
   const classes = useStyles()
