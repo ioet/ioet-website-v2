@@ -51,6 +51,11 @@ const Header = props => {
       header: allContentfulHeader {
         nodes {
           languageOptions
+          stylesCss {
+            internal {
+              content
+            }
+          }
           navBar {
             navigationLinks {
               caption
@@ -76,7 +81,6 @@ const Header = props => {
       }
     }
   `)
-  const colorHeader = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
   const header = data.header.nodes.find(item => item.id === props.contentfulId)
   const navigationLinks = header.navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: item.to.slug }
@@ -96,6 +100,8 @@ const Header = props => {
     setMobileOpen(!mobileOpen)
   }
   const container = window !== undefined ? () => window().document.body : undefined
+  const stylesObj = header.stylesCss ? JSON.parse(header.stylesCss.internal.content) : {}
+  const colorHeader = stylesObj.background !== "" ? stylesObj.background : "orange"
 
   const drawer = (
     <div style={{ background: colorHeader }} className="customDrawer">

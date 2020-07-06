@@ -23,6 +23,11 @@ const Footer = props => {
           id
           copyright
           title
+          stylesCss {
+            internal {
+              content
+            }
+          }
           navBar {
             mainIcon {
               mainIcon {
@@ -53,7 +58,6 @@ const Footer = props => {
       }
     }
   `)
-  const colorFooter = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
   const classes = useStyles()
   const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
   const navigationLinks = footer.navBar.navigationLinks.map(item => {
@@ -66,12 +70,18 @@ const Footer = props => {
     imageUrl: footer.navBar.mainIcon.mainIcon.file.url,
     slug: footer.navBar.mainIcon.to.slug,
   }
+  const stylesObj = footer.stylesCss ? JSON.parse(footer.stylesCss.internal.content) : {}
+  const colorFooter = stylesObj.background !== "" ? stylesObj.background : "orange"
 
   return (
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
       <Toolbar>
         <Hidden only="xs">
-          <NavBar navigationLinks={navigationLinks} actionImage={actionImage} parentName={footer.title}></NavBar>
+          <NavBar
+            navigationLinks={navigationLinks}
+            actionImage={actionImage}
+            parentName={footer.title}
+          ></NavBar>
         </Hidden>
         <Icons SocialIcons={SocialIcons}></Icons>
       </Toolbar>
