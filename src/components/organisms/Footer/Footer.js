@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     [theme.breakpoints.only('xs')]: {
       paddingRight: theme.spacing(0),
+      textAlign: "center"
     },
   }
 }))

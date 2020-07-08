@@ -1,5 +1,7 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
+import theme from "../../theme";
+import { ThemeProvider } from "@material-ui/styles";
 
 import {
   Card,
@@ -25,12 +27,14 @@ const MapCard = ({ lat, lng, title, body }) => {
           component="iframe"
         />
         <CardContent>
-          <Typography variant="h6" color="textPrimary">
-            {title}
-          </Typography>
-          <Typography variant="body2" component="p" align="justify">
-            {body}
-          </Typography>
+          <ThemeProvider theme={theme}>
+            <Typography variant="h6" color="textPrimary">
+              {title}
+            </Typography>
+            <Typography variant="body2" component="p" align="justify">
+              {body}
+            </Typography>
+          </ThemeProvider>
         </CardContent>
       </CardActionArea>
     </Card>
