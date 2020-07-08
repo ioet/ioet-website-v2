@@ -6,6 +6,10 @@ const useStyles = makeStyles(theme => ({
   image: {
     position: "relative",
     maxHeight: 50,
+    padding: "5px",
+    [theme.breakpoints.only("sm")]: {
+      maxHeight: 40,
+    }
   },
   link: {
     marginRight: theme.spacing(1),
