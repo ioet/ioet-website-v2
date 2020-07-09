@@ -65,17 +65,18 @@ const CardHolder = ({ contentfulId }) => {
         title: card.title,
         body: card.bodyText.bodyText,
         type: card.internal.type,
+        key: card.id
       }
     })
   const classes = useStyles()
   return (
     <Paper className={classes.root}>
       <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
-        {cards.map(card => {
+        {cards.map((card, index) => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (
             <Grid item>
-              <Card {...card}></Card>
+              <Card {...card} key={`${index}-${card.key}`}></Card>
             </Grid>
           ) : (
             <></>
