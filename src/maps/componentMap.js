@@ -13,5 +13,9 @@ const cardComponentDict = new Map([
   ["ContentfulImageCard", "components/molecules/BasicCard/BasicCard.js"],
 ])
 
+const gridElementComponentDict = new Map([
+  ["", ""]
+])
+
 export default contentfulComponentDict
-export { cardComponentDict }
+export { cardComponentDict, gridElementComponentDict }
