@@ -8,6 +8,8 @@ require('dotenv').config()
 module.exports = {
   /* Your site config here */
   plugins: [
+    `gatsby-theme-material-ui`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-contentful`,
       options : {
@@ -15,7 +17,14 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_API_TOKEN
       }
     },
-    `gatsby-theme-material-ui`,
-    `gatsby-plugin-sass`
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Barlow', 'sans-serif'],
+          variants: ['300', '400', '700', '900'],
+        }
+      }
+    }
   ],
 }

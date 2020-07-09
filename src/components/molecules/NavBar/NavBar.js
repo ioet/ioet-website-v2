@@ -15,7 +15,7 @@ const NavBar = props => {
           imageUrl={`https://${props.actionImage.imageUrl}`}
         />
       </div>
-      <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+      <Grid container alignItems="center" justify="center" direction="row">
         {props.navigationLinks.map((link, index) => (
           <div className="linskStyle" key={`navbar-div-${props.parentName}-${index}-${link.slug}`}>
             <NavigationLink

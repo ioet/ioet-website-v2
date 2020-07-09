@@ -1,24 +1,40 @@
 .componentHeader {
-  .containerXs {
-    img {
-      padding: 5px;
-    }
+  .iconMenu {
+    font-size: 45px;
   }
 }
 .MuiBackdrop-root {
   background-color: transparent !important;
+  .MuiPaper-elevation4 {
+    box-shadow: none;
+    .MuiGrid-justify-xs-flex-end {
+      align-items: center;
+    }
+  }
 }
+
 .customDrawer {
   color: white;
-  padding: 0 20px;
+  padding: 0 38px;
   position: fixed;
   top: 4.45rem;
   width: 100%;
 
   h6 {
     font-weight: bold;
-    font-size: 13px;
     text-transform: uppercase;
   }
-
+}
+.MuiPaper-elevation4 {
+  box-shadow: none;
+  .MuiGrid-justify-xs-flex-end {
+    align-items: center;
+  }
+}
+@media (max-width: 600px) {
+  .customDrawer {
+    h6 {
+      margin-bottom: 1rem;
+     }
+  }
 }
