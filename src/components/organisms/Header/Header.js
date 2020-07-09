@@ -123,7 +123,7 @@ const Header = props => {
   )
 
   return (
-    <div container className="componentHeader ">
+    <div className="componentHeader ">
         <AppBar position="sticky" style={{ background: colorHeader }}>
           <Container>
             <Toolbar>

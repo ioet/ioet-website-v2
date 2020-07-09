@@ -10,11 +10,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const CheckerboardItemImage = props => {
+const CheckerboardItemImage = ({imageUrl, title}) => {
   const classes = useStyles()
   return (
     <Grid item xs>
-      <img className={classes.image} src={`${props.imageUrl}`} alt={`${props.title}`}></img>
+      <img className={classes.image} src={`${imageUrl}`} alt={`${title}`}></img>
     </Grid>
   )
 }

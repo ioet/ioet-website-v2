@@ -20,12 +20,12 @@ const CardHolder = ({ contentfulId }) => {
         nodes {
           cards {
             ... on Node {
+              id
               internal {
                 type
               }
             }
             ... on ContentfulImageCard {
-              id
               bodyText {
                 bodyText
               }
@@ -38,7 +38,6 @@ const CardHolder = ({ contentfulId }) => {
               title
             }
             ... on ContentfulMapCard {
-              id
               bodyText {
                 bodyText
               }
@@ -65,7 +64,7 @@ const CardHolder = ({ contentfulId }) => {
         title: card.title,
         body: card.bodyText.bodyText,
         type: card.internal.type,
-        key: card.id
+        id: card.id,
       }
     })
   const classes = useStyles()
@@ -76,11 +75,9 @@ const CardHolder = ({ contentfulId }) => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (
             <Grid item>
-              <Card {...card} key={`${index}-${card.key}`}></Card>
+              <Card {...card} key={`${index}-${card.id}`}></Card>
             </Grid>
-          ) : (
-            <></>
-          )
+          ) : null
         })}
       </Grid>
     </Paper>
