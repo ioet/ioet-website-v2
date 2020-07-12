@@ -6,7 +6,6 @@ import theme from "../../theme"
 import { ThemeProvider } from "@material-ui/styles"
 
 const RichTextWrapper = ({ richTextJson, customOptions }) => {
-  console.log(richTextJson)
   const options = customOptions
     ? customOptions
     : {

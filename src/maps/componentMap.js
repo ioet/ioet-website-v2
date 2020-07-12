@@ -3,7 +3,7 @@ const contentfulComponentDict = new Map([
   ["ContentfulImageSectionList", "components/organisms/ImageSectionList/ImageSectionList.js"],
   ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
   ["ContentfulCardHolder", "components/organisms/CardHolder/CardHolder.js"],
-  ["ContentfulExtendHeader", "components/organisms/ExtendHeader/ExtendHeader.js"],
+  ["ContentfulMessageHeader", "components/organisms/ExtendHeader/ExtendHeader.js"],
 ])
 
 const cardComponentDict = new Map([
