@@ -9,8 +9,9 @@ const contentfulComponentDict = new Map([
 ])
 
 const cardComponentDict = new Map([
-  ["ContentfulMapCard", "components/molecules/MapCard/MapCard.js"],
+  // ["ContentfulMapCard", "components/molecules/MapCard/MapCard.js"],
   ["ContentfulImageCard", "components/molecules/BasicCard/BasicCard.js"],
+  ["ContentfulMapCard", "components/molecules/CardButton/CardButton.js"],
 ])
 
 export default contentfulComponentDict

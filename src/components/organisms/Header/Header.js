@@ -125,7 +125,7 @@ const Header = props => {
   return (
     <div container className="componentHeader ">
         <AppBar position="sticky" style={{ background: colorHeader }}>
-          <Container>
+          <Container maxWidth="xl">
             <Toolbar>
             <Hidden xsDown>
               <NavBar

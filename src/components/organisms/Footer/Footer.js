@@ -109,7 +109,7 @@ const Footer = props => {
 
   return (
     <AppBar style={{ background: colorFooter }} className={classes.footer}>
-      <Container>
+      <Container maxWidth="xl">
         <Toolbar>
           <Grid container alignItems="center">
             <Hidden only="xs">
