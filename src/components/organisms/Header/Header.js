@@ -11,11 +11,15 @@ import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 import { Grid, AppBar, Hidden, Toolbar, Drawer } from "@material-ui/core"
 import Container from '@material-ui/core/Container';
+import T from '../../theme';
 
 const drawerWidth = 700
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
+  },
+  colorHeader: {
+    background: T.palette.transparent.ioetOrange
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
@@ -76,7 +80,7 @@ const Header = props => {
       }
     }
   `)
-  const colorHeader = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
+
   const header = data.header.nodes.find(item => item.id === props.contentfulId)
   const navigationLinks = header.navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: item.to.slug }
@@ -98,7 +102,7 @@ const Header = props => {
   const container = window !== undefined ? () => window().document.body : undefined
 
   const drawer = (
-    <div style={{ background: colorHeader }} className="customDrawer">
+    <div className={classes.colorHeader}>
       <List className="inlineItems">
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>
@@ -124,7 +128,7 @@ const Header = props => {
 
   return (
     <div container className="componentHeader ">
-        <AppBar position="sticky" style={{ background: colorHeader }}>
+        <AppBar position="sticky" className={classes.colorHeader}>
           <Container maxWidth="xl">
             <Toolbar>
             <Hidden xsDown>

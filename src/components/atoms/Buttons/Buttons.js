@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
   customButton: {
     borderRadius: "2.5rem",
     textTransform: "none",
-    background: T.palette.primary.gradient,
+    background: T.palette.gradient.ioetOrange,
     color: "white",
     minWidth: "8.5rem",
     minHeight: "2.5rem"

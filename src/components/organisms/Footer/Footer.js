@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import './Footer.scss';
+import T from '../../theme';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
@@ -19,7 +20,8 @@ const useStyles = makeStyles(theme => ({
     widht: "100%",
     top: "auto",
     position: "relative",
-    paddingTop: theme.spacing(5)
+    paddingTop: theme.spacing(5),
+    background: T.palette.gradient.ioetOrange
   },
   transformText: {
     textTransform: "uppercase",
@@ -108,7 +110,7 @@ const Footer = props => {
   }
 
   return (
-    <AppBar style={{ background: colorFooter }} className={classes.footer}>
+    <AppBar className={classes.footer}>
       <Container maxWidth="xl">
         <Toolbar>
           <Grid container alignItems="center">
