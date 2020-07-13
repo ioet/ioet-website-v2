@@ -53,7 +53,7 @@ const LanguageSelector = ({ selectorId, name, options, parentLocaleMap, defaultL
           return (
             <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>
               <div className={classes.contentLanguage}>
-                <LanguageIcon fontSize="small" />
+                <LanguageIcon fontSize="small" className={classes.languageIcon}/>
                 <ThemeProvider theme={theme}>{optionItem.text}</ThemeProvider>
               </div>
             </MenuItem>
