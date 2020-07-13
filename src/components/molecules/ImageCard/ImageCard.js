@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const BasicCard = props => {
+const ImageCard = props => {
   const classes = useStyles()
 
   return (
@@ -32,4 +32,4 @@ const BasicCard = props => {
   )
 }
 
-export default BasicCard
+export default ImageCard

@@ -70,7 +70,7 @@ const CardHolder = ({ contentfulId }) => {
   const classes = useStyles()
   return (
     <Paper className={classes.root}>
-      <Grid container direction="row" justify="center" alignItems="center" spacing={2}>
+      <Grid container direction="row" justify="center" alignItems="stretch" spacing={2}>
         {cards.map((card, index) => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (

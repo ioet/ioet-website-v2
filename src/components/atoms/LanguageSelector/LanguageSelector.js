@@ -30,7 +30,6 @@ const LanguageSelector = ({ selectorId, name, options, parentLocaleMap, defaultL
 
   const handleChange = event => {
     setSelectedValue(event.target.value)
-    console.log(selectedValue)
     navigate(`/${parentLocaleMap.get(event.target.value)}/`)
   }
 

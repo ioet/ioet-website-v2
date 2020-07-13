@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ExtendedHeaderSection = ({ bodyText, imgUrl }) => {
+const BannerSection = ({ bodyText, imgUrl }) => {
   const styles = {
     paperContainer: {
       background: [T.palette.transparent.ioetOrange, `url(https://${imgUrl})`],
@@ -39,4 +39,4 @@ const ExtendedHeaderSection = ({ bodyText, imgUrl }) => {
   )
 }
 
-export default ExtendedHeaderSection
+export default BannerSection

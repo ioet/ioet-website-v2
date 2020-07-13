@@ -51,7 +51,10 @@ const Header = props => {
     {
       header: allContentfulHeader {
         nodes {
-          languageOptions
+          languageOptions {
+            name
+            locale
+          }
           navBar {
             navigationLinks {
               caption
@@ -60,7 +63,7 @@ const Header = props => {
               }
             }
             mainIcon {
-              mainIcon {
+              icon {
                 file {
                   url
                 }
@@ -83,10 +86,10 @@ const Header = props => {
     return { caption: item.caption, slug: item.to.slug }
   })
   const languageOptions = header.languageOptions.map(item => {
-    return { text: item, value: item }
+    return { text: item.name, value: item.locale }
   })
   const actionImage = {
-    imageUrl: header.navBar.mainIcon.mainIcon.file.url,
+    imageUrl: header.navBar.mainIcon.icon.file.url,
     slug: header.navBar.mainIcon.to.slug,
   }
   const { window } = props
@@ -124,7 +127,7 @@ const Header = props => {
   )
 
   return (
-    <div container className="componentHeader ">
+    <div className="componentHeader ">
       <AppBar position="sticky" className={classes.colorHeader}>
         <Container maxWidth="xl">
           <Toolbar>
