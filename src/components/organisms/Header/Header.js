@@ -37,14 +37,12 @@ const useStyles = makeStyles(theme => ({
       display: "none",
     },
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
 }))
 
@@ -101,7 +99,7 @@ const Header = props => {
   const container = window !== undefined ? () => window().document.body : undefined
 
   const drawer = (
-    <div className={classes.colorHeader}>
+    <div className="customDrawer" style={{ background: T.palette.transparent.ioetOrange }}>
       <List className="inlineItems">
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>

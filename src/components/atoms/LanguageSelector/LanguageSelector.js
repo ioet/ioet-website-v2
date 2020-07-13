@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   contentLanguage: {
     display: "flex",
     justifyContent: "center",
-    textAlign: "center",
+    alignItems: "center",
   },
   languageIcon: {
     paddingRight: theme.spacing(0.5),
@@ -48,12 +48,13 @@ const LanguageSelector = ({ selectorId, name, options, parentLocaleMap, defaultL
           root: classes.whiteColor,
           icon: classes.whiteColor,
         }}
+        className={classes.contentLanguage}
       >
         {options.map((optionItem, index) => {
           return (
             <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>
               <div className={classes.contentLanguage}>
-                <LanguageIcon fontSize="small" className={classes.languageIcon}/>
+                <LanguageIcon fontSize="small" className={classes.languageIcon} />
                 <ThemeProvider theme={theme}>{optionItem.text}</ThemeProvider>
               </div>
             </MenuItem>

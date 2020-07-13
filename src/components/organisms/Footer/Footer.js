@@ -1,17 +1,15 @@
 import React from "react"
-import Icons from "../../molecules/Icons/Icons"
-import { graphql, useStaticQuery } from "gatsby"
-// import NavBar from "../../molecules/NavBar/NavBar"
-import { makeStyles } from "@material-ui/core/styles"
-import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
-import theme from "../../theme"
-import { ThemeProvider } from "@material-ui/styles"
-import Grid from "@material-ui/core/Grid"
-import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
-import ImageLink from "../../atoms/ImageLink/ImageLink"
 import "./Footer.scss"
 import T from "../../theme"
+import Grid from "@material-ui/core/Grid"
+import Icons from "../../molecules/Icons/Icons"
+import { graphql, useStaticQuery } from "gatsby"
 import Container from "@material-ui/core/Container"
+import { ThemeProvider } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
+import ImageLink from "../../atoms/ImageLink/ImageLink"
+import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
+import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -142,7 +140,7 @@ const Footer = props => {
           </Grid>
         </Toolbar>
         <Box className={classes.copyrightContainer} display="flex">
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={T}>
             <Typography className={classes.copyrightText} variant="subtitle1">
               {footer.copyright}
             </Typography>

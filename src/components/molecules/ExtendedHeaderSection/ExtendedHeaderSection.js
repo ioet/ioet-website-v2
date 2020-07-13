@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ExtendedHeaderSection = ({ bodyText,  imgUrl}) => {
+const ExtendedHeaderSection = ({ bodyText, imgUrl }) => {
   const styles = {
     paperContainer: {
       background: [T.palette.transparent.ioetOrange, `url(https://${imgUrl})`],

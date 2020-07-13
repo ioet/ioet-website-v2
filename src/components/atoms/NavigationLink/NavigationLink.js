@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     textDecoration: "none",
-    color: "inherit",
+    color: "white",
     [theme.breakpoints.only("sm")]: {
       fontSize: "13px",
     },
