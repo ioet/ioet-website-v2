@@ -1,15 +1,15 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { graphql, useStaticQuery } from "gatsby"
-import ExtendHeaderSection from "../../molecules/ExtendHeaderSection/ExtendHeaderSection"
+import ExtendedHeaderSection from "../../molecules/ExtendedHeaderSection/ExtendedHeaderSection"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(0.1),
+    marginTop: theme.spacing(0.01),
     marginBottom: theme.spacing(0.5),
   },
 }))
-const ExtendHeader = ({ contentfulId }) => {
+const ExtendedHeader = ({ contentfulId }) => {
   const data = useStaticQuery(graphql`
     {
       extendHeader: allContentfulMessageHeader {
@@ -20,7 +20,6 @@ const ExtendHeader = ({ contentfulId }) => {
             file {
               url
             }
-            title
           }
           bodyText {
             json
@@ -34,13 +33,12 @@ const ExtendHeader = ({ contentfulId }) => {
   const childSection = {
     imgUrl: extendHeader.backgroundImage.file.url,
     bodyText: extendHeader.bodyText ? extendHeader.bodyText.json : null,
-    // imgAlt: section.backgroundImage.file.title,
   }
 
   return (
     <div className={classes.root}>
-      <ExtendHeaderSection childSection={childSection} />
+      <ExtendedHeaderSection childSection={childSection} />
     </div>
   )
 }
-export default ExtendHeader
+export default ExtendedHeader

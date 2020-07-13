@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ExtendHeaderSection = ({ childSection }) => {
+const ExtendedHeaderSection = ({ childSection }) => {
   const styles = {
     paperContainer: {
       background: [
@@ -41,4 +41,4 @@ const ExtendHeaderSection = ({ childSection }) => {
   )
 }
 
-export default ExtendHeaderSection
+export default ExtendedHeaderSection
