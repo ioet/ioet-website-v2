@@ -1,8 +1,8 @@
 import React from "react"
+import T from "../../theme"
 import { Grid, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
-import T from "../../theme"
 
 const useStyles = makeStyles(theme => ({
   richTextGrid: {
@@ -13,10 +13,10 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ExtendedHeaderSection = ({ childSection }) => {
+const ExtendedHeaderSection = ({ bodyText,  imgUrl}) => {
   const styles = {
     paperContainer: {
-      background: [T.palette.transparent.ioetOrange, `url(https://${childSection.imgUrl})`],
+      background: [T.palette.transparent.ioetOrange, `url(https://${imgUrl})`],
       backgroundPosition: "center",
       backgroundSize: "cover",
       color: "white",
@@ -28,9 +28,9 @@ const ExtendedHeaderSection = ({ childSection }) => {
     <React.Fragment>
       <Paper style={styles.paperContainer}>
         <Grid container item direction="row" xs={12}>
-          {childSection.bodyText ? (
+          {bodyText ? (
             <Grid className={classes.richTextGrid} item>
-              <RichTextWrapper richTextJson={childSection.bodyText}></RichTextWrapper>
+              <RichTextWrapper richTextJson={bodyText}></RichTextWrapper>
             </Grid>
           ) : null}
         </Grid>
