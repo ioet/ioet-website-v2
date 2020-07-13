@@ -2,8 +2,8 @@ import React from "react"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import { Typography } from "@material-ui/core"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import theme from "../../theme";
-import { ThemeProvider } from "@material-ui/styles";
+import theme from "../../theme"
+import { ThemeProvider } from "@material-ui/styles"
 
 const RichTextWrapper = ({ richTextJson, customOptions }) => {
   console.log(richTextJson)
@@ -57,9 +57,7 @@ const RichTextWrapper = ({ richTextJson, customOptions }) => {
         },
       }
 
-  return <ThemeProvider theme={theme}>
-    {documentToReactComponents(richTextJson, options)}
-  </ThemeProvider>
+  return <ThemeProvider theme={theme}>{documentToReactComponents(richTextJson, options)}</ThemeProvider>
 }
 
 export default RichTextWrapper

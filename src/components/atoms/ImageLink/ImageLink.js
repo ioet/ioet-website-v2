@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     padding: "5px",
     [theme.breakpoints.only("sm")]: {
       maxHeight: 40,
-    }
+    },
   },
   link: {
     marginRight: theme.spacing(1),

@@ -33,8 +33,8 @@ const PageTemplate = ({ data: { pages }, pageContext: { slug } }) => {
           <CustomComponent
             contentfulId={child.id}
             key={`${index}-${child.id}`}
-            parentLocaleMap = {pageLocaleMap}
-            parentSlug = {page.slug}
+            parentLocaleMap={pageLocaleMap}
+            parentSlug={page.slug}
           ></CustomComponent>
         ) : null
       })}

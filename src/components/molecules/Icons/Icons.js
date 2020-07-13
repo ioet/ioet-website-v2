@@ -1,8 +1,8 @@
 import React from "react"
-import Grid  from "@material-ui/core/Grid"
+import Grid from "@material-ui/core/Grid"
 import Icon from "../../atoms/Icon/SocialIcon"
 
-const Icons = ({SocialIcons, position}) => {
+const Icons = ({ SocialIcons, position }) => {
   return (
     <Grid container justify={position}>
       {SocialIcons.map((data, index) => (
