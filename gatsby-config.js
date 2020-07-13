@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-require('dotenv').config()
+require("dotenv").config()
 
 module.exports = {
   /* Your site config here */
@@ -12,19 +12,19 @@ module.exports = {
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-contentful`,
-      options : {
+      options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_API_TOKEN
-      }
+        accessToken: process.env.CONTENTFUL_API_TOKEN,
+      },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Barlow', 'sans-serif'],
-          variants: ['300', '400', '700', '900'],
-        }
-      }
-    }
+          families: ["Barlow", "sans-serif"],
+          variants: ["300", "400", "700", "900"],
+        },
+      },
+    },
   ],
 }
