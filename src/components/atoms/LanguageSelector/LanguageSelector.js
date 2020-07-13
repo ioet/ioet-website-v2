@@ -1,12 +1,10 @@
+import theme from "../../theme"
 import { navigate } from "gatsby"
 import React, { useState } from "react"
-import Select from "@material-ui/core/Select"
-import MenuItem from "@material-ui/core/MenuItem"
-import { makeStyles } from "@material-ui/core/styles"
-import FormControl from "@material-ui/core/FormControl"
-import theme from "../../theme"
 import { ThemeProvider } from "@material-ui/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import LanguageIcon from "@material-ui/icons/Language"
+import { Select, MenuItem, FormControl } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -19,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   contentLanguage: {
     display: "flex",
     justifyContent: "center",
+    textAlign: "center",
+  },
+  languageIcon: {
+    paddingRight: theme.spacing(0.5),
   },
 }))
 
@@ -51,7 +53,7 @@ const LanguageSelector = ({ selectorId, name, options, parentLocaleMap, defaultL
           return (
             <MenuItem key={`${index}-${optionItem.text}`} value={optionItem.value}>
               <div className={classes.contentLanguage}>
-                <LanguageIcon fontSize="small" />
+                <LanguageIcon fontSize="small" className={classes.languageIcon}/>
                 <ThemeProvider theme={theme}>{optionItem.text}</ThemeProvider>
               </div>
             </MenuItem>

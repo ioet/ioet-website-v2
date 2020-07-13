@@ -43,12 +43,12 @@ const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
       </Grid>
     </Grid>
   )
-  const gridItemList = reversed ? [textGriditem, imageGridItem] : [imageGridItem, textGriditem]
 
   return (
     <Paper className={classes.paper}>
-      <Grid container spacing={2}>
-        {gridItemList.map(item => item)}
+      <Grid container spacing={2} direction={reversed ? "row-reverse": "row"} alignItems="center">
+        {imageGridItem}
+        {textGriditem}
       </Grid>
     </Paper>
   )

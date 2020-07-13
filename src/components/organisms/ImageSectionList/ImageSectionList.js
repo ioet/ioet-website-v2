@@ -33,6 +33,7 @@ const ImageSectionList = ({ contentfulId }) => {
                 content
               }
             }
+            id
           }
         }
       }
@@ -48,13 +49,14 @@ const ImageSectionList = ({ contentfulId }) => {
         title: section.title,
         bodyText: section.bodyText ? section.bodyText.json : null,
         reversed: optionalStyles.reversed,
+        key: section.id,
       }
     })
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      {imageSectionItems.map(item => (
-        <ImageSection {...item} />
+      {imageSectionItems.map((item, index) => (
+        <ImageSection {...item} key={`${index}-${item.key}`} />
       ))}
     </div>
   )

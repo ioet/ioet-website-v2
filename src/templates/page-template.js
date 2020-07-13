@@ -32,7 +32,7 @@ const PageTemplate = ({ data: { pages }, pageContext: { slug } }) => {
         return CustomComponent ? (
           <CustomComponent
             contentfulId={child.id}
-            key={`${index}-${child.id}`}
+            key={`${index}-${page.slug}-${child.id}`}
             parentLocaleMap={pageLocaleMap}
             parentSlug={page.slug}
           ></CustomComponent>

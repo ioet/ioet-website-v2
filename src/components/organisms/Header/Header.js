@@ -1,5 +1,6 @@
 import "./Header.scss"
 import React from "react"
+import T from "../../theme"
 import List from "@material-ui/core/List"
 import MenuIcon from "@material-ui/icons/Menu"
 import { graphql, useStaticQuery } from "gatsby"
@@ -9,9 +10,7 @@ import ImageLink from "../../atoms/ImageLink/ImageLink"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
-import { Grid, AppBar, Hidden, Toolbar, Drawer } from "@material-ui/core"
-import Container from "@material-ui/core/Container"
-import T from "../../theme"
+import { Grid, AppBar, Hidden, Toolbar, Drawer, Container } from "@material-ui/core"
 
 const drawerWidth = 700
 const useStyles = makeStyles(theme => ({

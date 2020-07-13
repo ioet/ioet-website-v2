@@ -1,6 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
 import { graphql, useStaticQuery } from "gatsby"
+import { makeStyles } from "@material-ui/core/styles"
 import ExtendedHeaderSection from "../../molecules/ExtendedHeaderSection/ExtendedHeaderSection"
 
 const useStyles = makeStyles(theme => ({
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 const ExtendedHeader = ({ contentfulId }) => {
   const data = useStaticQuery(graphql`
     {
-      extendHeader: allContentfulMessageHeader {
+      extendedHeader: allContentfulMessageHeader {
         nodes {
           id
           title
@@ -29,15 +29,15 @@ const ExtendedHeader = ({ contentfulId }) => {
     }
   `)
   const classes = useStyles()
-  const extendHeader = data.extendHeader.nodes.find(node => node.id === contentfulId)
-  const childSection = {
-    imgUrl: extendHeader.backgroundImage.file.url,
-    bodyText: extendHeader.bodyText ? extendHeader.bodyText.json : null,
+  const extendedHeader = data.extendedHeader.nodes.find(node => node.id === contentfulId)
+  const sectionProps = {
+    imgUrl: extendedHeader.backgroundImage.file.url,
+    bodyText: extendedHeader.bodyText ? extendedHeader.bodyText.json : null,
   }
 
   return (
     <div className={classes.root}>
-      <ExtendedHeaderSection childSection={childSection} />
+      <ExtendedHeaderSection {...sectionProps} />
     </div>
   )
 }

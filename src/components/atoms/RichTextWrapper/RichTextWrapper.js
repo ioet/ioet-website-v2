@@ -1,9 +1,9 @@
 import React from "react"
-import { BLOCKS, MARKS } from "@contentful/rich-text-types"
-import { Typography } from "@material-ui/core"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import theme from "../../theme"
+import { Typography } from "@material-ui/core"
 import { ThemeProvider } from "@material-ui/styles"
+import { BLOCKS, MARKS } from "@contentful/rich-text-types"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const RichTextWrapper = ({ richTextJson, customOptions }) => {
   const options = customOptions
