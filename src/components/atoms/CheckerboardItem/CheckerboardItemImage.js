@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   image: {
-    maxHeight: 355,
+    maxHeight: "355rem",
     margin: "auto",
     display: "block",
   },
