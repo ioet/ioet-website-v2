@@ -46,7 +46,7 @@ const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
 
   return (
     <Paper className={classes.paper}>
-      <Grid container spacing={2} direction={reversed ? "row-reverse": "row"} alignItems="center">
+      <Grid container spacing={2} direction={reversed ? "row-reverse" : "row"} alignItems="center">
         {imageGridItem}
         {textGriditem}
       </Grid>

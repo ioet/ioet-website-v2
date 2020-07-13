@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.only("sm")]: {
       marginRight: theme.spacing(1.6),
-    }
+    },
   },
   link: {
     textDecoration: "none",

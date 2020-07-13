@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const CardButton = ({ title = "Title section", bodyText, buttonText = "LEARN MORE", direction }) => {
+const ButtonTextSection = ({ title = "Title section", bodyText, buttonText = "LEARN MORE", direction }) => {
   const classes = useStyles()
   const gridDirection = direction ? direction : "row"
 
@@ -58,4 +58,4 @@ const CardButton = ({ title = "Title section", bodyText, buttonText = "LEARN MOR
   )
 }
 
-export default CardButton
+export default ButtonTextSection
