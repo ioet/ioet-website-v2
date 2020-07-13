@@ -2,6 +2,7 @@ import React from "react"
 import { Grid, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
+import T from "../../theme"
 
 const useStyles = makeStyles(theme => ({
   richTextGrid: {
@@ -15,10 +16,7 @@ const useStyles = makeStyles(theme => ({
 const ExtendedHeaderSection = ({ childSection }) => {
   const styles = {
     paperContainer: {
-      background: [
-        "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)",
-        `url(https://${childSection.imgUrl})`,
-      ],
+      background: [T.palette.transparent.ioetOrange, `url(https://${childSection.imgUrl})`],
       backgroundPosition: "center",
       backgroundSize: "cover",
       color: "white",
