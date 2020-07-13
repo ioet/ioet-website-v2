@@ -12,11 +12,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.only("sm")]: {
       marginRight: theme.spacing(1.6),
-    },
+    }
   },
   link: {
     textDecoration: "none",
-    color: "inherit",
+    color: "white",
     [theme.breakpoints.only("sm")]: {
       fontSize: "13px",
     },
