@@ -48,7 +48,7 @@ const CardButton = ({ title = "Title section", bodyText, buttonText = "LEARN MOR
             <ThemeProvider theme={T}>
               <RichTextWrapper color="secondary" richTextJson={bodyText}></RichTextWrapper>
             </ThemeProvider>
-          ) : null }
+          ) : null}
         </Grid>
         <Grid item xs={12} sm={4} md={4}>
           <Buttons buttonText={buttonText}></Buttons>
