@@ -41,9 +41,7 @@ const ImageSectionList = ({ contentfulId }) => {
   const imageSectionItems = data.sections.nodes
     .find(node => node.id === contentfulId)
     .childSections.map(section => {
-      const optionalStyles = section.optionalStyles
-        ? JSON.parse(section.optionalStyles.internal.content)
-        : {}
+      const optionalStyles = section.optionalStyles ? JSON.parse(section.optionalStyles.internal.content) : {}
       return {
         imgUrl: section.image.file.url,
         imgAlt: section.image.title,

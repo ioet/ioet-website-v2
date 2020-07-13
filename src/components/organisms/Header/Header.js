@@ -10,8 +10,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 import { Grid, AppBar, Hidden, Toolbar, Drawer } from "@material-ui/core"
-import Container from '@material-ui/core/Container';
-import T from '../../theme';
+import Container from "@material-ui/core/Container"
+import T from "../../theme"
 
 const drawerWidth = 700
 const useStyles = makeStyles(theme => ({
@@ -19,12 +19,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
   },
   colorHeader: {
-    background: T.palette.transparent.ioetOrange
+    background: T.palette.transparent.ioetOrange,
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
-      flexShrink: 0
+      flexShrink: 0,
     },
   },
   appBar: {
@@ -128,9 +128,9 @@ const Header = props => {
 
   return (
     <div container className="componentHeader ">
-        <AppBar position="sticky" className={classes.colorHeader}>
-          <Container maxWidth="xl">
-            <Toolbar>
+      <AppBar position="sticky" className={classes.colorHeader}>
+        <Container maxWidth="xl">
+          <Toolbar>
             <Hidden xsDown>
               <NavBar
                 navigationLinks={navigationLinks}
@@ -149,7 +149,11 @@ const Header = props => {
                 direction="row"
                 className="containerXs"
               >
-                <ImageLink className="xsLinks" slug={actionImage.slug} imageUrl={`https://${actionImage.imageUrl}`} />
+                <ImageLink
+                  className="xsLinks"
+                  slug={actionImage.slug}
+                  imageUrl={`https://${actionImage.imageUrl}`}
+                />
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
@@ -162,28 +166,27 @@ const Header = props => {
               </Grid>
             </Hidden>
           </Toolbar>
-          </Container>
-
-        </AppBar>
-        <nav className={classes.drawer}>
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={container}
-              variant="temporary"
-              anchor={theme.direction === "rtl" ? "left" : "top"}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
+        </Container>
+      </AppBar>
+      <nav className={classes.drawer}>
+        <Hidden smUp implementation="css">
+          <Drawer
+            container={container}
+            variant="temporary"
+            anchor={theme.direction === "rtl" ? "left" : "top"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
     </div>
   )
 }

@@ -1,12 +1,6 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActionArea,
-} from "@material-ui/core"
+import { Card, CardMedia, CardContent, Typography, CardActionArea } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,11 +18,7 @@ const BasicCard = props => {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={`https://${props.imgUrl}`}
-          title={props.imgTitle}
-        />
+        <CardMedia className={classes.media} image={`https://${props.imgUrl}`} title={props.imgTitle} />
         <CardContent>
           <Typography variant="h6" color="textPrimary">
             {props.title}

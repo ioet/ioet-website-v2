@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
 
 let theme = createMuiTheme({
   typography: {
@@ -6,43 +6,41 @@ let theme = createMuiTheme({
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 900,
-    fontFamily: [
-      'Barlow',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ["Barlow", "sans-serif"].join(","),
   },
 
   palette: {
     primary: {
-      ligth: '#FF5E00',
-      main: '#fb5432',
-      dark: '#c01704',    },
+      ligth: "#FF5E00",
+      main: "#fb5432",
+      dark: "#c01704",
+    },
     secondary: {
-      ligth: '#d6e0e5',
-      main: '#a5aeb3',
-      dark: '#767f83'
+      ligth: "#d6e0e5",
+      main: "#a5aeb3",
+      dark: "#767f83",
     },
     info: {
-      ligth: '#797e67',
-      main: '#4d523c',
-      dark: '#252a16'
+      ligth: "#797e67",
+      main: "#4d523c",
+      dark: "#252a16",
     },
     success: {
-      ligth: '#6bedf7',
-      main: '#27bac4',
-      dark: '#008994'
+      ligth: "#6bedf7",
+      main: "#27bac4",
+      dark: "#008994",
     },
     gradient: {
       ioetOrange: "linear-gradient(90deg, rgba(243,83,52,1) 0%, rgba(243,64,76,1) 100%)",
-      ioetMetro: "linear-gradient(90deg, rgba(243,64,84,1) 0%, rgba(243,86,50,1) 100%);"
+      ioetMetro: "linear-gradient(90deg, rgba(243,64,84,1) 0%, rgba(243,86,50,1) 100%);",
     },
     transparent: {
-      ioetOrange: "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
-    }
+      ioetOrange: "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)",
     },
-    tonalOffset: 0.2,
-  });
-  // To use responsive font sizes, include the following line
-  theme = responsiveFontSizes(theme)
+  },
+  tonalOffset: 0.2,
+})
+// To use responsive font sizes, include the following line
+theme = responsiveFontSizes(theme)
 
 export default theme

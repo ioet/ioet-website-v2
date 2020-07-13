@@ -4,14 +4,14 @@ import { graphql, useStaticQuery } from "gatsby"
 // import NavBar from "../../molecules/NavBar/NavBar"
 import { makeStyles } from "@material-ui/core/styles"
 import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
-import theme from "../../theme";
-import { ThemeProvider } from "@material-ui/styles";
-import Grid from '@material-ui/core/Grid';
+import theme from "../../theme"
+import { ThemeProvider } from "@material-ui/styles"
+import Grid from "@material-ui/core/Grid"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
-import './Footer.scss';
-import T from '../../theme';
-import Container from '@material-ui/core/Container';
+import "./Footer.scss"
+import T from "../../theme"
+import Container from "@material-ui/core/Container"
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -21,27 +21,27 @@ const useStyles = makeStyles(theme => ({
     top: "auto",
     position: "relative",
     paddingTop: theme.spacing(5),
-    background: T.palette.gradient.ioetOrange
+    background: T.palette.gradient.ioetOrange,
   },
   transformText: {
     textTransform: "uppercase",
   },
   containerSocialIcons: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(1)
+      paddingBottom: theme.spacing(1),
     },
   },
   copyrightContainer: {
     justifyContent: "center",
-    [theme.breakpoints.only('xs')]: {
+    [theme.breakpoints.only("xs")]: {
       paddingTop: theme.spacing(3),
     },
-    [theme.breakpoints.only('sm')]: {
+    [theme.breakpoints.only("sm")]: {
       justifyContent: "flex-end",
-      paddingTop: theme.spacing(2)
+      paddingTop: theme.spacing(2),
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       justifyContent: "flex-end",
       paddingTop: theme.spacing(3),
     },
@@ -50,11 +50,11 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(5),
     paddingBottom: theme.spacing(2.5),
     fontWeight: "bold",
-    [theme.breakpoints.only('xs')]: {
+    [theme.breakpoints.only("xs")]: {
       paddingRight: theme.spacing(0),
-      textAlign: "center"
+      textAlign: "center",
     },
-  }
+  },
 }))
 
 const Footer = props => {
@@ -95,7 +95,7 @@ const Footer = props => {
       }
     }
   `)
-  const colorFooter = "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)"
+
   const classes = useStyles()
   const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
   const navigationLinks = footer.navBar.navigationLinks.map(item => {
@@ -115,7 +115,7 @@ const Footer = props => {
         <Toolbar>
           <Grid container alignItems="center">
             <Hidden only="xs">
-              <Grid item sm={3} md={3} className="containerImageLink" >
+              <Grid item sm={3} md={3} className="containerImageLink">
                 <ImageLink slug={actionImage} imageUrl={`https://${actionImage.imageUrl}`} />
               </Grid>
 
@@ -143,7 +143,9 @@ const Footer = props => {
         </Toolbar>
         <Box className={classes.copyrightContainer} display="flex">
           <ThemeProvider theme={theme}>
-            <Typography className={classes.copyrightText} variant="subtitle1">{footer.copyright}</Typography>
+            <Typography className={classes.copyrightText} variant="subtitle1">
+              {footer.copyright}
+            </Typography>
           </ThemeProvider>
         </Box>
       </Container>
