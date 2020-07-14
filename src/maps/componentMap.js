@@ -4,7 +4,6 @@ const contentfulComponentDict = new Map([
   ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
   ["ContentfulCardHolder", "components/organisms/CardHolder/CardHolder.js"],
   ["ContentfulCheckerboard", "components/organisms/Checkerboard/Checkerboard.js"],
-  ["ContentfulMessageHeader", "components/organisms/ExtendedHeader/ExtendedHeader.js"],
 ])
 
 const cardComponentDict = new Map([

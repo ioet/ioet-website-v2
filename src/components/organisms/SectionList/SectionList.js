@@ -34,6 +34,11 @@ const SectionList = ({ contentfulId }) => {
                   url
                 }
               }
+              styles {
+                internal {
+                  content
+                }
+              }
             }
             ... on ContentfulButtonTextSection {
               title

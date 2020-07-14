@@ -13,15 +13,33 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const BannerSection = ({ bodyText, imgUrl }) => {
-  const styles = {
-    paperContainer: {
-      background: [T.palette.transparent.ioetOrange, `url(https://${imgUrl})`],
+const stylesPaperCss = (optionalStyles, imgUrl) => {
+  const height = optionalStyles.banner.height ? optionalStyles.banner.height : "auto"
+  const color = optionalStyles.background.color ? optionalStyles.background.color : null
+  const transparent = optionalStyles.background.transparent ? optionalStyles.background.transparent : false
+  const textcolor = optionalStyles.text.color ? optionalStyles.text.color : null
+  if (transparent) {
+    return {
+      background: [T.palette.transparent[color], `url(https://${imgUrl})`],
       backgroundPosition: "center",
       backgroundSize: "cover",
-      color: "white",
-      height: 550,
-    },
+      color: textcolor,
+      maxHeight: height,
+    }
+  } else {
+    return {
+      background: [T.palette.gradient.ioetOrange, `url(https://${imgUrl})`],
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      color: textcolor,
+      maxHeight: height,
+    }
+  }
+}
+
+const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
+  const styles = {
+    paperContainer: stylesPaperCss(optionalStyles, imgUrl),
   }
   const classes = useStyles()
   return (
