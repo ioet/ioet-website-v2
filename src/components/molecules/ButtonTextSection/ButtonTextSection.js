@@ -26,40 +26,38 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const ButtonTextSection = ({ title = "Title section", bodyText, button, optionalStyles }) => {
+const ButtonTextSection = ({ title, bodyText, button, optionalStyles }) => {
   const classes = useStyles()
   const gridDirection = optionalStyles.direction ? optionalStyles.direction : "row"
 
   return (
-    <Container maxWidth="lg">
-      <Grid
-        container
-        spacing={4}
-        className={classes.containerItems}
-        justify="center"
-        alignItems="center"
-        direction={gridDirection}
-      >
-        <Grid item xs={12} sm={8} md={8}>
-          <Typography variant="h4" color="T.palette.info.main" className={classes.title} fontWeightMedium>
-            {title}
-          </Typography>
-          {bodyText ? (
-            <ThemeProvider theme={T}>
-              <RichTextWrapper color="secondary" richTextJson={bodyText}></RichTextWrapper>
-            </ThemeProvider>
-          ) : null}
+    <ThemeProvider theme={T}>
+      <Container maxWidth="lg">
+        <Grid
+          container
+          spacing={4}
+          className={classes.containerItems}
+          justify="center"
+          alignItems="center"
+          direction={gridDirection}
+        >
+          <Grid item xs={12} sm={8} md={8}>
+            <Typography variant="h4" className={classes.title}>
+              {title}
+            </Typography>
+            {bodyText ? <RichTextWrapper color="secondary" richTextJson={bodyText}></RichTextWrapper> : null}
+          </Grid>
+          <Grid item xs={12} sm={4} md={4}>
+            <Buttons
+              buttonText={button.caption}
+              onClick={_e => {
+                if (button) navigate(`/${button.to.slug}/`)
+              }}
+            ></Buttons>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={4} md={4}>
-          <Buttons
-            buttonText={button.caption}
-            onClick={e => {
-              if (button) navigate(`/${button.to.slug}/`)
-            }}
-          ></Buttons>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </ThemeProvider>
   )
 }
 

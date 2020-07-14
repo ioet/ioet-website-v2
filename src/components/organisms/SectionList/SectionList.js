@@ -6,7 +6,7 @@ import { contentfulTypeToComponent } from "../../../functions/componentParser"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(0.5),
+    marginTop: theme.spacing(0.01),
     marginBottom: theme.spacing(0.5),
   },
 }))
@@ -95,7 +95,7 @@ const SectionList = ({ contentfulId }) => {
     <div className={classes.root}>
       {SectionItems.map((item, index) => {
         const Section = contentfulTypeToComponent(item.type, sectionElementComponentDict)
-        return <Section {...item} key={`${index}-${item.id}`} />
+        return <Section {...item} key={`${index}-${item.id}-${item.type}`} />
       })}
     </div>
   )

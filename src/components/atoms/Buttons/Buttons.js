@@ -1,9 +1,9 @@
 import React from "react"
+import T from "../../theme"
 import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
-import T from "../../theme"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(_theme => ({
   customButton: {
     borderRadius: "2.5rem",
     textTransform: "none",

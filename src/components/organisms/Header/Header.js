@@ -152,7 +152,7 @@ const Header = props => {
                 <ImageLink
                   className="xsLinks"
                   slug={actionImage.slug}
-                  imageUrl={`https://${actionImage.imageUrl}`}
+                  imageUrl={`https:${actionImage.imageUrl}`}
                 />
                 <IconButton
                   color="inherit"

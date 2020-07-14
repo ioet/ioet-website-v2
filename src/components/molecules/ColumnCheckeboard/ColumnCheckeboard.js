@@ -23,7 +23,7 @@ const ColumnCheckeboard = props => {
   return (
     <Card className={classes.card}>
       <CardActionArea>
-        <CardMedia className={classes.photoStyle} image={`https://${props.imgUrl}`} title={props.imgTitle} />
+        <CardMedia className={classes.photoStyle} image={`https:${props.imgUrl}`} title={props.imgTitle} />
         <CardContent className={classes.textStyle}>
           <Typography variant="h6" color="textPrimary">
             {props.title}
