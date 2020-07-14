@@ -16,16 +16,17 @@ const useStyles = makeStyles(theme => ({
 const BannerSection = ({ bodyText, imgUrl }) => {
   const styles = {
     paperContainer: {
-      background: [T.palette.transparent.ioetOrange, `url(https://${imgUrl})`],
-      backgroundPosition: "center",
+      backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${imgUrl}")`],
       backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
       color: "white",
       height: 550,
     },
   }
   const classes = useStyles()
   return (
-    <React.Fragment>
+    <>
       <Paper style={styles.paperContainer}>
         <Grid container item direction="row" xs={12}>
           {bodyText ? (
@@ -35,7 +36,7 @@ const BannerSection = ({ bodyText, imgUrl }) => {
           ) : null}
         </Grid>
       </Paper>
-    </React.Fragment>
+    </>
   )
 }
 
