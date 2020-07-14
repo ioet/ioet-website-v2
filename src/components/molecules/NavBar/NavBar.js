@@ -12,7 +12,7 @@ const NavBar = props => {
         <ImageLink
           className="componentNavbar"
           slug={props.actionImage.slug}
-          imageUrl={`https://${props.actionImage.imageUrl}`}
+          imageUrl={`https:${props.actionImage.imageUrl}`}
         />
       </div>
       <Grid container alignItems="center" justify="center" direction="row">

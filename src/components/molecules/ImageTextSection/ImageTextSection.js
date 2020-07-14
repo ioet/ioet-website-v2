@@ -25,7 +25,7 @@ const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) =
 
   const imageGridItem = (
     <Grid item xs={12} sm={6}>
-      <img className={classes.img} alt={imgAlt} src={`https://${imgUrl}`} />
+      <img className={classes.img} alt={imgAlt} src={`https:${imgUrl}`} />
     </Grid>
   )
 

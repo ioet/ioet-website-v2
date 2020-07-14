@@ -74,8 +74,8 @@ const CardHolder = ({ contentfulId }) => {
         {cards.map((card, index) => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (
-            <Grid item>
-              <Card {...card} key={`${index}-${card.id}`}></Card>
+            <Grid item key={`card-container-${index}-${card.id}`}>
+              <Card {...card} key={`card-${index}-${card.id}`}></Card>
             </Grid>
           ) : null
         })}

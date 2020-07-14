@@ -13,37 +13,20 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const stylesPaperCss = (optionalStyles, imgUrl) => {
-  const height = optionalStyles.banner.height ? optionalStyles.banner.height : "auto"
-  const color = optionalStyles.background.color ? optionalStyles.background.color : null
-  const transparent = optionalStyles.background.transparent ? optionalStyles.background.transparent : false
-  const textcolor = optionalStyles.text.color ? optionalStyles.text.color : null
-  if (transparent) {
-    return {
-      background: [T.palette.transparent[color], `url(https://${imgUrl})`],
-      backgroundPosition: "center",
-      backgroundSize: "cover",
-      color: textcolor,
-      maxHeight: height,
-    }
-  } else {
-    return {
-      background: [T.palette.gradient.ioetOrange, `url(https://${imgUrl})`],
-      backgroundPosition: "center",
-      backgroundSize: "cover",
-      color: textcolor,
-      maxHeight: height,
-    }
-  }
-}
-
-const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
+const BannerSection = ({ bodyText, imgUrl }) => {
   const styles = {
-    paperContainer: stylesPaperCss(optionalStyles, imgUrl),
+    paperContainer: {
+      backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${imgUrl}")`],
+      backgroundSize: "cover",
+      backgroundPosition: "center center",
+      backgroundRepeat: "no-repeat",
+      color: "white",
+      height: 550,
+    },
   }
   const classes = useStyles()
   return (
-    <React.Fragment>
+    <>
       <Paper style={styles.paperContainer}>
         <Grid container item direction="row" xs={12}>
           {bodyText ? (
@@ -53,7 +36,7 @@ const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
           ) : null}
         </Grid>
       </Paper>
-    </React.Fragment>
+    </>
   )
 }
 
