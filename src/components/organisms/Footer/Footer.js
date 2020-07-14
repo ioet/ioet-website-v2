@@ -1,15 +1,14 @@
-import React from "react"
 import "./Footer.scss"
+import React from "react"
 import T from "../../theme"
 import Grid from "@material-ui/core/Grid"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
-import Container from "@material-ui/core/Container"
 import { ThemeProvider } from "@material-ui/styles"
 import { makeStyles } from "@material-ui/core/styles"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
-import { Box, AppBar, Toolbar, Hidden, Typography } from "@material-ui/core"
+import { Box, AppBar, Toolbar, Hidden, Typography, Container } from "@material-ui/core"
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -65,7 +64,7 @@ const Footer = props => {
           title
           navBar {
             mainIcon {
-              mainIcon {
+              icon {
                 file {
                   url
                 }
@@ -82,7 +81,7 @@ const Footer = props => {
             }
           }
           socialIcons {
-            image {
+            icon {
               file {
                 url
               }
@@ -96,15 +95,17 @@ const Footer = props => {
 
   const classes = useStyles()
   const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
-  const navigationLinks = footer.navBar.navigationLinks.map(item => {
+  const navBar  = footer.navBar ? footer.navBar : {}
+  const linkArray = navBar.navigationLinks ? navBar.navigationLinks : []
+  const navigationLinks = linkArray.map(item => {
     return { caption: item.caption, slug: item.to.slug }
   })
   const SocialIcons = footer.socialIcons.map(item => {
-    return { slug: item.title, imageUrl: item.image.file.url, linkTo: item.url }
+    return { slug: item.title, imageUrl: item.icon.file.url, linkTo: item.url }
   })
   const actionImage = {
-    imageUrl: footer.navBar.mainIcon.mainIcon.file.url,
-    slug: footer.navBar.mainIcon.to.slug,
+    imageUrl: navBar.mainIcon.icon.file.url,
+    slug: navBar.mainIcon.to.slug,
   }
 
   return (

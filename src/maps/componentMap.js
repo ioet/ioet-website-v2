@@ -1,6 +1,6 @@
 const contentfulComponentDict = new Map([
   ["ContentfulHeader", "components/organisms/Header/Header.js"],
-  ["ContentfulImageSectionList", "components/organisms/ImageSectionList/ImageSectionList.js"],
+  ["ContentfulSectionList", "components/organisms/SectionList/SectionList.js"],
   ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
   ["ContentfulCardHolder", "components/organisms/CardHolder/CardHolder.js"],
   ["ContentfulCheckerboard", "components/organisms/Checkerboard/Checkerboard.js"],
@@ -9,7 +9,7 @@ const contentfulComponentDict = new Map([
 
 const cardComponentDict = new Map([
   ["ContentfulMapCard", "components/molecules/MapCard/MapCard.js"],
-  ["ContentfulImageCard", "components/molecules/BasicCard/BasicCard.js"],
+  ["ContentfulImageCard", "components/molecules/ImageCard/ImageCard.js"],
 ])
 
 const gridElementComponentDict = new Map([
@@ -17,5 +17,11 @@ const gridElementComponentDict = new Map([
   ["ContentfulCheckerboardItemText", "components/atoms/CheckerboardItem/CheckerboardItemText.js"],
 ])
 
+const sectionElementComponentDict = new Map([
+  ["ContentfulButtonTextSection", "components/molecules/ButtonTextSection/ButtonTextSection.js"],
+  ["ContentfulBannerSection", "components/molecules/BannerSection/BannerSection.js"],
+  ["ContentfulImageTextSection", "components/molecules/ImageTextSection/ImageTextSection.js"],
+])
+
 export default contentfulComponentDict
-export { cardComponentDict, gridElementComponentDict }
+export { cardComponentDict, gridElementComponentDict, sectionElementComponentDict }

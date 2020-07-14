@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
+const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) => {
   const classes = useStyles()
 
   const imageGridItem = (
@@ -46,7 +46,7 @@ const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
 
   return (
     <Paper className={classes.paper}>
-      <Grid container spacing={2} direction={reversed ? "row-reverse" : "row"} alignItems="center">
+      <Grid container spacing={2} direction={optionalStyles.reversed ? "row-reverse" : "row"} alignItems="center">
         {imageGridItem}
         {textGriditem}
       </Grid>
@@ -54,4 +54,4 @@ const ImageSelection = ({ imgUrl, imgAlt, title, bodyText, reversed }) => {
   )
 }
 
-export default ImageSelection
+export default ImageTextSection

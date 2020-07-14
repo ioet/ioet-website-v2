@@ -1,11 +1,11 @@
 import React from "react"
-import { makeStyles, createStyles } from "@material-ui/core/styles"
-import { Grid, Typography } from "@material-ui/core"
-import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
-import Buttons from "../../atoms/Buttons/Buttons"
-import Container from "@material-ui/core/Container"
 import T from "../../theme"
+import { navigate } from "gatsby"
+import Buttons from "../../atoms/Buttons/Buttons"
 import { ThemeProvider } from "@material-ui/styles"
+import { Grid, Typography, Container } from "@material-ui/core"
+import { makeStyles, createStyles } from "@material-ui/core/styles"
+import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -26,9 +26,9 @@ const useStyles = makeStyles(theme =>
   })
 )
 
-const ButtonTextSection = ({ title = "Title section", bodyText, buttonText = "LEARN MORE", direction }) => {
+const ButtonTextSection = ({ title = "Title section", bodyText, button, optionalStyles }) => {
   const classes = useStyles()
-  const gridDirection = direction ? direction : "row"
+  const gridDirection = optionalStyles.direction ? optionalStyles.direction : "row"
 
   return (
     <Container maxWidth="lg">
@@ -51,7 +51,12 @@ const ButtonTextSection = ({ title = "Title section", bodyText, buttonText = "LE
           ) : null}
         </Grid>
         <Grid item xs={12} sm={4} md={4}>
-          <Buttons buttonText={buttonText}></Buttons>
+          <Buttons
+            buttonText={button.caption}
+            onClick={e => {
+              if (button) navigate(`/${button.to.slug}/`)
+            }}
+          ></Buttons>
         </Grid>
       </Grid>
     </Container>

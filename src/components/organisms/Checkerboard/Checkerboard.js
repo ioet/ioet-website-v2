@@ -28,7 +28,7 @@ const Checkerboard = ({ contentfulId }) => {
                 }
               }
               ... on ContentfulCheckerboardItemImage {
-                itemImage {
+                image {
                   file {
                     url
                   }
@@ -57,7 +57,7 @@ const Checkerboard = ({ contentfulId }) => {
             type: item.internal.type,
             id: item.id,
             title: item.title,
-            imageUrl: item.itemImage ? item.itemImage.file.url : null,
+            imageUrl: item.image ? item.image.file.url : null,
             richTextJson: item.content ? item.content.json : {},
           }
         }),
