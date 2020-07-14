@@ -45,13 +45,11 @@ const RichTextWrapper = ({ richTextJson, customOptions }) => {
             </ThemeProvider>
           ),
           [BLOCKS.PARAGRAPH]: (_node, children) => (
-            <>
               <ThemeProvider theme={theme}>
                 <Typography variant="body1" align="justify" paragraph>
                   {children}
                 </Typography>
               </ThemeProvider>
-            </>
           ),
         },
       }

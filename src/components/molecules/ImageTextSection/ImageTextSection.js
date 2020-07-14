@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = props => makeStyles(theme => ({
   paper: {
-    marginBottom: theme.spacing(0.5),
+    marginBottom: theme.spacing(props.marginBottom),
     padding: theme.spacing(2),
     margin: "auto",
   },
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) => {
-  const classes = useStyles()
+  const classes = useStyles({ marginBottom: 0.5 })()
 
   const imageGridItem = (
     <Grid item xs={12} sm={6}>
@@ -46,7 +46,12 @@ const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) =
 
   return (
     <Paper className={classes.paper}>
-      <Grid container spacing={2} direction={optionalStyles.reversed ? "row-reverse" : "row"} alignItems="center">
+      <Grid
+        container
+        spacing={2}
+        direction={optionalStyles.reversed ? "row-reverse" : "row"}
+        alignItems="center"
+      >
         {imageGridItem}
         {textGriditem}
       </Grid>
