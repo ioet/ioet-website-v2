@@ -8,7 +8,7 @@ const defaultStyles = {
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     color: "black",
-    maxHeight: 550,
+    height: 550,
   },
   textContainer: {
     marginTop: 20,
