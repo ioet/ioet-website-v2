@@ -15,9 +15,6 @@ const useStyles = props => makeStyles(theme => ({
     maxWidth: "100%",
     maxHeight: "376px",
   },
-  text: {
-    textAlign: "justify",
-  },
 }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) => {
