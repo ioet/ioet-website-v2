@@ -2,35 +2,40 @@ import React from "react"
 import T from "../../theme"
 import { Grid, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import { stylesDefault } from "../BannerSection/StylesDefault"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
-const useStyles = makeStyles(theme => ({
-  richTextGrid: {
-    marginTop: theme.spacing(20),
-    marginBottom: theme.spacing(0.5),
-    margin: "auto",
-    padding: theme.spacing(2),
-  },
-}))
-
-const BannerSection = ({ bodyText, imgUrl }) => {
-  const styles = {
-    paperContainer: {
-      backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${imgUrl}")`],
-      backgroundSize: "cover",
-      backgroundPosition: "center center",
-      backgroundRepeat: "no-repeat",
-      color: "white",
-      height: 550,
+const useStyles = props =>
+  makeStyles(theme => ({
+    root: {
+      backgroundImage: [
+        T.palette.transparent[props.styles.root.backgroundImage],
+        `url("https:${props.imgUrl}")`,
+      ],
+      backgroundSize: props.styles.root.backgroundSize,
+      backgroundPosition: props.styles.root.backgroundPosition,
+      backgroundRepeat: props.styles.root.backgroundRepeat,
+      color: props.styles.root.color,
+      maxHeight: props.styles.root.maxHeight,
     },
-  }
-  const classes = useStyles()
+    text: {
+      marginTop: theme.spacing(props.styles.text.marginTop),
+      marginBottom: theme.spacing(props.styles.text.marginBottom),
+      margin: props.styles.text.margin,
+      padding: theme.spacing(props.styles.text.padding),
+    },
+  }))
+
+const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
+  const styles = Object.entries(optionalStyles).length === 0 ? stylesDefault({ imgUrl }) : optionalStyles
+  console.log(styles)
+  const classes = useStyles({ styles, imgUrl })()
   return (
     <>
-      <Paper style={styles.paperContainer}>
+      <Paper className={classes.root}>
         <Grid container item direction="row" xs={12}>
           {bodyText ? (
-            <Grid className={classes.richTextGrid} item>
+            <Grid className={classes.text} item>
               <RichTextWrapper richTextJson={bodyText}></RichTextWrapper>
             </Grid>
           ) : null}
