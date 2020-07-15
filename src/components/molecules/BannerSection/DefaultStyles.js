@@ -1,20 +1,22 @@
 import T from "../../theme"
+import { defaultText } from "../../../maps/defaultStyles"
 
-const DefaultStyles = props => ({
+const defaultStyles = {
   root: {
-    backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${props.imgUrl}")`],
+    backgroundImage: T.palette.transparent.ioetOrange,
     backgroundSize: "cover",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     color: "black",
     maxHeight: 550,
   },
-  text: {
+  textContainer: {
     marginTop: 20,
     marginBottom: 0.5,
     margin: "auto",
     padding: 2,
   },
-})
+  text: defaultText,
+}
 
-export default DefaultStyles 
+export default defaultStyles

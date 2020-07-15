@@ -8,7 +8,7 @@ const defaultImg = {
 }
 
 const defaultRoot = {
-  backgroundImage: ["", ""],
+  backgroundImage: "",
   backgroundSize: "",
   backgroundPosition: "",
   backgroundRepeat: "",

@@ -1,5 +1,7 @@
-const DefaultStyles = {
-  paper: {
+import { defaultText, defaultGrid } from "../../../maps/defaultStyles"
+
+const defaultStyles = {
+  root: {
     marginBottom: 0.5,
     padding: 2,
     margin: "auto",
@@ -10,9 +12,8 @@ const DefaultStyles = {
     maxWidth: "100%",
     maxHeight: "376px",
   },
-  text: {
-    textAlign: "justify",
-  },
+  text: defaultText,
+  grid: defaultGrid,
 }
 
-export default DefaultStyles
+export default defaultStyles

@@ -1,41 +1,38 @@
 import React from "react"
-import T from "../../theme"
+import defaultStyles from "./defaultStyles"
 import { Grid, Paper } from "@material-ui/core"
+import { getColor } from "../../../maps/colorMap"
 import { makeStyles } from "@material-ui/core/styles"
-import DefaultStyles from "./DefaultStyles"
+import { overrideStyle } from "../../../functions/stylesParser"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
-const useStyles = props =>
-  makeStyles(theme => ({
+const useStyles = props => {
+  const { backgroundImage, color, ...rootProps } = props.styles.root
+  return makeStyles(theme => ({
     root: {
-      backgroundImage: [
-        T.palette.transparent[props.styles.root.backgroundImage],
-        `url("https:${props.imgUrl}")`,
-      ],
-      backgroundSize: props.styles.root.backgroundSize,
-      backgroundPosition: props.styles.root.backgroundPosition,
-      backgroundRepeat: props.styles.root.backgroundRepeat,
-      color: props.styles.root.color,
-      maxHeight: props.styles.root.maxHeight,
+      backgroundImage: [getColor(backgroundImage), `url("https:${props.imgUrl}")`],
+      color: getColor(color),
+      ...rootProps,
     },
-    text: {
-      marginTop: theme.spacing(props.styles.text.marginTop),
-      marginBottom: theme.spacing(props.styles.text.marginBottom),
-      margin: props.styles.text.margin,
-      padding: theme.spacing(props.styles.text.padding),
+    textContainer: {
+      margin: props.styles.textContainer.margin,
+      padding: theme.spacing(props.styles.textContainer.padding),
+      marginTop: theme.spacing(props.styles.textContainer.marginTop),
+      marginBottom: theme.spacing(props.styles.textContainer.marginBottom),
     },
   }))
+}
 
 const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
-  const styles = Object.entries(optionalStyles).length === 0 ? DefaultStyles({ imgUrl }) : optionalStyles
+  const styles = overrideStyle(defaultStyles, optionalStyles)
   const classes = useStyles({ styles, imgUrl })()
   return (
     <>
       <Paper className={classes.root}>
         <Grid container item direction="row" xs={12}>
           {bodyText ? (
-            <Grid className={classes.text} item>
-              <RichTextWrapper richTextJson={bodyText}></RichTextWrapper>
+            <Grid className={classes.textContainer} item>
+              <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text}></RichTextWrapper>
             </Grid>
           ) : null}
         </Grid>
