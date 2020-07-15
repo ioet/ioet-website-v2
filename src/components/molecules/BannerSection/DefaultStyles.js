@@ -1,6 +1,6 @@
 import T from "../../theme"
 
-const stylesDefault = props => ({
+const DefaultStyles = props => ({
   root: {
     backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${props.imgUrl}")`],
     backgroundSize: "cover",
@@ -17,4 +17,4 @@ const stylesDefault = props => ({
   },
 })
 
-export { stylesDefault } 
+export default DefaultStyles 

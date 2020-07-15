@@ -2,7 +2,7 @@ import React from "react"
 import T from "../../theme"
 import { Grid, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import { stylesDefault } from "../BannerSection/StylesDefault"
+import DefaultStyles from "./DefaultStyles"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
 const useStyles = props =>
@@ -27,8 +27,7 @@ const useStyles = props =>
   }))
 
 const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
-  const styles = Object.entries(optionalStyles).length === 0 ? stylesDefault({ imgUrl }) : optionalStyles
-  console.log(styles)
+  const styles = Object.entries(optionalStyles).length === 0 ? DefaultStyles({ imgUrl }) : optionalStyles
   const classes = useStyles({ styles, imgUrl })()
   return (
     <>

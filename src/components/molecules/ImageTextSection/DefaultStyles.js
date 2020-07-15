@@ -1,4 +1,4 @@
-const StylesDefault = {
+const DefaultStyles = {
   paper: {
     marginBottom: 0.5,
     padding: 2,
@@ -15,4 +15,4 @@ const StylesDefault = {
   },
 }
 
-export default StylesDefault
+export default DefaultStyles
