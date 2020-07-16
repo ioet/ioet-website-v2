@@ -1,5 +1,6 @@
 import React from "react"
 import defaultStyles from "./defaultStyles"
+import { getColor } from "../../../maps/colorMap"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { overrideStyle } from "../../../functions/stylesParser"
@@ -12,16 +13,14 @@ const useStyles = props =>
       marginBottom: theme.spacing(props.styles.root.marginBottom),
       padding: theme.spacing(props.styles.root.padding),
       margin: props.styles.root.margin,
-      color: props.styles.root.color,
-      background: props.styles.root.background,
+      color: getColor(props.styles.root.color),
+      background: getColor(props.styles.root.background),
     },
     img: props.styles.img,
   }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) => {
-  console.log(defaultStyles)
   const styles = overrideStyle(defaultStyles, optionalStyles)
-  console.log(styles)
   const classes = useStyles({ styles })()
 
   const imageGridItem = (

@@ -1,17 +1,23 @@
 import React from "react"
+import defaultStyles from "./defaultStyles"
 import { Grid, Paper } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
+import { getColor } from "../../../maps/colorMap"
 import { makeStyles } from "@material-ui/core/styles"
 import { cardComponentDict } from "../../../maps/componentMap"
+import { overrideStyle } from "../../../functions/stylesParser"
 import { contentfulTypeToComponent } from "../../../functions/componentParser"
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    marginTop: theme.spacing(0.5),
-    marginBottom: theme.spacing(0.5),
-    padding: theme.spacing(2),
-  },
-}))
+const useStyles = props =>
+  makeStyles(theme => ({
+    root: {
+      marginBottom: theme.spacing(props.styles.root.marginBottom),
+      marginTop: theme.spacing(props.styles.root.marginTop),
+      background: getColor(props.styles.root.background),
+      padding: theme.spacing(props.styles.root.padding),
+      color: getColor(props.styles.root.color),
+    },
+  }))
 
 const CardHolder = ({ contentfulId }) => {
   const data = useStaticQuery(graphql`
@@ -35,6 +41,11 @@ const CardHolder = ({ contentfulId }) => {
                   title
                 }
                 title
+                styles {
+                  internal {
+                    content
+                  }
+                }
               }
               ... on ContentfulMapCard {
                 bodyText {
@@ -45,32 +56,45 @@ const CardHolder = ({ contentfulId }) => {
                   lat
                   lon
                 }
+                styles {
+                  internal {
+                    content
+                  }
+                }
               }
             }
           }
           id
+          styles {
+            internal {
+              content
+            }
+          }
         }
       }
     }
   `)
-  const cards = data.cardHolder.nodes
-    .find(node => node.id === contentfulId)
-    .cards.map(card => {
-      return {
-        imgUrl: card.image ? card.image.file.url : null,
-        imgTitle: card.image ? card.image.title : null,
-        lat: card.coordinates ? card.coordinates.lat : null,
-        lng: card.coordinates ? card.coordinates.lon : null,
-        title: card.title,
-        body: card.bodyText.bodyText,
-        type: card.internal.type,
-        id: card.id,
-      }
-    })
-  const classes = useStyles()
+  const cardHolder = data.cardHolder.nodes.find(node => node.id === contentfulId)
+  const optionalStyles = JSON.parse(cardHolder.styles.internal.content)
+  const styles = overrideStyle(defaultStyles, optionalStyles)
+  const cards = cardHolder.cards.map(card => {
+    return {
+      optionalStyles: JSON.parse(card.styles.internal.content),
+      lng: card.coordinates ? card.coordinates.lon : null,
+      lat: card.coordinates ? card.coordinates.lat : null,
+      imgUrl: card.image ? card.image.file.url : null,
+      imgTitle: card.image ? card.image.title : null,
+      body: card.bodyText.bodyText,
+      type: card.internal.type,
+      title: card.title,
+      id: card.id,
+    }
+  })
+
+  const classes = useStyles({ styles })()
   return (
     <Paper className={classes.root}>
-      <Grid container direction="row" justify="center" alignItems="stretch" spacing={2}>
+      <Grid container {...styles.grid}>
         {cards.map((card, index) => {
           const Card = contentfulTypeToComponent(card.type, cardComponentDict)
           return card ? (

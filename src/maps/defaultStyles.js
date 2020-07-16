@@ -5,6 +5,8 @@ const defaultImg = {
   display: "block",
   maxWidth: "100%",
   maxHeight: "100%",
+  paddingTop: "",
+  paddingBottom: "",
 }
 
 const defaultRoot = {
@@ -20,6 +22,8 @@ const defaultRoot = {
   marginBottom: 0.5,
   marginTop: 0,
   margin: "auto",
+  maxWidth: "100%",
+  maxHeight: "100%",
 }
 
 const defaultP = {
