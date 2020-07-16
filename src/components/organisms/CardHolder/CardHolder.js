@@ -77,19 +77,17 @@ const CardHolder = ({ contentfulId }) => {
   const cardHolder = data.cardHolder.nodes.find(node => node.id === contentfulId)
   const optionalStyles = JSON.parse(cardHolder.styles.internal.content)
   const styles = overrideStyle(defaultStyles, optionalStyles)
-  const cards = cardHolder.cards.map(card => {
-    return {
-      optionalStyles: JSON.parse(card.styles.internal.content),
-      lng: card.coordinates ? card.coordinates.lon : null,
-      lat: card.coordinates ? card.coordinates.lat : null,
-      imgUrl: card.image ? card.image.file.url : null,
-      imgTitle: card.image ? card.image.title : null,
-      body: card.bodyText.bodyText,
-      type: card.internal.type,
-      title: card.title,
-      id: card.id,
-    }
-  })
+  const cards = cardHolder.cards.map(card => ({
+    optionalStyles: JSON.parse(card.styles.internal.content),
+    lng: card.coordinates ? card.coordinates.lon : null,
+    lat: card.coordinates ? card.coordinates.lat : null,
+    imgUrl: card.image ? card.image.file.url : null,
+    imgTitle: card.image ? card.image.title : null,
+    body: card.bodyText.bodyText,
+    type: card.internal.type,
+    title: card.title,
+    id: card.id,
+  }))
 
   const classes = useStyles({ styles })()
   return (
