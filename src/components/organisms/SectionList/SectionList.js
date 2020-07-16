@@ -24,53 +24,53 @@ const SectionList = ({ contentfulId }) => {
               internal {
                 type
               }
-            }
-            ... on ContentfulBannerSection {
-              bodyText {
-                json
-              }
-              backgroundImage {
-                file {
-                  url
+              ... on ContentfulBannerSection {
+                bodyText {
+                  json
+                }
+                backgroundImage {
+                  file {
+                    url
+                  }
+                }
+                styles {
+                  internal {
+                    content
+                  }
                 }
               }
-              styles {
-                internal {
-                  content
+              ... on ContentfulButtonTextSection {
+                title
+                bodyText {
+                  json
+                }
+                button {
+                  caption
+                  to {
+                    slug
+                  }
+                }
+                styles {
+                  internal {
+                    content
+                  }
                 }
               }
-            }
-            ... on ContentfulButtonTextSection {
-              title
-              bodyText {
-                json
-              }
-              button {
-                caption
-                to {
-                  slug
+              ... on ContentfulImageTextSection {
+                bodyText {
+                  json
                 }
-              }
-              styles {
-                internal {
-                  content
-                }
-              }
-            }
-            ... on ContentfulImageTextSection {
-              bodyText {
-                json
-              }
-              image {
-                file {
-                  url
+                image {
+                  file {
+                    url
+                  }
+                  title
                 }
                 title
-              }
-              title
-              styles {
-                internal {
-                  content
+                styles {
+                  internal {
+                    content
+                  }
                 }
               }
             }
@@ -85,8 +85,8 @@ const SectionList = ({ contentfulId }) => {
       const optionalStyles = section.styles ? JSON.parse(section.styles.internal.content) : {}
       const image = section.image ? section.image : section.backgroundImage ? section.backgroundImage : null
       return {
-        imgUrl: image? image.file.url: null,
-        imgAlt: image? image.title: null,
+        imgUrl: image ? image.file.url : null,
+        imgAlt: image ? image.title : null,
         title: section.title,
         bodyText: section.bodyText ? section.bodyText.json : null,
         optionalStyles: optionalStyles,

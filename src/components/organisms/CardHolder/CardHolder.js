@@ -24,27 +24,27 @@ const CardHolder = ({ contentfulId }) => {
               internal {
                 type
               }
-            }
-            ... on ContentfulImageCard {
-              bodyText {
-                bodyText
-              }
-              image {
-                file {
-                  url
+              ... on ContentfulImageCard {
+                bodyText {
+                  bodyText
+                }
+                image {
+                  file {
+                    url
+                  }
+                  title
                 }
                 title
               }
-              title
-            }
-            ... on ContentfulMapCard {
-              bodyText {
-                bodyText
-              }
-              title
-              coordinates {
-                lat
-                lon
+              ... on ContentfulMapCard {
+                bodyText {
+                  bodyText
+                }
+                title
+                coordinates {
+                  lat
+                  lon
+                }
               }
             }
           }

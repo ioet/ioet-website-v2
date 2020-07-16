@@ -1,5 +1,5 @@
 import React from "react"
-import defaultStyles from "./DefaultStyles"
+import defaultStyles from "./defaultStyles"
 import { makeStyles } from "@material-ui/core/styles"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import { overrideStyle } from "../../../functions/stylesParser"
