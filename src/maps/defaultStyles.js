@@ -13,6 +13,7 @@ const defaultRoot = {
   backgroundPosition: "",
   backgroundRepeat: "",
   color: "",
+  background: "",
   height: "",
   width: "",
   padding: 2,

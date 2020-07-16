@@ -8,15 +8,20 @@ import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 const useStyles = props =>
   makeStyles(theme => ({
     root: {
+      marginTop: theme.spacing(props.styles.root.maringTop),
       marginBottom: theme.spacing(props.styles.root.marginBottom),
       padding: theme.spacing(props.styles.root.padding),
       margin: props.styles.root.margin,
+      color: props.styles.root.color,
+      background: props.styles.root.background,
     },
     img: props.styles.img,
   }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, title, bodyText, optionalStyles }) => {
+  console.log(defaultStyles)
   const styles = overrideStyle(defaultStyles, optionalStyles)
+  console.log(styles)
   const classes = useStyles({ styles })()
 
   const imageGridItem = (

@@ -95,7 +95,7 @@ const Footer = props => {
 
   const classes = useStyles()
   const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
-  const navBar  = footer.navBar ? footer.navBar : {}
+  const navBar = footer.navBar ? footer.navBar : {}
   const linkArray = navBar.navigationLinks ? navBar.navigationLinks : []
   const navigationLinks = linkArray.map(item => {
     return { caption: item.caption, slug: item.to.slug }

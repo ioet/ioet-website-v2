@@ -1,41 +1,38 @@
 {
-    "img": {
-        "width": "",
-        "height": "",
-        "maxWidth": "",
-        "maxHeight": "",
-        "margin": "",
-        "display": ""
+  "img": {
+    "width": "",
+    "height": "",
+    "maxWidth": "",
+    "maxHeight": "",
+    "margin": "",
+    "display": ""
+  },
+  "root": {
+    "backgroundImage": ["color", "imgUrl"],
+    "backgroundSize": "",
+    "backgroundPosition": "",
+    "backgroundRepeat": "",
+    "color": "",
+    "height": "",
+    "width": "",
+    "padding": "???"
+  },
+  "grid": {
+    "spacing": "",
+    "direction": "",
+    "justify": "",
+    "alignItems": ""
+  },
+  "text": {
+    "p": {
+      "fontSize": "",
+      "color": "",
+      "textAlign": ""
     },
-    "root": {
-        "backgroundImage": [
-            "color",
-            "imgUrl"
-        ],
-        "backgroundSize": "",
-        "backgroundPosition": "",
-        "backgroundRepeat": "",
-        "color": "",
-        "height": "",
-        "width": "",
-        "padding": "???"
-    },
-    "grid": {
-        "spacing": "",
-        "direction": "",
-        "justify": "",
-        "alignItems": ""
-    },
-    "text": {
-        "p": {
-            "fontSize": "",
-            "color": "",
-            "textAlign": ""
-        },
-        "h1": {
-            "fontSize": "",
-            "color": "",
-            "textAlign": ""
-        }
+    "h1": {
+      "fontSize": "",
+      "color": "",
+      "textAlign": ""
     }
+  }
 }
