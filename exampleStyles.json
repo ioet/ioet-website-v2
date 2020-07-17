@@ -8,14 +8,15 @@
     "display": ""
   },
   "root": {
-    "backgroundImage": ["color", "imgUrl"],
+    "backgroundImage": "imgColorOverlay",
     "backgroundSize": "",
     "backgroundPosition": "",
     "backgroundRepeat": "",
     "color": "",
     "height": "",
     "width": "",
-    "padding": "???"
+    "padding": "",
+    "background": ""
   },
   "grid": {
     "spacing": "",
