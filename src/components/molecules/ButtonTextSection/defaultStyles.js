@@ -1,16 +1,20 @@
 import T from "../../theme"
-import { defaultText, defaultP, defaultGrid } from "../../../maps/defaultStyles"
+import { defaultText, defaultP, defaultGrid, defaultRoot } from "../../../maps/defaultStyles"
 
-const { width, widthResponsive, justify, ...gridProps } = defaultGrid
+const { justify, ...gridProps } = defaultGrid
+const { width, ...rootProps } = defaultRoot
 const { color, ...pProps } = defaultP
 const defaultStyles = {
   grid: {
-    width: "75vw",
-    widthResponsive: "95vw",
     justify: "center",
     ...gridProps,
   },
-  title: {
+  root: {
+    width: "75vw",
+    widthResponsive: "95vw",
+    ...rootProps,
+  },
+  customTitle: {
     fontWeight: "900",
     color: T.palette.info.main,
     fontSize: "26px",

@@ -7,7 +7,7 @@ const defaultStyles = {
     backgroundSize: "cover",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
-    color: "black",
+    color: "white",
     height: 550,
   },
   textContainer: {

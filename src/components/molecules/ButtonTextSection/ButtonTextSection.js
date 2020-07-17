@@ -2,6 +2,7 @@ import React from "react"
 import T from "../../theme"
 import { navigate } from "gatsby"
 import defaultStyles from "./defaultStyles"
+import { getColor } from "../../../maps/colorMap"
 import Buttons from "../../atoms/Buttons/Buttons"
 import { ThemeProvider } from "@material-ui/styles"
 import { overrideStyle } from "../../../functions/stylesParser"
@@ -12,23 +13,24 @@ import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 const useStyles = props =>
   makeStyles(theme =>
     createStyles({
-      grid: {
-        width: props.styles.grid.width,
-        spacing: props.styles.grid.spacing,
-        justify: props.styles.grid.justify,
-        alignItems: props.styles.grid.alignItems,
-        direction: props.styles.grid.direction,
-      },
       [theme.breakpoints.only("xs")]: {
         containerItems: {
-          width: props.styles.grid.widthResponsive,
+          width: props.styles.root.widthResponsive,
         },
       },
-      title: {
-        fontWeight: props.styles.title.fontWeight,
-        color: props.styles.title.color,
-        fontSize: props.styles.title.fontSize,
-        marginBottom: props.styles.title.marginBottom,
+      root: {
+        marginBottom: theme.spacing(props.styles.root.marginBottom),
+        marginTop: theme.spacing(props.styles.root.marginTop),
+        background: getColor(props.styles.root.background),
+        padding: theme.spacing(props.styles.root.padding),
+        color: getColor(props.styles.root.color),
+        width: props.styles.root.width,
+      },
+      customTitle: {
+        marginBottom: props.styles.customTitle.marginBottom,
+        fontWeight: props.styles.customTitle.fontWeight,
+        color: getColor(props.styles.customTitle.color),
+        fontSize: props.styles.customTitle.fontSize,
       },
     })
   )
@@ -39,14 +41,14 @@ const ButtonTextSection = ({ title, bodyText, button, optionalStyles }) => {
 
   return (
     <ThemeProvider theme={T}>
-      <Container maxWidth="lg">
-        <Grid container className={classes.grid}>
+      <Container maxWidth="lg" className={classes.root}>
+        <Grid container {...styles.grid}>
           <Grid item xs={12} sm={8} md={8}>
-            <Typography variant="h4" className={classes.title}>
+            <Typography variant="h4" className={classes.customTitle}>
               {title}
             </Typography>
             {bodyText ? (
-              <RichTextWrapper color={styles.text.p.color} richTextJson={bodyText}></RichTextWrapper>
+              <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text}></RichTextWrapper>
             ) : null}
           </Grid>
           <Grid item xs={12} sm={4} md={4}>
