@@ -17,10 +17,7 @@ import { Grid, AppBar, Hidden, Toolbar, Drawer, Container } from "@material-ui/c
 const drawerWidth = 700
 const useStyles = props =>
   makeStyles(theme => ({
-    root: {
-      display: "flex",
-    },
-    colorHeader: {
+    rootColor: {
       background: getColor(props.styles.root.background),
     },
     drawer: {
@@ -29,23 +26,13 @@ const useStyles = props =>
         flexShrink: 0,
       },
     },
-    appBar: {
-      [theme.breakpoints.up("sm")]: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-      },
-    },
     menuButton: {
       [theme.breakpoints.up("sm")]: {
         display: "none",
       },
     },
-    toolbar: theme.mixins.toolbar,
     drawerPaper: {
       width: drawerWidth,
-    },
-    content: {
-      flexGrow: 1,
     },
   }))
 
@@ -102,16 +89,18 @@ const Header = props => {
   }
   const optionalStyles = JSON.parse(header.styles.internal.content)
   const styles = overrideStyle(defaultStyles, optionalStyles)
+  const classes = useStyles({ styles })()
+
   const { window } = props
   const theme = useTheme()
-  const classes = useStyles({ styles })()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
   const container = window !== undefined ? () => window().document.body : undefined
+
   const drawer = (
-    <div className="customDrawer" style={{ background: styles.root.background }}>
+    <div className={`customDrawer ${classes.rootColor}`}>
       <List className="inlineItems">
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>
@@ -137,7 +126,7 @@ const Header = props => {
 
   return (
     <div className="componentHeader ">
-      <AppBar position="sticky" className={classes.colorHeader}>
+      <AppBar position="sticky" className={classes.rootColor}>
         <Container maxWidth="xl">
           <Toolbar>
             <Hidden xsDown>

@@ -15,7 +15,7 @@ import { Box, AppBar, Toolbar, Hidden, Typography, Container } from "@material-u
 
 const useStyles = props =>
   makeStyles(theme => ({
-    footer: {
+    root: {
       bottom: 0,
       height: props.styles.root.height,
       width: props.styles.root.width,
@@ -120,7 +120,7 @@ const Footer = props => {
   }
 
   return (
-    <AppBar className={classes.footer}>
+    <AppBar className={classes.root}>
       <Container maxWidth="xl">
         <Toolbar>
           <Grid container alignItems="center">
