@@ -32,10 +32,13 @@ let theme = createMuiTheme({
     },
     gradient: {
       ioetOrange: "linear-gradient(90deg, rgba(243,83,52,1) 0%, rgba(243,64,76,1) 100%)",
-      ioetMetro: "linear-gradient(90deg, rgba(243,64,84,1) 0%, rgba(243,86,50,1) 100%);",
+      ioetMetro: "linear-gradient(90deg, rgba(243,64,84,1) 0%, rgba(243,86,50,1) 100%)",
     },
     transparent: {
       ioetOrange: "linear-gradient(to right, rgb(255, 63, 86) -5%, rgba(252, 86, 48, 0.5) 88%)",
+      ioetRed: "linear-gradient(to right, rgb(255, 57, 72) -5%, rgba(255, 18, 36, 0.5) 88%)",
+      ioetMetro: "linear-gradient(to right, rgb(22, 177, 197) -5%, rgba(116, 187, 196, 0.5) 88%)",
+      ioetPurple: "linear-gradient(to right, rgb(134, 19, 136) -5%, rgba(231, 179, 232, 0.5) 88%)",
     },
   },
   tonalOffset: 0.2,

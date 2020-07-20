@@ -2,57 +2,61 @@ import "./Footer.scss"
 import React from "react"
 import T from "../../theme"
 import Grid from "@material-ui/core/Grid"
+import defaultStyles from "./defaultStyles"
 import Icons from "../../molecules/Icons/Icons"
 import { graphql, useStaticQuery } from "gatsby"
+import { getColor } from "../../../maps/colorMap"
 import { ThemeProvider } from "@material-ui/styles"
 import { makeStyles } from "@material-ui/core/styles"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
+import { overrideStyle } from "../../../functions/stylesParser"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import { Box, AppBar, Toolbar, Hidden, Typography, Container } from "@material-ui/core"
 
-const useStyles = makeStyles(theme => ({
-  footer: {
-    bottom: 0,
-    height: "20%",
-    widht: "100%",
-    top: "auto",
-    position: "relative",
-    paddingTop: theme.spacing(5),
-    background: T.palette.gradient.ioetOrange,
-  },
-  transformText: {
-    textTransform: "uppercase",
-  },
-  containerSocialIcons: {
-    [theme.breakpoints.down("sm")]: {
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(1),
+const useStyles = props =>
+  makeStyles(theme => ({
+    root: {
+      bottom: 0,
+      height: props.styles.root.height,
+      width: props.styles.root.width,
+      top: "auto",
+      position: "relative",
+      paddingTop: theme.spacing(5),
+      background: getColor(props.styles.root.background),
     },
-  },
-  copyrightContainer: {
-    justifyContent: "center",
-    [theme.breakpoints.only("xs")]: {
-      paddingTop: theme.spacing(3),
+    transformText: {
+      textTransform: "uppercase",
     },
-    [theme.breakpoints.only("sm")]: {
-      justifyContent: "flex-end",
-      paddingTop: theme.spacing(2),
+    containerSocialIcons: {
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(1),
+      },
     },
-    [theme.breakpoints.up("md")]: {
-      justifyContent: "flex-end",
-      paddingTop: theme.spacing(3),
+    copyrightContainer: {
+      justifyContent: "center",
+      [theme.breakpoints.only("xs")]: {
+        paddingTop: theme.spacing(3),
+      },
+      [theme.breakpoints.only("sm")]: {
+        justifyContent: "flex-end",
+        paddingTop: theme.spacing(2),
+      },
+      [theme.breakpoints.up("md")]: {
+        justifyContent: "flex-end",
+        paddingTop: theme.spacing(3),
+      },
     },
-  },
-  copyrightText: {
-    paddingRight: theme.spacing(5),
-    paddingBottom: theme.spacing(2.5),
-    fontWeight: "bold",
-    [theme.breakpoints.only("xs")]: {
-      paddingRight: theme.spacing(0),
-      textAlign: "center",
+    copyrightText: {
+      paddingRight: theme.spacing(5),
+      paddingBottom: theme.spacing(2.5),
+      fontWeight: "bold",
+      [theme.breakpoints.only("xs")]: {
+        paddingRight: theme.spacing(0),
+        textAlign: "center",
+      },
     },
-  },
-}))
+  }))
 
 const Footer = props => {
   const data = useStaticQuery(graphql`
@@ -88,14 +92,21 @@ const Footer = props => {
             }
             url
           }
+          styles {
+            internal {
+              content
+            }
+          }
         }
       }
     }
   `)
 
-  const classes = useStyles()
   const footer = data.footer.nodes.find(item => item.id === props.contentfulId)
-  const navBar  = footer.navBar ? footer.navBar : {}
+  const optionalStyles = JSON.parse(footer.styles.internal.content)
+  const styles = overrideStyle(defaultStyles, optionalStyles)
+  const classes = useStyles({ styles })()
+  const navBar = footer.navBar ? footer.navBar : {}
   const linkArray = navBar.navigationLinks ? navBar.navigationLinks : []
   const navigationLinks = linkArray.map(item => {
     return { caption: item.caption, slug: item.to.slug }
@@ -109,13 +120,13 @@ const Footer = props => {
   }
 
   return (
-    <AppBar className={classes.footer}>
+    <AppBar className={classes.root}>
       <Container maxWidth="xl">
         <Toolbar>
           <Grid container alignItems="center">
             <Hidden only="xs">
               <Grid item sm={3} md={3} className="containerImageLink">
-                <ImageLink slug={actionImage} imageUrl={`https:${actionImage.imageUrl}`} />
+                <ImageLink slug={actionImage.slug} imageUrl={`https:${actionImage.imageUrl}`} />
               </Grid>
 
               <Grid item xs={12} sm={9} md={6} className={classes.transformText}>

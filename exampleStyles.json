@@ -1,0 +1,39 @@
+{
+  "img": {
+    "width": "",
+    "height": "",
+    "maxWidth": "",
+    "maxHeight": "",
+    "margin": "",
+    "display": ""
+  },
+  "root": {
+    "backgroundImage": "imgColorOverlay",
+    "backgroundSize": "",
+    "backgroundPosition": "",
+    "backgroundRepeat": "",
+    "color": "",
+    "height": "",
+    "width": "",
+    "padding": "",
+    "background": ""
+  },
+  "grid": {
+    "spacing": "",
+    "direction": "",
+    "justify": "",
+    "alignItems": ""
+  },
+  "text": {
+    "p": {
+      "fontSize": "",
+      "color": "",
+      "textAlign": ""
+    },
+    "h1": {
+      "fontSize": "",
+      "color": "",
+      "textAlign": ""
+    }
+  }
+}

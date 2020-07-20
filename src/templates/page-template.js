@@ -25,6 +25,7 @@ const PageTemplate = ({ data: { pages }, pageContext: { slug } }) => {
   const pageLocaleMap = new Map(pages.nodes.map(node => [node.node_locale, node.slug]))
   const page = pages.nodes.find(node => node.slug === slug)
   const childComponents = page.childComponents ? page.childComponents : []
+
   return (
     <>
       {childComponents.map((child, index) => {

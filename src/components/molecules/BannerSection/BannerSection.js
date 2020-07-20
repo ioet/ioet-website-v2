@@ -1,37 +1,38 @@
 import React from "react"
-import T from "../../theme"
+import defaultStyles from "./defaultStyles"
 import { Grid, Paper } from "@material-ui/core"
+import { getColor } from "../../../maps/colorMap"
 import { makeStyles } from "@material-ui/core/styles"
+import { overrideStyle } from "../../../functions/stylesParser"
 import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
 
-const useStyles = makeStyles(theme => ({
-  richTextGrid: {
-    marginTop: theme.spacing(20),
-    marginBottom: theme.spacing(0.5),
-    margin: "auto",
-    padding: theme.spacing(2),
-  },
-}))
-
-const BannerSection = ({ bodyText, imgUrl }) => {
-  const styles = {
-    paperContainer: {
-      backgroundImage: [T.palette.transparent.ioetOrange, `url("https:${imgUrl}")`],
-      backgroundSize: "cover",
-      backgroundPosition: "center center",
-      backgroundRepeat: "no-repeat",
-      color: "white",
-      height: 550,
+const useStyles = props => {
+  const { backgroundImage, color, ...rootProps } = props.styles.root
+  return makeStyles(theme => ({
+    root: {
+      backgroundImage: [getColor(backgroundImage), `url("https:${props.imgUrl}")`],
+      color: getColor(color),
+      ...rootProps,
     },
-  }
-  const classes = useStyles()
+    textContainer: {
+      margin: props.styles.textContainer.margin,
+      padding: theme.spacing(props.styles.textContainer.padding),
+      marginTop: theme.spacing(props.styles.textContainer.marginTop),
+      marginBottom: theme.spacing(props.styles.textContainer.marginBottom),
+    },
+  }))
+}
+
+const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
+  const styles = overrideStyle(defaultStyles, optionalStyles)
+  const classes = useStyles({ styles, imgUrl })()
   return (
     <>
-      <Paper style={styles.paperContainer}>
+      <Paper className={classes.root}>
         <Grid container item direction="row" xs={12}>
           {bodyText ? (
-            <Grid className={classes.richTextGrid} item>
-              <RichTextWrapper richTextJson={bodyText}></RichTextWrapper>
+            <Grid className={classes.textContainer} item>
+              <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text}></RichTextWrapper>
             </Grid>
           ) : null}
         </Grid>

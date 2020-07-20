@@ -26,20 +26,20 @@ const Checkerboard = ({ contentfulId }) => {
                 internal {
                   type
                 }
-              }
-              ... on ContentfulCheckerboardItemImage {
-                image {
-                  file {
-                    url
+                ... on ContentfulCheckerboardItemImage {
+                  image {
+                    file {
+                      url
+                    }
                   }
+                  title
                 }
-                title
-              }
-              ... on ContentfulCheckerboardItemText {
-                content {
-                  json
+                ... on ContentfulCheckerboardItemText {
+                  content {
+                    json
+                  }
+                  title
                 }
-                title
               }
             }
           }
