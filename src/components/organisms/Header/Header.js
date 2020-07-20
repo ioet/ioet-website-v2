@@ -1,50 +1,53 @@
 import "./Header.scss"
 import React from "react"
-import T from "../../theme"
 import List from "@material-ui/core/List"
 import MenuIcon from "@material-ui/icons/Menu"
+import defaultStyles from "./defaultStyles"
 import { graphql, useStaticQuery } from "gatsby"
+import { getColor } from "../../../maps/colorMap"
 import NavBar from "../../molecules/NavBar/NavBar"
 import IconButton from "@material-ui/core/IconButton"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
+import { overrideStyle } from "../../../functions/stylesParser"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 import { Grid, AppBar, Hidden, Toolbar, Drawer, Container } from "@material-ui/core"
 
 const drawerWidth = 700
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: "flex",
-  },
-  colorHeader: {
-    background: T.palette.transparent.ioetOrange,
-  },
-  drawer: {
-    [theme.breakpoints.up("sm")]: {
+const useStyles = props =>
+  makeStyles(theme => ({
+    root: {
+      display: "flex",
+    },
+    colorHeader: {
+      background: getColor(props.styles.root.background),
+    },
+    drawer: {
+      [theme.breakpoints.up("sm")]: {
+        width: drawerWidth,
+        flexShrink: 0,
+      },
+    },
+    appBar: {
+      [theme.breakpoints.up("sm")]: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+      },
+    },
+    menuButton: {
+      [theme.breakpoints.up("sm")]: {
+        display: "none",
+      },
+    },
+    toolbar: theme.mixins.toolbar,
+    drawerPaper: {
       width: drawerWidth,
-      flexShrink: 0,
     },
-  },
-  appBar: {
-    [theme.breakpoints.up("sm")]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+    content: {
+      flexGrow: 1,
     },
-  },
-  menuButton: {
-    [theme.breakpoints.up("sm")]: {
-      display: "none",
-    },
-  },
-  toolbar: theme.mixins.toolbar,
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-  },
-}))
+  }))
 
 const Header = props => {
   const data = useStaticQuery(graphql`
@@ -76,6 +79,11 @@ const Header = props => {
           id
           node_locale
           title
+          styles {
+            internal {
+              content
+            }
+          }
         }
       }
     }
@@ -92,17 +100,18 @@ const Header = props => {
     imageUrl: header.navBar.mainIcon.icon.file.url,
     slug: header.navBar.mainIcon.to.slug,
   }
+  const optionalStyles = JSON.parse(header.styles.internal.content)
+  const styles = overrideStyle(defaultStyles, optionalStyles)
   const { window } = props
   const theme = useTheme()
-  const classes = useStyles()
+  const classes = useStyles({ styles })()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
   const container = window !== undefined ? () => window().document.body : undefined
-
   const drawer = (
-    <div className="customDrawer" style={{ background: T.palette.transparent.ioetOrange }}>
+    <div className="customDrawer" style={{ background: styles.root.background }}>
       <List className="inlineItems">
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>
