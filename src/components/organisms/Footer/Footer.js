@@ -126,7 +126,7 @@ const Footer = props => {
           <Grid container alignItems="center">
             <Hidden only="xs">
               <Grid item sm={3} md={3} className="containerImageLink">
-                <ImageLink slug={actionImage} imageUrl={`https:${actionImage.imageUrl}`} />
+                <ImageLink slug={actionImage.slug} imageUrl={`https:${actionImage.imageUrl}`} />
               </Grid>
 
               <Grid item xs={12} sm={9} md={6} className={classes.transformText}>
