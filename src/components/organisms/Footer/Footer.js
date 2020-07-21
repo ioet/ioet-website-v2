@@ -106,17 +106,19 @@ const Footer = props => {
   const optionalStyles = JSON.parse(footer.styles.internal.content)
   const styles = overrideStyle(defaultStyles, optionalStyles)
   const classes = useStyles({ styles })()
-  const navBar = footer.navBar ? footer.navBar : {}
-  const linkArray = navBar.navigationLinks ? navBar.navigationLinks : []
-  const navigationLinks = linkArray.map(item => {
+
+  const navBar = footer.navBar ? footer.navBar : { navigationLinks: [], mainIcon: null }
+  const links = navBar.navigationLinks ? navBar.navigationLinks : []
+  const navigationLinks = links.map(item => {
     return { caption: item.caption, slug: item.to.slug }
   })
-  const SocialIcons = footer.socialIcons.map(item => {
+  const icons = footer.socialIcons ? footer.socialIcons : []
+  const SocialIcons = icons.map(item => {
     return { slug: item.title, imageUrl: item.icon.file.url, linkTo: item.url }
   })
   const actionImage = {
-    imageUrl: navBar.mainIcon.icon.file.url,
-    slug: navBar.mainIcon.to.slug,
+    imageUrl: navBar.mainIcon ? navBar.mainIcon.icon.file.url : null,
+    slug: navBar.mainIcon ? navBar.mainIcon.to.slug : null,
   }
 
   return (
