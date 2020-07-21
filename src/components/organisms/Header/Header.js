@@ -77,15 +77,16 @@ const Header = props => {
   `)
 
   const header = data.header.nodes.find(item => item.id === props.contentfulId)
-  const navigationLinks = header.navBar.navigationLinks.map(item => {
+  const navBar = header.navBar ? header.navBar : { navigationLinks: [], mainIcon: null }
+  const navigationLinks = navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: item.to.slug }
   })
   const languageOptions = header.languageOptions.map(item => {
     return { text: item.name, value: item.locale }
   })
   const actionImage = {
-    imageUrl: header.navBar.mainIcon.icon.file.url,
-    slug: header.navBar.mainIcon.to.slug,
+    imageUrl: navBar.mainIcon ? navBar.mainIcon.icon.file.url : null,
+    slug: navBar.mainIcon ? navBar.mainIcon.to.slug : null,
   }
   const optionalStyles = JSON.parse(header.styles.internal.content)
   const styles = overrideStyle(defaultStyles, optionalStyles)
