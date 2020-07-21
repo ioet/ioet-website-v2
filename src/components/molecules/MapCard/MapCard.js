@@ -13,6 +13,12 @@ const useStyles = props =>
       background: getColor(props.styles.root.background),
       color: getColor(props.styles.root.color),
       maxWidth: props.styles.root.maxWidth,
+      height: props.styles.root.height,
+      boxShadow: props.styles.root.boxShadow,
+    },
+    img: {
+      height: props.styles.img.height,
+      border: props.styles.img.border,
     },
   }))
 
@@ -26,6 +32,7 @@ const MapCard = ({ lat, lng, title, body, optionalStyles }) => {
         <CardMedia
           src={`https://www.google.com/maps/embed/v1/place?q=${lat},${lng}&key=${process.env.GATSBY_GOOGLE_MAPS_API_KEY}`}
           component="iframe"
+          className={classes.img}
         />
         <CardContent>
           <ThemeProvider theme={theme}>

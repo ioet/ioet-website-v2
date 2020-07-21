@@ -10,7 +10,9 @@ const defaultStyles = {
     maxWidth: 345,
     maxHeight: "100%",
     width: "",
-    height: "100%",
+    height: 526,
+    boxShadow: "0 3px 18px -5px darkgrey",
+    margin: 10,
   },
   text: {
     h6: {
@@ -18,6 +20,10 @@ const defaultStyles = {
       ...hProps,
     },
     ...textProps,
+  },
+  img: {
+    height: "40vh",
+    border: "none",
   },
 }
 
