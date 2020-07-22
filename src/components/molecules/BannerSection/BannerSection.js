@@ -20,7 +20,7 @@ const useStyles = props => {
       marginTop: theme.spacing(props.styles.textContainer.marginTop),
       marginBottom: theme.spacing(props.styles.textContainer.marginBottom),
       marginRight: theme.spacing(props.styles.textContainer.marginRight),
-      marginLeft: theme.spacing(props.styles.textContainer.marginLeft)
+      marginLeft: theme.spacing(props.styles.textContainer.marginLeft),
     },
   }))
 }
