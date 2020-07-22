@@ -27,7 +27,6 @@ const useStyles = props => {
 
 const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
   const styles = overrideStyle(defaultStyles, optionalStyles)
-  console.log(styles)
   const classes = useStyles({ styles, imgUrl })()
   return (
     <>
