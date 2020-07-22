@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
+import { buildLocalizedSlug } from "../../../functions/utils"
 import { sectionElementComponentDict } from "../../../maps/componentMap"
 import { contentfulTypeToComponent } from "../../../functions/componentParser"
 
@@ -25,6 +26,7 @@ const SectionList = ({ contentfulId }) => {
                 type
               }
               ... on ContentfulBannerSection {
+                node_locale
                 bodyText {
                   json
                 }
@@ -40,6 +42,7 @@ const SectionList = ({ contentfulId }) => {
                 }
               }
               ... on ContentfulButtonTextSection {
+                node_locale
                 title
                 bodyText {
                   json
@@ -57,6 +60,7 @@ const SectionList = ({ contentfulId }) => {
                 }
               }
               ... on ContentfulImageTextSection {
+                node_locale
                 bodyText {
                   json
                 }
@@ -92,7 +96,12 @@ const SectionList = ({ contentfulId }) => {
         optionalStyles: optionalStyles,
         id: section.id,
         type: section.internal.type,
-        button: section.button ? section.button : null,
+        button: section.button
+          ? {
+              caption: section.button.caption,
+              slug: buildLocalizedSlug(section.node_locale, section.button.to.slug),
+            }
+          : null,
       }
     })
   const classes = useStyles()

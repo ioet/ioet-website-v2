@@ -55,7 +55,7 @@ const ButtonTextSection = ({ title, bodyText, button, optionalStyles }) => {
             <Buttons
               buttonText={button.caption}
               onClick={_e => {
-                if (button) navigate(`/${button.to.slug}/`)
+                if (button) navigate(`/${button.slug}/`)
               }}
             ></Buttons>
           </Grid>
