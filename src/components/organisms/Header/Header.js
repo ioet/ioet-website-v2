@@ -78,6 +78,7 @@ const Header = props => {
   `)
 
   const header = data.header.nodes.find(item => item.id === props.contentfulId)
+  const headerTitle = header.title ? header.title : ""
   const navBar = header.navBar ? header.navBar : { navigationLinks: [], mainIcon: null }
   const navigationLinks = navBar.navigationLinks.map(item => {
     return { caption: item.caption, slug: buildLocalizedSlug(header.node_locale, item.to.slug) }
@@ -107,7 +108,7 @@ const Header = props => {
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>
             <NavigationLink
-              key={`drawer-${header.title}-${index}-${item.slug}`}
+              key={`drawer-${headerTitle}-${index}-${item.slug}`}
               slug={item.slug}
               caption={item.caption}
             />

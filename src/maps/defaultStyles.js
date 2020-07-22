@@ -21,6 +21,8 @@ const defaultRoot = {
   padding: 2,
   marginBottom: 0.5,
   marginTop: 0,
+  marginRight: 0,
+  marginLeft: 0,
   margin: "auto",
   maxWidth: "100%",
   maxHeight: "100%",

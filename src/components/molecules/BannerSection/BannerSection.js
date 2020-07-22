@@ -19,6 +19,8 @@ const useStyles = props => {
       padding: theme.spacing(props.styles.textContainer.padding),
       marginTop: theme.spacing(props.styles.textContainer.marginTop),
       marginBottom: theme.spacing(props.styles.textContainer.marginBottom),
+      marginRight: theme.spacing(props.styles.textContainer.marginRight),
+      marginLeft: theme.spacing(props.styles.textContainer.marginLeft),
     },
   }))
 }
