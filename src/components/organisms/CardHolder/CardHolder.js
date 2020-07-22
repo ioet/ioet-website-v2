@@ -13,6 +13,8 @@ const useStyles = props =>
     root: {
       marginBottom: theme.spacing(props.styles.root.marginBottom),
       marginTop: theme.spacing(props.styles.root.marginTop),
+      marginLeft: theme.spacing(props.styles.root.marginLeft),
+      marginRight: theme.spacing(props.styles.root.marginRight),
       background: getColor(props.styles.root.background),
       padding: theme.spacing(props.styles.root.padding),
       color: getColor(props.styles.root.color),
