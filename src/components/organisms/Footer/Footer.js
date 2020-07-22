@@ -9,6 +9,7 @@ import { getColor } from "../../../maps/colorMap"
 import { ThemeProvider } from "@material-ui/styles"
 import { makeStyles } from "@material-ui/core/styles"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
+import { buildLocalizedSlug } from "../../../functions/utils"
 import { overrideStyle } from "../../../functions/stylesParser"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import { Box, AppBar, Toolbar, Hidden, Typography, Container } from "@material-ui/core"
@@ -64,8 +65,9 @@ const Footer = props => {
       footer: allContentfulFooter {
         nodes {
           id
-          copyright
           title
+          copyright
+          node_locale
           navBar {
             mainIcon {
               icon {
@@ -110,7 +112,7 @@ const Footer = props => {
   const navBar = footer.navBar ? footer.navBar : { navigationLinks: [], mainIcon: null }
   const links = navBar.navigationLinks ? navBar.navigationLinks : []
   const navigationLinks = links.map(item => {
-    return { caption: item.caption, slug: item.to.slug }
+    return { caption: item.caption, slug: buildLocalizedSlug(footer.node_locale, item.to.slug) }
   })
   const icons = footer.socialIcons ? footer.socialIcons : []
   const SocialIcons = icons.map(item => {
@@ -118,7 +120,7 @@ const Footer = props => {
   })
   const actionImage = {
     imageUrl: navBar.mainIcon ? navBar.mainIcon.icon.file.url : null,
-    slug: navBar.mainIcon ? navBar.mainIcon.to.slug : null,
+    slug: navBar.mainIcon ? buildLocalizedSlug(footer.node_locale, navBar.mainIcon.to.slug) : null,
   }
 
   return (
