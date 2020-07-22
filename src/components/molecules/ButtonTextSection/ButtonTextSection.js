@@ -41,7 +41,7 @@ const ButtonTextSection = ({ title, bodyText, button, optionalStyles }) => {
 
   return (
     <ThemeProvider theme={T}>
-      <Container maxWidth="lg" className={classes.root}>
+      <Container maxWidth="md" className={classes.root}>
         <Grid container {...styles.grid}>
           <Grid item xs={12} sm={8} md={8}>
             <Typography variant="h4" className={classes.customTitle}>
