@@ -91,7 +91,7 @@ const SectionList = ({ contentfulId }) => {
       return {
         imgUrl: image ? image.file.url : null,
         imgAlt: image ? image.title : null,
-        title: section.title,
+        title: section.title ? section.title : null,
         bodyText: section.bodyText ? section.bodyText.json : null,
         optionalStyles: optionalStyles,
         id: section.id,

@@ -19,12 +19,15 @@ const useStyles = props => {
       padding: theme.spacing(props.styles.textContainer.padding),
       marginTop: theme.spacing(props.styles.textContainer.marginTop),
       marginBottom: theme.spacing(props.styles.textContainer.marginBottom),
+      marginRight: theme.spacing(props.styles.textContainer.marginRight),
+      marginLeft: theme.spacing(props.styles.textContainer.marginLeft)
     },
   }))
 }
 
 const BannerSection = ({ bodyText, imgUrl, optionalStyles }) => {
   const styles = overrideStyle(defaultStyles, optionalStyles)
+  console.log(styles)
   const classes = useStyles({ styles, imgUrl })()
   return (
     <>
