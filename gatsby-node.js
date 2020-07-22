@@ -23,6 +23,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: require.resolve("./src/templates/page-template.js"),
       context: {
         slug: page.slug,
+        nodeLocale:page.node_locale,
         contentfulId: page.contentful_id,
       },
     })
