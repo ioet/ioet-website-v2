@@ -1,9 +1,12 @@
+const localeMap = require("./src/maps/localeMap")
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       allContentfulPage {
         nodes {
           contentful_id
+          node_locale
           slug
         }
       }
@@ -16,17 +19,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   result.data.allContentfulPage.nodes.forEach(page => {
     actions.createPage({
-      path: `/${page.slug}/`,
+      path: `/${localeMap.get(page.node_locale)}/${page.slug}/`,
       component: require.resolve("./src/templates/page-template.js"),
       context: {
         slug: page.slug,
+        nodeLocale: page.node_locale,
         contentfulId: page.contentful_id,
       },
     })
   })
   actions.createRedirect({
     fromPath: `/`,
-    toPath: `/home`,
+    toPath: `/en/home`,
     redirectInBrowser: true,
     isPermanent: `true`,
   })

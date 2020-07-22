@@ -1,3 +1,5 @@
+const defaultLocaleMap = require("../maps/localeMap")
+
 const accumulateKeys = (previousValue, currentValue) => ({ ...previousValue, ...currentValue })
 
 const checkEmptyStyle = value => (Array.isArray(value) ? !value.includes("") : value !== "" && value !== {})
@@ -25,4 +27,9 @@ const flattenObject = (ob, prefix = false, result = null) => {
   return result
 }
 
-export { accumulateKeys, checkEmptyStyle, isObject, flattenObject }
+const buildLocalizedSlug = (locale, slug, localeMap = defaultLocaleMap) => {
+  const actualLocale = localeMap.has(locale) ? localeMap.get(locale) : locale
+  return `${actualLocale}/${slug}`
+}
+
+export { accumulateKeys, checkEmptyStyle, isObject, flattenObject, buildLocalizedSlug }

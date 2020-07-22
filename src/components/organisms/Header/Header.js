@@ -8,6 +8,7 @@ import { getColor } from "../../../maps/colorMap"
 import NavBar from "../../molecules/NavBar/NavBar"
 import IconButton from "@material-ui/core/IconButton"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
+import { buildLocalizedSlug } from "../../../functions/utils"
 import { overrideStyle } from "../../../functions/stylesParser"
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
@@ -79,14 +80,14 @@ const Header = props => {
   const header = data.header.nodes.find(item => item.id === props.contentfulId)
   const navBar = header.navBar ? header.navBar : { navigationLinks: [], mainIcon: null }
   const navigationLinks = navBar.navigationLinks.map(item => {
-    return { caption: item.caption, slug: item.to.slug }
+    return { caption: item.caption, slug: buildLocalizedSlug(header.node_locale, item.to.slug) }
   })
   const languageOptions = header.languageOptions.map(item => {
     return { text: item.name, value: item.locale }
   })
   const actionImage = {
     imageUrl: navBar.mainIcon ? navBar.mainIcon.icon.file.url : null,
-    slug: navBar.mainIcon ? navBar.mainIcon.to.slug : null,
+    slug: navBar.mainIcon ? buildLocalizedSlug(header.node_locale, navBar.mainIcon.to.slug) : null,
   }
   const optionalStyles = JSON.parse(header.styles.internal.content)
   const styles = overrideStyle(defaultStyles, optionalStyles)

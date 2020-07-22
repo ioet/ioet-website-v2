@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { buildLocalizedSlug } from "../functions/utils"
 import { contentfulTypeToComponent } from "../functions/componentParser"
 
 export const query = graphql`
@@ -21,9 +22,11 @@ export const query = graphql`
   }
 `
 
-const PageTemplate = ({ data: { pages }, pageContext: { slug } }) => {
-  const pageLocaleMap = new Map(pages.nodes.map(node => [node.node_locale, node.slug]))
-  const page = pages.nodes.find(node => node.slug === slug)
+const PageTemplate = ({ data: { pages }, pageContext: { slug, nodeLocale } }) => {
+  const pageLocaleMap = new Map(
+    pages.nodes.map(node => [node.node_locale, buildLocalizedSlug(node.node_locale, node.slug)])
+  )
+  const page = pages.nodes.find(node => node.slug === slug && node.node_locale === nodeLocale)
   const childComponents = page.childComponents ? page.childComponents : []
 
   return (
