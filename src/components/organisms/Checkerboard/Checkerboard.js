@@ -3,12 +3,16 @@ import { Grid } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import { makeStyles } from "@material-ui/core/styles"
 import CheckerboardRow from "../../molecules/CheckerboardRow/CheckerboardRow"
+import "./Checkerboard.scss"
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(0.5),
     marginBottom: theme.spacing(0.5),
     padding: theme.spacing(2),
+    img: {
+      width: "100px",
+    },
   },
 }))
 
