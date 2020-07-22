@@ -1,7 +1,6 @@
 import { defaultText, defaultImg, defaultH, defaultP } from "../../../maps/defaultStyles"
 import T from "../../theme"
 
-
 const { paddingTop, ...imgProps } = defaultImg
 const { h6, p, ...textProps } = defaultText
 const { color, ...hProps } = defaultH
@@ -14,7 +13,7 @@ const defaultStyles = {
     maxWidth: 345,
     maxHeight: "100%",
     width: "",
-    height: "100%"
+    height: "100%",
   },
   active: {
     color: "white",

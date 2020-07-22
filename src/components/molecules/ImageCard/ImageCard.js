@@ -16,9 +16,6 @@ const useStyles = props =>
     active: {
       background: getColor(props.styles.active.background),
       color: getColor(props.styles.active.color),
-      h6: {
-        color: getColor(props.styles.active.color),
-      }
     }
   }))
 
