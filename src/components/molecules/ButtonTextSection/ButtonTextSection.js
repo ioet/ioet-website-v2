@@ -27,10 +27,9 @@ const useStyles = props =>
         width: props.styles.root.width,
       },
       customTitle: {
-        marginBottom: props.styles.customTitle.marginBottom,
+        marginBottom: theme.spacing(1.5),
         fontWeight: props.styles.customTitle.fontWeight,
         color: getColor(props.styles.customTitle.color),
-        fontSize: props.styles.customTitle.fontSize,
       },
     })
   )
