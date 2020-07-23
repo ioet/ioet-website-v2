@@ -8,7 +8,7 @@ const { align, ...pProps } = defaultP
 
 const defaultStyles = {
   root: {
-    color: "black",
+    color: T.palette.secondary.dark,
     background: "white",
     maxWidth: 345,
     maxHeight: "100%",
@@ -16,8 +16,8 @@ const defaultStyles = {
     height: "100%",
   },
   active: {
-    color: "white",
-    background: T.palette.primary.ligth,
+    color: "black",
+    background: ""
   },
   img: {
     ...imgProps,
