@@ -16,31 +16,33 @@ const useStyles = props =>
     active: {
       background: getColor(props.styles.active.background),
       color: getColor(props.styles.active.color),
-    }
+    },
   }))
 
 const ImageCard = props => {
   const styles = overrideStyle(defaultStyles, props.optionalStyles)
 
   const classes = useStyles({ styles })()
-  const [hover, sethover] = useState(false);
+  const [hover, sethover] = useState(false)
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia className={classes.img} image={`https://${props.imgUrl}`} title={props.imgTitle} />
-        {hover ?
-          <CardContent onMouseOver={ ()=> sethover(true)}
-          onMouseOut={()=>sethover(false)}
-          className={classes.active}>
-          <Typography variant="h6" {...styles.text.active}>
-            {props.title}
-          </Typography>
-          <Typography variant="body2" component="p" {...styles.text.p}>
-            {props.body}
-          </Typography>
-        </CardContent> :
-          <CardContent onMouseOver={()=>sethover(true)}
-          onMouseOut={()=>sethover(false)}>
+        {hover ? (
+          <CardContent
+            onMouseOver={() => sethover(true)}
+            onMouseOut={() => sethover(false)}
+            className={classes.active}
+          >
+            <Typography variant="h6" {...styles.text.active}>
+              {props.title}
+            </Typography>
+            <Typography variant="body2" component="p" {...styles.text.p}>
+              {props.body}
+            </Typography>
+          </CardContent>
+        ) : (
+          <CardContent onMouseOver={() => sethover(true)} onMouseOut={() => sethover(false)}>
             <Typography variant="h6" {...styles.text.h6}>
               {props.title}
             </Typography>
@@ -48,7 +50,7 @@ const ImageCard = props => {
               {props.body}
             </Typography>
           </CardContent>
-        }
+        )}
       </CardActionArea>
     </Card>
   )
