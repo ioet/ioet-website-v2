@@ -17,7 +17,7 @@ const defaultStyles = {
   },
   active: {
     color: "black",
-    background: ""
+    background: "",
   },
   img: {
     ...imgProps,

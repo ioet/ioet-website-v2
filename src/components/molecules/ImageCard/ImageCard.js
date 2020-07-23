@@ -24,13 +24,16 @@ const ImageCard = props => {
 
   const classes = useStyles({ styles })()
   const [hover, sethover] = useState(false)
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia className={classes.img} image={`https://${props.imgUrl}`} title={props.imgTitle} />
         {hover ? (
           <CardContent
+            onFocus
             onMouseOver={() => sethover(true)}
+            onBlur
             onMouseOut={() => sethover(false)}
             className={classes.active}
           >
@@ -42,7 +45,7 @@ const ImageCard = props => {
             </Typography>
           </CardContent>
         ) : (
-          <CardContent onMouseOver={() => sethover(true)} onMouseOut={() => sethover(false)}>
+          <CardContent onFocus onMouseOver={() => sethover(true)} onBlur onMouseOut={() => sethover(false)}>
             <Typography variant="h6" {...styles.text.h6}>
               {props.title}
             </Typography>
