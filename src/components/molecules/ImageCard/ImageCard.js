@@ -11,6 +11,9 @@ const useStyles = props =>
       background: getColor(props.styles.root.background),
       color: getColor(props.styles.root.color),
       maxWidth: props.styles.root.maxWidth,
+      maxHeight: props.styles.root.maxHeight,
+      width: props.styles.root.width,
+      height: props.styles.root.height,
     },
     img: props.styles.img,
     active: {
