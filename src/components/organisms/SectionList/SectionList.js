@@ -7,8 +7,8 @@ import { contentfulTypeToComponent } from "../../../functions/componentParser"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(0.01),
-    marginBottom: theme.spacing(0.5),
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(0),
   },
 }))
 

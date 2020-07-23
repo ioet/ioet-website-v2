@@ -17,8 +17,6 @@ const defaultStyles = {
   customTitle: {
     fontWeight: "900",
     color: T.palette.info.main,
-    fontSize: "26px",
-    marginBottom: "10px",
   },
   text: {
     p: {

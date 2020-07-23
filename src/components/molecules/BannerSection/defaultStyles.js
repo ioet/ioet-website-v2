@@ -13,8 +13,8 @@ const defaultStyles = {
   textContainer: {
     marginTop: 20,
     marginBottom: 0.5,
-    marginRight: 0,
-    marginLeft: 0,
+    marginRight: "",
+    marginLeft: "",
     margin: "auto",
     padding: 2,
   },

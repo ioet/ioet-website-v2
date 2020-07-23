@@ -8,8 +8,8 @@ const defaultStyles = {
     background: "white",
     marginTop: 0.5,
     marginBottom: 0.5,
-    marginLeft: 0,
-    marginRight: 0,
+    marginLeft: "",
+    marginRight: "",
     padding: 2,
   },
   grid: {
