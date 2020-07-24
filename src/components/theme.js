@@ -1,4 +1,6 @@
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles"
+import createBreakpoints from "@material-ui/core/styles/createBreakpoints"
+const breakpoints = createBreakpoints({})
 
 let theme = createMuiTheme({
   typography: {
@@ -8,7 +10,66 @@ let theme = createMuiTheme({
     fontWeightMedium: 900,
     fontFamily: ["Barlow", "sans-serif"].join(","),
   },
-
+  overrides: {
+    MuiTypography: {
+      h1: {
+        [breakpoints.down("sm")]: {
+          fontSize: "4.1rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "3rem",
+        },
+      },
+      h2: {
+        [breakpoints.down("sm")]: {
+          fontSize: "2.6rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "2.1rem",
+        },
+      },
+      h3: {
+        [breakpoints.down("sm")]: {
+          fontSize: "2.1rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "1.7rem",
+        },
+      },
+      h4: {
+        [breakpoints.down("sm")]: {
+          fontSize: "1.5rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "1.2rem",
+        },
+      },
+      h5: {
+        [breakpoints.down("sm")]: {
+          fontSize: "1.1rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "0.8rem",
+        },
+      },
+      h6: {
+        [breakpoints.down("sm")]: {
+          fontSize: "0.9rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "0.7rem",
+        },
+      },
+      p: {
+        [breakpoints.down("sm")]: {
+          fontSize: "0.9rem",
+        },
+        [breakpoints.down("xs")]: {
+          fontSize: "0.7rem",
+        },
+      },
+    },
+  },
   palette: {
     primary: {
       light: "#FF5E00",

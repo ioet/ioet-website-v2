@@ -20,7 +20,7 @@ const useStyles = props =>
   makeStyles(theme => ({
     root: {
       background: getColor(props.styles.root.background),
-      position: props.styles.root.position
+      position: props.styles.root.position,
     },
     drawer: {
       [theme.breakpoints.up("sm")]: {
