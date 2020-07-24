@@ -18,8 +18,9 @@ import { Grid, AppBar, Hidden, Toolbar, Drawer, Container } from "@material-ui/c
 const drawerWidth = 700
 const useStyles = props =>
   makeStyles(theme => ({
-    rootColor: {
+    root: {
       background: getColor(props.styles.root.background),
+      position: props.styles.root.position
     },
     drawer: {
       [theme.breakpoints.up("sm")]: {
@@ -103,7 +104,7 @@ const Header = props => {
   const container = window !== undefined ? () => window().document.body : undefined
 
   const drawer = (
-    <div className={`customDrawer ${classes.rootColor}`}>
+    <div className={`customDrawer ${classes.root}`}>
       <List className="inlineItems">
         {navigationLinks.map((item, index) => (
           <div button="true" key={`drawer-${props.parentSlug}-${item.caption}`}>
@@ -129,7 +130,7 @@ const Header = props => {
 
   return (
     <div className="componentHeader ">
-      <AppBar position="sticky" className={classes.rootColor}>
+      <AppBar className={classes.root}>
         <Container maxWidth="xl">
           <Toolbar>
             <Hidden xsDown>

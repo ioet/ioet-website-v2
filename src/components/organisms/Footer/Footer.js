@@ -17,11 +17,12 @@ import { Box, AppBar, Toolbar, Hidden, Typography, Container } from "@material-u
 const useStyles = props =>
   makeStyles(theme => ({
     root: {
+      flexGrow: 1,
       bottom: 0,
       height: props.styles.root.height,
       width: props.styles.root.width,
       top: "auto",
-      position: "relative",
+      position: props.styles.root.position,
       paddingTop: theme.spacing(5),
       background: getColor(props.styles.root.background),
     },
