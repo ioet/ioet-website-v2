@@ -1,17 +1,23 @@
-import { defaultText, defaultImg, defaultH } from "../../../maps/defaultStyles"
+import { defaultText, defaultImg, defaultH, defaultP } from "../../../maps/defaultStyles"
+import T from "../../theme"
 
 const { paddingTop, ...imgProps } = defaultImg
-const { h6, ...textProps } = defaultText
+const { h6, p, ...textProps } = defaultText
 const { color, ...hProps } = defaultH
+const { align, ...pProps } = defaultP
 
 const defaultStyles = {
   root: {
-    color: "black",
+    color: T.palette.secondary.dark,
     background: "white",
     maxWidth: 345,
     maxHeight: "100%",
     width: "",
     height: "100%",
+  },
+  active: {
+    color: "black",
+    background: "",
   },
   img: {
     ...imgProps,
@@ -21,6 +27,11 @@ const defaultStyles = {
     h6: {
       color: "textPrimary",
       ...hProps,
+    },
+    p: {
+      color: "textSecondary",
+      align: "",
+      ...pProps,
     },
     ...textProps,
   },
