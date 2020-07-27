@@ -22,7 +22,7 @@ const useStyles = props => {
       marginRight: theme.spacing(props.styles.textContainer.marginRight),
       marginLeft: theme.spacing(props.styles.textContainer.marginLeft),
       [theme.breakpoints.only("xs")]: {
-        marginTop: theme.spacing(props.styles.textContainer.padding - props.styles.textContainer.padding + 3),
+        marginTop: theme.spacing(10),
       },
     },
   }))
