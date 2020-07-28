@@ -1,9 +1,11 @@
 const contentfulComponentDict = new Map([
   ["ContentfulHeader", "components/organisms/Header/Header.js"],
-  ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
+  ["ContentfulFooter", "components/organisms/FooterNew/FooterNew.js"],
   ["ContentfulCardHolder", "components/organisms/CardHolder/CardHolder.js"],
   ["ContentfulSectionList", "components/organisms/SectionList/SectionList.js"],
   ["ContentfulCheckerboard", "components/organisms/Checkerboard/Checkerboard.js"],
+  // Render the old Footer: https://share.getcloudapp.com/lluYj0Bm
+  // ["ContentfulFooter", "components/organisms/Footer/Footer.js"],
 ])
 
 const cardComponentDict = new Map([
