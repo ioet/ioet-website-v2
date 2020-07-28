@@ -13,6 +13,9 @@ let theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       h1: {
+        [breakpoints.down("md")]: {
+          fontSize: "5.2rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "4.1rem",
         },
@@ -21,6 +24,9 @@ let theme = createMuiTheme({
         },
       },
       h2: {
+        [breakpoints.down("md")]: {
+          fontSize: "3.6rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "2.6rem",
         },
@@ -29,6 +35,9 @@ let theme = createMuiTheme({
         },
       },
       h3: {
+        [breakpoints.down("md")]: {
+          fontSize: "3.2rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "2.1rem",
         },
@@ -37,6 +46,9 @@ let theme = createMuiTheme({
         },
       },
       h4: {
+        [breakpoints.down("md")]: {
+          fontSize: "2.6rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "1.5rem",
         },
@@ -45,6 +57,9 @@ let theme = createMuiTheme({
         },
       },
       h5: {
+        [breakpoints.down("md")]: {
+          fontSize: "2.2rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "1.1rem",
         },
@@ -53,6 +68,9 @@ let theme = createMuiTheme({
         },
       },
       h6: {
+        [breakpoints.down("md")]: {
+          fontSize: "1.1rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "0.9rem",
         },
@@ -61,6 +79,9 @@ let theme = createMuiTheme({
         },
       },
       p: {
+        [breakpoints.down("md")]: {
+          fontSize: "1rem",
+        },
         [breakpoints.down("sm")]: {
           fontSize: "0.9rem",
         },
