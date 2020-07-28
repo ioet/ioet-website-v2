@@ -1,9 +1,12 @@
+import { navigate } from "gatsby"
 import React, { useState } from "react"
 import defaultStyles from "./defaultStyles"
 import { getColor } from "../../../maps/colorMap"
 import { makeStyles } from "@material-ui/core/styles"
+import { buildLocalizedSlug } from "../../../functions/utils"
 import { overrideStyle } from "../../../functions/stylesParser"
-import { Card, CardMedia, CardContent, Typography, CardActionArea } from "@material-ui/core"
+import RichTextWrapper from "../../atoms/RichTextWrapper/RichTextWrapper"
+import { Card, CardMedia, CardContent, CardActionArea, Typography } from "@material-ui/core"
 
 const useStyles = props =>
   makeStyles(_theme => ({
@@ -20,6 +23,9 @@ const useStyles = props =>
       background: getColor(props.styles.active.background),
       color: getColor(props.styles.active.color),
     },
+    actionArea: {
+      flexGrow: 1,
+    },
   }))
 
 const ImageCard = props => {
@@ -28,37 +34,39 @@ const ImageCard = props => {
   const classes = useStyles({ styles })()
   const [hover, sethover] = useState(false)
 
+  const handleClick = _e => {
+    if (props.navigationReference) {
+      navigate(`/${buildLocalizedSlug(props.locale, props.navigationReference.slug)}/`)
+    }
+  }
+
+  const actionArea = content => (
+    <CardActionArea
+      onMouseOver={() => sethover(true)}
+      onMouseOut={() => sethover(false)}
+      onFocus={() => void 0}
+      onBlur={() => void 0}
+      onClick={handleClick}
+      className={classes.actionArea}
+    >
+      {content}
+    </CardActionArea>
+  )
+
+  const cardContent = (
+    <>
+      <CardMedia className={classes.img} image={`https:${props.imgUrl}`} title={props.imgTitle} />
+      <CardContent className={hover ? classes.active : ""}>
+        <Typography variant="h6" {...styles.text.h6}>
+          {props.title}
+        </Typography>
+        <RichTextWrapper richTextJson={props.body.json} optionalStyles={styles.text} />
+      </CardContent>
+    </>
+  )
+
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia className={classes.img} image={`https://${props.imgUrl}`} title={props.imgTitle} />
-        {hover ? (
-          <CardContent
-            onFocus
-            onMouseOver={() => sethover(true)}
-            onBlur
-            onMouseOut={() => sethover(false)}
-            className={classes.active}
-          >
-            <Typography variant="h6" {...styles.text.active}>
-              {props.title}
-            </Typography>
-            <Typography variant="body2" component="p" {...styles.text.p}>
-              {props.body}
-            </Typography>
-          </CardContent>
-        ) : (
-          <CardContent onFocus onMouseOver={() => sethover(true)} onBlur onMouseOut={() => sethover(false)}>
-            <Typography variant="h6" {...styles.text.h6}>
-              {props.title}
-            </Typography>
-            <Typography variant="body2" component="p" {...styles.text.p}>
-              {props.body}
-            </Typography>
-          </CardContent>
-        )}
-      </CardActionArea>
-    </Card>
+    <Card className={classes.root}>{props.navigationReference ? actionArea(cardContent) : cardContent}</Card>
   )
 }
 

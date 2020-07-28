@@ -34,7 +34,7 @@ const CardHolder = ({ contentfulId }) => {
               }
               ... on ContentfulImageCard {
                 bodyText {
-                  bodyText
+                  json
                 }
                 image {
                   file {
@@ -48,6 +48,12 @@ const CardHolder = ({ contentfulId }) => {
                     content
                   }
                 }
+                navigationReference {
+                  to {
+                    slug
+                  }
+                }
+                node_locale
               }
               ... on ContentfulMapCard {
                 bodyText {
@@ -63,6 +69,7 @@ const CardHolder = ({ contentfulId }) => {
                     content
                   }
                 }
+                node_locale
               }
             }
           }
@@ -85,10 +92,12 @@ const CardHolder = ({ contentfulId }) => {
     lat: card.coordinates ? card.coordinates.lat : null,
     imgUrl: card.image ? card.image.file.url : null,
     imgTitle: card.image ? card.image.title : null,
-    body: card.bodyText.bodyText,
+    body: card.bodyText,
     type: card.internal.type,
     title: card.title,
     id: card.id,
+    locale: card.node_locale,
+    navigationReference: card.navigationReference ? card.navigationReference.to : null
   }))
 
   const classes = useStyles({ styles })()

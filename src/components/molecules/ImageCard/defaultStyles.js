@@ -4,7 +4,6 @@ import T from "../../theme"
 const { paddingTop, ...imgProps } = defaultImg
 const { h6, p, ...textProps } = defaultText
 const { color, ...hProps } = defaultH
-const { align, ...pProps } = defaultP
 
 const defaultStyles = {
   root: {
@@ -30,8 +29,8 @@ const defaultStyles = {
     },
     p: {
       color: "textSecondary",
-      align: "",
-      ...pProps,
+      align: defaultP.align,
+      display: defaultP.display,
     },
     ...textProps,
   },
