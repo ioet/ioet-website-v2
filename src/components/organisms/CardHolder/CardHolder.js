@@ -97,7 +97,7 @@ const CardHolder = ({ contentfulId }) => {
     title: card.title,
     id: card.id,
     locale: card.node_locale,
-    navigationReference: card.navigationReference ? card.navigationReference.to : null
+    navigationReference: card.navigationReference ? card.navigationReference.to : null,
   }))
 
   const classes = useStyles({ styles })()
