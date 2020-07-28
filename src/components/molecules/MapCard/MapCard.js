@@ -40,7 +40,7 @@ const MapCard = ({ lat, lng, title, body, optionalStyles }) => {
               {title}
             </Typography>
             <Typography variant="body2" component="p" {...styles.text.p}>
-              {body}
+              {body.bodyText}
             </Typography>
           </ThemeProvider>
         </CardContent>
