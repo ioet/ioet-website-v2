@@ -5,7 +5,7 @@ const defaultStyles = {
     background: T.palette.gradient.ioetOrange,
     height: "20%",
     width: "100%",
-    position: "relative"
+    position: "relative",
   },
 }
 
