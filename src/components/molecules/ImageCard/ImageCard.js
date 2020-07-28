@@ -60,7 +60,7 @@ const ImageCard = props => {
         <Typography variant="h6" {...styles.text.h6}>
           {props.title}
         </Typography>
-        <RichTextWrapper richTextJson={props.body.json} optionalStyles={styles.text} />
+        {props.body ? <RichTextWrapper richTextJson={props.body.json} optionalStyles={styles.text} /> : null}
       </CardContent>
     </>
   )
