@@ -24,18 +24,18 @@ const useStyles = props => {
       [theme.breakpoints.only("xs")]: {
         marginTop: theme.spacing(10),
         marginRight: theme.spacing(0),
-        marginLeft: theme.spacing(0)
+        marginLeft: theme.spacing(0),
       },
       [theme.breakpoints.only("sm")]: {
         marginTop: theme.spacing(10),
         marginRight: theme.spacing(0),
-        marginLeft: theme.spacing(0)
+        marginLeft: theme.spacing(0),
       },
       [theme.breakpoints.only("md")]: {
         marginTop: theme.spacing(10),
         marginRight: theme.spacing(0),
-        marginLeft: theme.spacing(0)
-      }
+        marginLeft: theme.spacing(0),
+      },
     },
   }))
 }
