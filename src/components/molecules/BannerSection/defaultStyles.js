@@ -16,6 +16,7 @@ const defaultStyles = {
     marginRight: "",
     marginLeft: "",
     margin: "auto",
+    display: "",
     padding: 2,
   },
   text: defaultText,
