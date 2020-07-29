@@ -139,7 +139,7 @@ const Footer = props => {
                   {navigationLinks.map((item, index) => (
                     <div className="linskStyle">
                       <NavigationLink
-                        key={`footer-drawer-${item.title}-${index}-${item.slug}`}
+                        key={`footer-drawer-${item.caption}-${index}-${item.slug}`}
                         slug={item.slug}
                         caption={item.caption}
                       />
