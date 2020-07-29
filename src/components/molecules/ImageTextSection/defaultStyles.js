@@ -1,11 +1,13 @@
 import { defaultText, defaultGrid, defaultRoot, defaultImg } from "../../../maps/defaultStyles"
 
-const { background, color, ...rootProps } = defaultRoot
+const { background, color, width, height, ...rootProps } = defaultRoot
 
 const defaultStyles = {
   root: {
     color: "black",
     background: "white",
+    width: "",
+    height: "",
     ...rootProps,
   },
   img: {

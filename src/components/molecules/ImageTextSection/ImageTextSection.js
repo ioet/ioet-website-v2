@@ -12,6 +12,10 @@ const useStyles = props =>
       marginTop: theme.spacing(props.styles.root.maringTop),
       marginBottom: theme.spacing(props.styles.root.marginBottom),
       padding: theme.spacing(props.styles.root.padding),
+      maxWidth: props.styles.root.maxWidth,
+      maxHeight: props.styles.root.maxHeight,
+      width: props.styles.root.width,
+      height: props.styles.root.height,
       margin: props.styles.root.margin,
       color: getColor(props.styles.root.color),
       background: getColor(props.styles.root.background),
@@ -39,12 +43,8 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
   )
 
   const textGriditem = (
-    <Grid item container xs={12} sm={6}>
-      {bodyText ? (
-        <Grid item className={classes.textContainer}>
-          <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text} />
-        </Grid>
-      ) : null}
+    <Grid item xs={12} sm={6} className={classes.textContainer}>
+      {bodyText ? <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text} /> : null}
     </Grid>
   )
   return (
