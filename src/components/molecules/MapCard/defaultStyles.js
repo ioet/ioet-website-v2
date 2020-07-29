@@ -1,7 +1,8 @@
-import { defaultText, defaultH } from "../../../maps/defaultStyles"
+import { defaultText, defaultH, defaultP } from "../../../maps/defaultStyles"
 
-const { h6, ...textProps } = defaultText
+const { h6, p, ...textProps } = defaultText
 const { color, ...hProps } = defaultH
+const { align, ...pProps } = defaultP
 
 const defaultStyles = {
   root: {
@@ -18,6 +19,10 @@ const defaultStyles = {
     h6: {
       color: "textPrimary",
       ...hProps,
+    },
+    p: {
+      align: "left",
+      ...pProps,
     },
     ...textProps,
   },
