@@ -16,6 +16,15 @@ const defaultStyles = {
     width: defaultImg.width,
     height: defaultImg.height,
   },
+  textContainer: {
+    marginTop: 0,
+    marginBottom: 0,
+    marginRight: "",
+    marginLeft: "",
+    margin: "auto",
+    display: "block",
+    padding: 0,
+  },
   text: defaultText,
   grid: defaultGrid,
 }
