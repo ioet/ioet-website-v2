@@ -1,20 +1,14 @@
 .containerSocialIcons {
     .MuiGrid-container {
       justify-content: center;
+      padding-right: 30px;
     }
-    a {
-      padding-right: 10px;
-    }
-  }
-  .containerImageLink img {
-    padding: 5px;
   }
   
   @media only screen and (min-width: 600px) and (max-width: 959px) {
     .containerSocialIcons {
       .MuiGrid-container {
-        justify-content: flex;
+        justify-content: center;
       }
     }
   }
-  

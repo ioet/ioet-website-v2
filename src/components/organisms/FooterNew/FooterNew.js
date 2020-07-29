@@ -1,5 +1,5 @@
-import "./FooterNew.scss"
 import React from "react"
+import "./NewFooter.scss"
 import T from "../../theme"
 import Grid from "@material-ui/core/Grid"
 import defaultStyles from "./defaultStyles"
@@ -23,24 +23,30 @@ const useStyles = props =>
       width: props.styles.root.width,
       top: "auto",
       position: props.styles.root.position,
-      paddingTop: theme.spacing(5),
       background: getColor(props.styles.root.background),
     },
     transformText: {
       textTransform: "uppercase",
     },
     containerSocialIcons: {
+      marginTop: theme.spacing(1),
+      [theme.breakpoints.only("xs")]: {
+        width: "100%",
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(6),
+      },
       [theme.breakpoints.down("sm")]: {
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(1),
       },
     },
     copyrightContainer: {
-      justifyContent: "center",
       [theme.breakpoints.only("xs")]: {
-        paddingTop: theme.spacing(3),
+        width: "100%",
+        justifyContent: "flex-end",
       },
       [theme.breakpoints.only("sm")]: {
+        width: "100%",
         justifyContent: "flex-end",
         paddingTop: theme.spacing(2),
       },
@@ -134,8 +140,8 @@ const Footer = props => {
                 <ImageLink slug={actionImage.slug} imageUrl={`https:${actionImage.imageUrl}`} />
               </Grid>
 
-              <Grid item xs={12} sm={9} md={4} className={classes.transformText}>
-                <Box display="flex" className={classes.containerLinks} justifyContent="flex-end" flexWrap="wrap" >
+              <Grid item xs={12} sm={9} md={8} className={classes.transformText}>
+                <Box display="flex" className={classes.containerLinks} justifyContent="flex-end">
                   {navigationLinks.map((item, index) => (
                     <div className="linskStyle">
                       <NavigationLink
@@ -149,20 +155,18 @@ const Footer = props => {
               </Grid>
             </Hidden>
 
-            <Grid item xs={12} sm={9} md={3} className={classes.containerSocialIcons}>
+            <Grid item className={classes.containerSocialIcons} >
               <div className="containerSocialIcons">
-                <Icons SocialIcons={SocialIcons}></Icons>
+                <Icons justifyContent="center" SocialIcons={SocialIcons}/>
               </div>
             </Grid>
 
-            <Grid item xs={12} sm={9} md={2}>
-                <Box className={classes.copyrightContainer} display="flex-end">
-                    <ThemeProvider theme={T}>
-                    <Typography className={classes.copyrightText} variant="subtitle1">
-                        {footer.copyright}
-                    </Typography>
-                    </ThemeProvider>
-                </Box>
+            <Grid item className={classes.copyrightContainer}>
+              <ThemeProvider theme={T}>
+                <Typography className={classes.copyrightText} variant="subtitle1">
+                    {footer.copyright}
+                </Typography>
+              </ThemeProvider>
             </Grid>
 
           </Grid>
