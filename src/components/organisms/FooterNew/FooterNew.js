@@ -36,6 +36,7 @@ const useStyles = props =>
         paddingBottom: theme.spacing(6),
       },
       [theme.breakpoints.down("sm")]: {
+        width: "100%",
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(1),
       },
@@ -43,24 +44,31 @@ const useStyles = props =>
     copyrightContainer: {
       [theme.breakpoints.only("xs")]: {
         width: "100%",
-        justifyContent: "flex-end",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       },
       [theme.breakpoints.only("sm")]: {
-        width: "100%",
-        justifyContent: "flex-end",
         paddingTop: theme.spacing(2),
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
       },
       [theme.breakpoints.up("md")]: {
-        justifyContent: "flex-end",
         paddingTop: theme.spacing(3),
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-end",
       },
     },
     copyrightText: {
-      paddingRight: theme.spacing(5),
       paddingBottom: theme.spacing(2.5),
       fontWeight: "bold",
       [theme.breakpoints.only("xs")]: {
-        paddingRight: theme.spacing(0),
+        textAlign: "center",
+      },
+      [theme.breakpoints.only("md")]: {
         textAlign: "center",
       },
     },
@@ -134,7 +142,7 @@ const Footer = props => {
     <AppBar className={classes.root}>
       <Container maxWidth="xl">
         <Toolbar>
-          <Grid container alignItems="center">
+          <Grid container direction="row" alignItems="center">
             <Hidden only="xs">
               <Grid item sm={3} md={1} className="containerImageLink">
                 <ImageLink slug={actionImage.slug} imageUrl={`https:${actionImage.imageUrl}`} />
