@@ -37,7 +37,7 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
   const classes = useStyles({ styles })()
 
   const imageGridItem = (
-    <Grid item xs={12} sm={6}>
+    <Grid item xs={12} sm={6} justify="space-between">
       <img className={classes.img} alt={imgAlt} src={`https:${imgUrl}`} />
     </Grid>
   )
@@ -48,7 +48,7 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
     </Grid>
   )
   return (
-    <Paper className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <Grid container {...styles.grid}>
         {imageGridItem}
         {textGriditem}
