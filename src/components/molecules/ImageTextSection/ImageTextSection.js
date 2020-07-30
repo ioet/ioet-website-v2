@@ -43,7 +43,7 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
   )
 
   const textGriditem = (
-    <Grid item xs={12} sm={6} className={classes.textContainer}>
+    <Grid item xs={12} sm={5} className={classes.textContainer}>
       {bodyText ? <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text} /> : null}
     </Grid>
   )
