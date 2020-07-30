@@ -12,7 +12,7 @@ const defaultStyles = {
     marginBottom: 0,
   },
   img: {
-    margin: "auto",
+    margin: "inherit",
     display: "block",
     maxWidth: "100%",
     maxHeight: "376px",
@@ -21,6 +21,11 @@ const defaultStyles = {
     boxShadow: "14px 6px 38px 0px darkgrey",
     borderRadius: "5px",
   },
+  imageContainer: {
+    display: "flex",
+    justifyContent: "flex-start",
+    padding: "0 !important",
+  },
   textContainer: {
     marginTop: 0,
     marginBottom: 0,
@@ -28,7 +33,7 @@ const defaultStyles = {
     marginLeft: "",
     margin: "auto",
     display: "block",
-    padding: 0,
+    padding: "inherit",
   },
   text: defaultText,
   grid: defaultGrid,

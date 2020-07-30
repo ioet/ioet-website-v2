@@ -30,6 +30,11 @@ const useStyles = props =>
       marginLeft: theme.spacing(props.styles.textContainer.marginLeft),
       display: props.styles.textContainer.display,
     },
+    imageContainer: {
+      display: props.styles.imageContainer.display,
+      justifyContent: props.styles.imageContainer.justifyContent,
+      padding: props.styles.imageContainer.padding,
+    },
   }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
@@ -37,13 +42,13 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
   const classes = useStyles({ styles })()
 
   const imageGridItem = (
-    <Grid item xs={12} sm={6} justify="space-between">
+    <Grid item xs={12} sm={5} className={classes.imageContainer}>
       <img className={classes.img} alt={imgAlt} src={`https:${imgUrl}`} />
     </Grid>
   )
 
   const textGriditem = (
-    <Grid item xs={12} sm={5} className={classes.textContainer}>
+    <Grid item xs={12} sm={6} className={classes.textContainer}>
       {bodyText ? <RichTextWrapper richTextJson={bodyText} optionalStyles={styles.text} /> : null}
     </Grid>
   )
