@@ -18,7 +18,7 @@ const defaultStyles = {
     maxHeight: "376px",
     width: defaultImg.width,
     height: defaultImg.height,
-    boxShadow: "14px 6px 38px 0px darkgrey",
+    boxShadow: "false",
     borderRadius: "5px",
   },
   imageContainer: {
