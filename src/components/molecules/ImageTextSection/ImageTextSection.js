@@ -37,13 +37,14 @@ const useStyles = props =>
     },
   }))
 
-const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
+const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles, boxShadow }) => {
   const styles = overrideStyle(defaultStyles, optionalStyles)
   const classes = useStyles({ styles })()
+  const boxShadowValue = classes.img.boxShadow;
 
   const imageGridItem = (
     <Grid item xs={12} sm={5} className={classes.imageContainer}>
-      <img className={classes.img} alt={imgAlt} src={`https:${imgUrl}`} />
+      <img className={classes.img} style={{ boxShadow: boxShadow === true ? boxShadowValue : '' }} alt={imgAlt} src={`https:${imgUrl}`} />
     </Grid>
   )
 
