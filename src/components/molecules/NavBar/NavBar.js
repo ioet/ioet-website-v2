@@ -7,8 +7,6 @@ import { overrideStyle } from "../../../functions/stylesParser"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
 
-import "./NavBar.scss"
-
 const useStyles = props =>
   makeStyles(theme => ({
     img: {
