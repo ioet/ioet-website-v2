@@ -4,6 +4,7 @@ const defaultStyles = {
   },
   link: {
     fontWeight: "bold",
+    textTransform: "",
   },
 }
 

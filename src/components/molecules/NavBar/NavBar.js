@@ -14,6 +14,7 @@ const useStyles = props =>
     },
     link: {
       fontWeight: props.styles.img.fontWeight,
+      textTransform: props.styles.img.textTransform,
     },
   }))
 
