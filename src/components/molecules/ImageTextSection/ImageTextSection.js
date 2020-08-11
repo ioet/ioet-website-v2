@@ -30,15 +30,26 @@ const useStyles = props =>
       marginLeft: theme.spacing(props.styles.textContainer.marginLeft),
       display: props.styles.textContainer.display,
     },
+    imageContainer: {
+      display: props.styles.imageContainer.display,
+      justifyContent: props.styles.imageContainer.justifyContent,
+      padding: props.styles.imageContainer.padding,
+    },
   }))
 
 const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
   const styles = overrideStyle(defaultStyles, optionalStyles)
   const classes = useStyles({ styles })()
+  const isShadow = styles.img.boxShadow
 
   const imageGridItem = (
-    <Grid item xs={12} sm={6}>
-      <img className={classes.img} alt={imgAlt} src={`https:${imgUrl}`} />
+    <Grid item xs={12} sm={5} className={classes.imageContainer}>
+      <img
+        className={classes.img}
+        style={{ boxShadow: isShadow === "true" ? "14px 6px 38px 0px darkgrey" : "" }}
+        alt={imgAlt}
+        src={`https:${imgUrl}`}
+      />
     </Grid>
   )
 
@@ -48,7 +59,7 @@ const ImageTextSection = ({ imgUrl, imgAlt, bodyText, optionalStyles }) => {
     </Grid>
   )
   return (
-    <Paper className={classes.root}>
+    <Paper elevation={0} className={classes.root}>
       <Grid container {...styles.grid}>
         {imageGridItem}
         {textGriditem}
