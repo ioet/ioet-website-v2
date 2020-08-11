@@ -1,14 +1,30 @@
 import React from "react"
 import { Grid } from "@material-ui/core"
+import defaultStyles from "./defaultStyles"
+import { makeStyles } from "@material-ui/core/styles"
 import ImageLink from "../../atoms/ImageLink/ImageLink"
+import { overrideStyle } from "../../../functions/stylesParser"
 import NavigationLink from "../../atoms/NavigationLink/NavigationLink"
 import LanguageSelector from "../../atoms/LanguageSelector/LanguageSelector"
-import "./NavBar.scss"
+
+const useStyles = props =>
+  makeStyles(theme => ({
+    img: {
+      padding: props.styles.img.padding,
+    },
+    link: {
+      fontWeight: props.styles.img.fontWeight,
+      textTransform: props.styles.img.textTransform,
+    },
+  }))
 
 const NavBar = props => {
+  const styles = overrideStyle(defaultStyles, props.optionalStyles)
+  const classes = useStyles({ styles })()
+
   return (
     <>
-      <div className="imageStyle">
+      <div className={classes.img}>
         <ImageLink
           className="componentNavbar"
           slug={props.actionImage.slug}
@@ -17,7 +33,7 @@ const NavBar = props => {
       </div>
       <Grid container alignItems="center" justify="center" direction="row">
         {props.navigationLinks.map((link, index) => (
-          <div className="linskStyle" key={`navbar-div-${props.parentName}-${index}-${link.slug}`}>
+          <div className={classes.link} key={`navbar-div-${props.parentName}-${index}-${link.slug}`}>
             <NavigationLink
               key={`navbar-${props.parentName}-${index}-${link.slug}`}
               slug={link.slug}
