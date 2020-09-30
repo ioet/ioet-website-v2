@@ -1,0 +1,27 @@
+.containerSocialIcons {
+  .MuiGrid-container {
+    justify-content: flex-end;
+    padding-right: 30px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+  .containerSocialIcons {
+    .MuiGrid-container {
+      justify-content: flex-end;
+      padding-right: 5px;
+    }
+  }
+  .containerMain {
+    margin-top: 500px !important;
+  }
+}
+
+  @media only screen and (min-width: 0px) and (max-width: 599px) {
+    .containerSocialIcons {
+      .MuiGrid-container {
+        padding-right: 0px;
+        justify-content: center;
+      }
+    }
+  }

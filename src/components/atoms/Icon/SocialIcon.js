@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(theme => ({
   image: {
     margin: theme.spacing(1),
-    maxHeight: 30,
+    maxHeight: theme.spacing(4),
     padding: 8,
     borderRadius: 50,
     backgroundColor: "rgba(255, 255, 255, 0.5)",
