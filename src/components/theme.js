@@ -47,7 +47,7 @@ let theme = createMuiTheme({
       },
       h4: {
         [breakpoints.down("md")]: {
-          fontSize: "2.6rem",
+          fontSize: "2.2rem",
         },
         [breakpoints.down("sm")]: {
           fontSize: "1.5rem",
