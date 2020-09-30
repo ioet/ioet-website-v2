@@ -72,6 +72,20 @@ const useStyles = props =>
         textAlign: "center",
       },
     },
+    containerFooter: {
+      [theme.breakpoints.only("xl")]: {
+        margin: 0,
+      },
+      [theme.breakpoints.only("lg")]: {
+        marginTop: theme.spacing(1),
+      },
+      [theme.breakpoints.only("md")]: {
+        marginTop: theme.spacing(2.5),
+      },
+      [theme.breakpoints.only("sm")]: {
+        marginTop: theme.spacing(2.5),
+      },
+    },
   }))
 
 const Footer = props => {
@@ -142,13 +156,13 @@ const Footer = props => {
     <AppBar className={classes.root}>
       <Container maxWidth="xl">
         <Toolbar>
-          <Grid container direction="row" alignItems="center">
+          <Grid container direction="row" alignItems="center" className={classes.containerFooter}>
             <Hidden only="xs">
               <Grid item sm={3} md={1} className="containerImageLink">
                 <ImageLink slug={actionImage.slug} imageUrl={`https:${actionImage.imageUrl}`} />
               </Grid>
 
-              <Grid item xs={12} sm={9} md={8} className={classes.transformText}>
+              <Grid item xs={12} sm={9} md={9} className={classes.transformText}>
                 <Box display="flex" className={classes.containerLinks} justifyContent="flex-end">
                   {navigationLinks.map((item, index) => (
                     <div className="linskStyle">
